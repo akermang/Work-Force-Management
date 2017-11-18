@@ -1,0 +1,30 @@
+[
+  {
+    "id": "01",
+    "username": "gal",
+    "password": "gal",
+    "token": "0001",
+    "first_name": "Gal",
+    "last_name": "Ackerman",
+    "type": "ceo",
+    "manager": []
+  },
+  {
+    "id": "02",
+    "username": "mani",
+    "password": "mani",
+    "token": "0002",
+    "first_name": "Mani",
+    "last_name": "Manage",
+    "type": "manager"
+  },
+  {
+    "id": "03",
+    "username": "yoni",
+    "password": "yoni",
+    "token": "0003",
+    "first_name": "yoni",
+    "last_name": "tzvika",
+    "type": "worker"
+  }
+]

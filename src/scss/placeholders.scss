@@ -1,0 +1,13 @@
+@import './variables.scss';
+
+.button{
+  background: $bg-secondary;
+  border-radius: 45px;
+  padding: 10px;
+  text-transform: uppercase;
+  font-weight: 800;
+  border: none;
+  outline: none;
+  &:hover{cursor: pointer}
+  &:active{opacity: 0.5}
+}

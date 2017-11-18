@@ -1,0 +1,22 @@
+{
+    "example": {
+        "url": "/api",
+        "params": {
+            "method": "GET"
+        }
+    },
+    "auth": {
+        "url": "/api/auth",
+        "contentType": "application/json",        
+        "params": {
+            "method": "POST"
+        }
+    },
+    "login": {
+        "url": "/api/login",
+        "contentType": "application/json",
+        "params": {
+            "method": "POST"
+        }
+    }
+}
