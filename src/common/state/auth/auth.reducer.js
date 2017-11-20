@@ -19,7 +19,9 @@ function authReducer(state = authState, action) {
       return {
         ...state,
         loading: false,
-        loggedInUser: action.payload.loggedInUser
+        loggedInUser: action.payload.loggedInUser,
+        token: setToken(action.payload.loggedInUser.token),
+        isAuthenticated: localStorage.getItem('token') ? true : false
       };
 
     case FETCH_LOGIN_FAIL:
@@ -33,6 +35,11 @@ function authReducer(state = authState, action) {
     default:
       return state;
   }
+}
+
+function setToken(token) {
+  localStorage.setItem('token', token);
+  return token;
 }
 
 export default authReducer;

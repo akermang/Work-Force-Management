@@ -13,7 +13,8 @@ import { FetchAction } from "../../../common/actions";
 import styles from "./home.page.scss";
 import logo from "./assets/react-logo.png";
 
-const HomePage = () => ({
+class HomePage extends React.Component {
+  
   render() {
     return (
       <div className={styles.home}>
@@ -31,7 +32,7 @@ const HomePage = () => ({
         {this.getLoader()}
       </div>
     );
-  },
+  }
 
   fetchExample() {
     const options = new ApiService().getOptions("example");
@@ -44,16 +45,16 @@ const HomePage = () => ({
       failActionType: FETCH_EXAMPLE_FAIL
     };
     this.props.dispatch({ type: FETCH, payload: payload });
-  },
+  }
 
   getLoader() {
     return this.props.isLoading ? <div>loading...</div> : null;
-  },
+  }
 
   getComponent() {
     return this.props.data ? <ExampleComponent data={this.props.data} /> : null;
   }
-});
+};
 
 function mapStateToProps(state) {
   return {

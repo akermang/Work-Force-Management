@@ -1,8 +1,9 @@
 const authState = {
-    token: localStorage.getItem("work_force_token"),
+    token: localStorage.getItem("token"),
     loggedInUser: null,
     loading: false,
-    error: null
+    error: null,
+    isAuthenticated: localStorage.getItem('token') ? true : false
   };
   
   export default authState;

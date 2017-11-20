@@ -1,6 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './nav.component.scss';
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom';
+
 
 const NavComponent = () => (
   <ul className={styles.nav}>
@@ -10,4 +13,7 @@ const NavComponent = () => (
   </ul>
 );
 
-export default NavComponent;
+function mapStateToProps(state) {
+  return state;
+}
+export default connect(mapStateToProps)(NavComponent);

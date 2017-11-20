@@ -1,5 +1,5 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import styles from "./login.page.scss";
 import { FETCH } from "../../../common/actions";
@@ -11,8 +11,10 @@ import {
   FETCH_LOGIN_FAIL
 } from "../../../common/state/auth/auth.actions";
 
-const LoginPage = () => ({
+const LoginPage = (props) => ({
   render() {
+    const loggedInUser = this.props.loggedInUser;
+    console.log(loggedInUser)
     return (
       <div className={styles.login}>
         <form onSubmit={(e) => this.fetchLogin(e)}>
@@ -22,6 +24,12 @@ const LoginPage = () => ({
           <input type="text" ref="password" />
           <input className={styles.submit} type="submit" value="login" />
         </form>
+        {
+          loggedInUser ?
+            <Redirect to={'/'} />
+          : null
+
+        }
       </div>
     );
   },
@@ -46,8 +54,12 @@ const LoginPage = () => ({
   }
 });
 
-function mapStateToProps(state) {
-  return { isLoading: state.exampleReducer.loading };
+function mapStateToProps(state) {  
+  return { 
+    isLoading: state.exampleReducer.loading,
+    isAuthenticated: state.authReducer.isAuthenticated,
+    loggedInUser: state.authReducer.loggedInUser
+  };
 };
 
 export default withRouter(connect(mapStateToProps)(LoginPage));

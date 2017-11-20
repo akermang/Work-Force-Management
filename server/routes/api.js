@@ -48,7 +48,7 @@ router.post('/auth', (req, res) => {
 function send(res, data) {
   setTimeout(() => {
     res.send(data);
-  })
+  },1000);
 }
 
 module.exports = router;
