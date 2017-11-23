@@ -9,6 +9,9 @@ export { default as AboutPage } from './pages/about/about.page.jsx';
 export { default as HomePage } from './pages/home/home.page.jsx';
 export { default as LoginPage } from './pages/login/login.page.jsx';
 export { TestPage } from './pages/test/test.page.jsx';
+export { default as WorkerHomePage } from './pages/home/worker/worker-home.page.jsx';
+export { default as ManagerHomePage } from './pages/home/manager/manager-home.page.jsx';
+export { default as CeoHomePage } from './pages/home/ceo/ceo-home.page.jsx';
 
 // Components
 export { default as HeaderComponent } from './components/header/header.component.jsx';

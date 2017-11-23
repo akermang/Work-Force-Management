@@ -5,9 +5,6 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom';
 import { LOGOUT_ACTION, logoutActivate } from "../../../common/state/auth/auth.actions";
 
-
-
-
 const NavComponent = (props) => (
   <ul className={styles.nav}>
     <li><Link to="/">Home</Link></li>

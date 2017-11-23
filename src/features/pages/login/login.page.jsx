@@ -14,7 +14,6 @@ import {
 const LoginPage = (props) => ({
   render() {
     const loggedInUser = this.props.loggedInUser;
-    console.log(loggedInUser)
     return (
       <div className={styles.login}>
         <form onSubmit={(e) => this.fetchLogin(e)}>
