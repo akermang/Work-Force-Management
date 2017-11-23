@@ -1,9 +1,10 @@
+const token = localStorage.getItem("token")
 const authState = {
-    token: localStorage.getItem("token"),
+    token: token,
     loggedInUser: null,
     loading: false,
     error: null,
-    isAuthenticated: localStorage.getItem('token') ? true : false
+    isAuthenticated: token ? true : false
   };
   
   export default authState;

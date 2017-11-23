@@ -2,7 +2,8 @@ import authState from "./auth.state";
 import {
   START_FETCH_LOGIN,
   FETCH_LOGIN_SUCCESS,
-  FETCH_LOGIN_FAIL
+  FETCH_LOGIN_FAIL,
+  LOGOUT_ACTION
 } from "./auth.actions";
 
 function authReducer(state = authState, action) {
@@ -30,6 +31,16 @@ function authReducer(state = authState, action) {
         loading: false,
         loggedInUser: null,
         error: action.payload
+      };
+
+      case LOGOUT_ACTION:
+      return {
+        ...state,
+        loading: false,
+        loggedInUser: null,
+        error: action.payload,
+        token: setToken(null),
+        isAuthenticated: null
       };
 
     default:

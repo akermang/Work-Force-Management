@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 import { HeaderComponent, NavComponent } from '../features';
+import { connect } from 'react-redux';
 
 const DefaultLayout = ({ component: Component, ...rest }) => ({
   render() {
@@ -22,3 +23,4 @@ const DefaultLayout = ({ component: Component, ...rest }) => ({
 });
 
 export default DefaultLayout;
+
