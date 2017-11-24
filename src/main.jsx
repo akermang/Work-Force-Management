@@ -10,9 +10,12 @@ import './scss/main.scss';
 import Root from './routes/routes.jsx';
 import rootReducer from './common/reducers';
 import fetchMiddleware from './middlewares/fetch.middleware';
+import intiateData from './initiateData';
 
 const middlewares = applyMiddleware(thunk, logger, fetchMiddleware);
 const store = createStore(rootReducer, middlewares);
+
+intiateData(store);
 
 ReactDOM.render(
   <Root store={store} />,

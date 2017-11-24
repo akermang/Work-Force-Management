@@ -1,10 +1,10 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
+import React from "react";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 import {
-    START_FETCH_EXAMPLE,
-    FETCH_EXAMPLE_SUCCESS,
-    FETCH_EXAMPLE_FAIL
+  START_FETCH_EXAMPLE,
+  FETCH_EXAMPLE_SUCCESS,
+  FETCH_EXAMPLE_FAIL
 } from "../../../../common/state/example/example.actions";
 import { FETCH } from "../../../../common/actions";
 import { ApiService } from "../../../../common/services/api.service";
@@ -18,21 +18,22 @@ class WorkerHomePage extends React.Component {
     const user = this.props.user;
     return (
       <div>
-        <h2>Worker home page</h2>        
+        <h2>Worker -  home page</h2>
+        {user ? user.username : null}
 
         {this.getComponent()}
         <div className={styles.buttons}>
-        <button onClick={() => this.props.history.push("/about")}>
+          <button onClick={() => this.props.history.push("/about")}>
             go to about
-        </button>
-        <button onClick={() => this.fetchExample()}>fetch example</button>
+          </button>
+          <button onClick={() => this.fetchExample()}>fetch example</button>
         </div>
         <div className={styles.logo}>
-        <img src={logo} />
+          <img src={logo} />
         </div>
-        {this.getLoader()}          
+        {this.getLoader()}
       </div>
-    )
+    );
   }
 
   fetchExample() {
@@ -54,14 +55,14 @@ class WorkerHomePage extends React.Component {
 
   getComponent() {
     return this.props.data ? <ExampleComponent data={this.props.data} /> : null;
-  }  
+  }
 }
 
 function mapStateToProps(state) {
-    return {
-        data: state.exampleReducer.example,
-        isLoading: state.exampleReducer.loading
-    };
+  return {
+    data: state.exampleReducer.example,
+    isLoading: state.exampleReducer.loading
+  };
 }
 
 export default withRouter(connect(mapStateToProps)(WorkerHomePage));

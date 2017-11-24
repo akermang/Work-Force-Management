@@ -1,5 +1,4 @@
 const express = require('express');
-
 const router = express.Router();
 
 /**
@@ -7,7 +6,7 @@ const router = express.Router();
  */
 const mockData = require('../mock/data.json');
 const mockTokens = require('../mock/tokens.json');
-const mockUsers = require('../mock/users.json')
+const mockUsers = require('../mock/users.json');
 
 /**
  * Api routes
@@ -21,7 +20,7 @@ router.post('/login', (req, res) => {
   const password = req.body.password;  
   const user = getUser(username, password);
   if(user) {
-    send(res, { statusCode: 200, loggedInUser: user });
+    send(res, { statusCode: 200, loggedInUser: user});
   }else {
     send(res, { statusCode: 400, data: null });
   }
@@ -37,13 +36,23 @@ function getUser(username, password) {
 
 router.post('/auth', (req, res) => {
   let statusCode; 
-  if(mockTokens[req.body.token]) {
+  let user;
+  const token = req.body.token;
+  if(mockTokens[token]) {
     statusCode = 200;
+    user = getUserByToken(token);
+    send(res, { statusCode: statusCode, loggedInUser: user });
   }else{
     statusCode = 401;
+    send(res, { statusCode: statusCode, error: 'authentication failed' });
   }
-  send(res, { statusCode: statusCode });
 });
+
+function getUserByToken(token) {
+  return mockUsers.filter(function(user) {
+    return user.token === token;
+  })[0];
+}
 
 function send(res, data) {
   setTimeout(() => {
@@ -52,4 +61,3 @@ function send(res, data) {
 }
 
 module.exports = router;
-

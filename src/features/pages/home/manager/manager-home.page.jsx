@@ -7,7 +7,7 @@ class ManagerHomePage extends React.Component {
     const user = this.props.user;
     return (
       <div>
-          <h2>Manager home page</h2>
+          <h2>Manager - home page</h2>
           {user ? user.username : null}
       </div>
     )
@@ -15,7 +15,7 @@ class ManagerHomePage extends React.Component {
 }
 
 function mapStateToProps(state) {
-    return state.user;
+    return {user: state.user};
 }
 
 export default withRouter(connect(mapStateToProps)(ManagerHomePage));

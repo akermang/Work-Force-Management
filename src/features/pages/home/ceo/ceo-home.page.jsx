@@ -7,7 +7,7 @@ class CeoHomePage extends React.Component {
     const user = this.props.user;
     return (
       <div>
-          <h2>Ceo home page</h2>
+          <h2>Ceo - home page</h2>
           {user ? user.username : null}
       </div>
     )
@@ -15,7 +15,7 @@ class CeoHomePage extends React.Component {
 }
 
 function mapStateToProps(state) {
-    return {user: state.user};
+    return  {user: state.user}
 }
 
-export default withRouter(connect(mapStateToProps)(CeoHomePage));
+export default withRouter(connect(null)(CeoHomePage));
