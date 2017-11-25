@@ -1,7 +1,20 @@
 @import '../../../scss/variables.scss';
 
 .header{
+    display: flex;
+    justify-content: space-between;
     background: $bg-secondary;
     padding: 0 20px;
     line-height: 60px;
+    .link li {
+        list-style-type: none;
+        
+        a {
+            border: 1px solid black;
+            border-radius: 15px;
+            padding: 0.4em 10px;
+            color: $bg-primary;
+            text-decoration: none;
+        }
+    }  
 }

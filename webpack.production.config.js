@@ -25,6 +25,7 @@ const config = {
     new HtmlWebpackPlugin({
       template: `${__dirname}/src/index.html`,
       filename: 'index.html',
+      favicon: 'favicon.png',
       inject: 'body',
     }),
     new webpack.optimize.OccurrenceOrderPlugin(),

@@ -9,7 +9,6 @@ const NavComponent = (props) => (
   <ul className={styles.nav}>
     <li><Link to="/">Home</Link></li>
     <li><Link to="/about">About</Link></li>
-    <li><Link to="/login" onClick={() => {props.dispatch({type: LOGOUT_ACTION})}}>Sign Out </Link></li>
   </ul>
 );
 

@@ -33,6 +33,10 @@ const LoginPage = (props) => ({
     );
   },
 
+  componentDidMount(){
+    this.refs.username.focus();
+  },
+
   fetchLogin(e) {
     e.preventDefault();
     const o = new ApiService().getOptions("login");    
