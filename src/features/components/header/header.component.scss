@@ -8,13 +8,14 @@
     line-height: 60px;
     .link li {
         list-style-type: none;
+    
         
-        a {
-            border: 1px solid black;
-            border-radius: 15px;
-            padding: 0.4em 10px;
-            color: $bg-primary;
-            text-decoration: none;
-        }
+        // a {
+        //     border: 1px solid black;
+        //     border-radius: 15px;
+        //     padding: 0.4em 10px;
+        //     color: $bg-primary;
+        //     text-decoration: none;
+        // }
     }  
 }

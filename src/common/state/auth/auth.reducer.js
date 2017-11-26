@@ -31,8 +31,8 @@ function authReducer(state = authState, action) {
         loading: false,
         loggedInUser: null,
         error: action.payload,
-        token: setToken(null),
-        isAuthenticated: null
+        token: resetToken(),
+        isAuthenticated: false
       };
 
     case LOGOUT_ACTION:
@@ -41,8 +41,8 @@ function authReducer(state = authState, action) {
         loading: false,
         loggedInUser: null,
         error: null,
-        token: setToken(null),
-        isAuthenticated: null
+        token: resetToken(),
+        isAuthenticated: false
       };
 
     default:
@@ -53,6 +53,11 @@ function authReducer(state = authState, action) {
 function setToken(token) {
   localStorage.setItem('token', token);
   return token;
+}
+
+function resetToken() {
+  localStorage.removeItem('token');
+  return null;
 }
 
 export default authReducer;

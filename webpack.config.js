@@ -38,6 +38,10 @@ const config = {
           'babel-loader',
         ],
         exclude: /node_modules/
+      },      
+      {
+        test: /\.css$/,
+        use: [ 'style-loader', 'css-loader' ]
       },
       {
         test: /\.scss$/,
@@ -65,6 +69,12 @@ const config = {
   },
 
   plugins: [
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery',
+      'window.jQuery': 'jquery',
+      Popper: ['popper.js', 'default']            
+    }),
     new webpack.LoaderOptionsPlugin({
       test: /\.js$/,
       options: {

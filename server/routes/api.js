@@ -1,5 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const FileUtils = require('./file-utils');
+const fileUtils = new FileUtils();
 
 /**
  * Mock data
@@ -58,6 +60,29 @@ function send(res, data) {
   setTimeout(() => {
     res.send(data);
   },1000);
+}
+
+router.post('/user/add/', (req, res) => {
+  const user = req.body;
+  addUser(user);  
+  send(res, { statusCode: 200, user: user });
+});
+
+function addUser(user) {
+  
+  const filePath = './server/mock/users.json';  
+
+  // read data from file
+  fileUtils.readFile(filePath, function(users) {
+    const parsedUsers = JSON.parse(users);
+    parsedUsers.push(user);
+
+    // write data to file
+    fileUtils.writeFile(filePath, parsedUsers, function(data) {
+      
+    })
+  });
+  
 }
 
 module.exports = router;

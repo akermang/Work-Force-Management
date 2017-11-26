@@ -12,6 +12,12 @@
       max-width: 700px;
     }
   }
+  [class^="col-"] {
+    height: 150px;
+    background: linear-gradient(45deg,  #61dafb, rgba(10, 54, 80, 0.88));    
+    color: white;
+  }
+
   .buttons{
     display: flex;
     justify-content: space-between;

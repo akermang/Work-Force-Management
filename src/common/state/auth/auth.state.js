@@ -5,7 +5,7 @@ const authState = {
     loggedInUser: null,
     loading: false,
     error: null,
-    isAuthenticated: true
+    isAuthenticated: token ? true : false
   };
   
   export default authState;

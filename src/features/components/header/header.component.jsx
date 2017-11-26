@@ -6,7 +6,7 @@ import { withRouter } from 'react-router-dom';
 import { LOGOUT_ACTION, logoutActivate } from "../../../common/state/auth/auth.actions";
 
 const HeaderComponent = (props) => (
-  <header className={styles.header}>
+  <header className={styles.header }>
     <div className={styles.title}>
       <h2>Work force management</h2>
     </div>
@@ -19,8 +19,10 @@ const HeaderComponent = (props) => (
 function signOutOption(props) {
   if(props.authReducer.isAuthenticated) {
     return <li><Link to="/login" onClick={() => {props.dispatch({type: LOGOUT_ACTION})}}>Sign Out </Link></li>
+  }else if(props.location.pathname !== "/login" ){
+    return <Link  className="btn btn-outline-success"  to="/login" > Login </Link>
   }else {
-    return <h2>please sign in</h2>
+    return <span>Please Login</span>
   }
 }
 

@@ -15,13 +15,13 @@ const LoginPage = (props) => ({
   render() {
     const loggedInUser = this.props.loggedInUser;
     return (
-      <div className={styles.login}>
+      <div className= "form-signin" >
         <form onSubmit={(e) => this.fetchLogin(e)}>
-          <label htmlFor="username"> username: </label>
-          <input type="text" ref="username" />
-          <label htmlFor="password"> password: </label>
-          <input type="text" ref="password" />
-          <input className={styles.submit} type="submit" value="login" />
+          <label className="label" htmlFor="username"> username: </label>
+          <input className="form-control"  placeholder="Username" type="text" ref="username" />
+          <label className="label" htmlFor="password"> password: </label>
+          <input className="form-control"  placeholder="Password" type="text" ref="password" />
+          <input className="btn btn-lg btn-primary btn-block" type="submit" value="login" />
         </form>
         {
           loggedInUser ?

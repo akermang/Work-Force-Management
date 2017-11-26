@@ -19,6 +19,7 @@ class WorkerHomePage extends React.Component {
     return (
       <div>
         <h2>Worker -  home page</h2>
+        <button className="btn btn-primary danger">button</button>
         {user ? user.username : null}
 
         {this.getComponent()}
