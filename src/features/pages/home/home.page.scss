@@ -18,6 +18,10 @@
     color: white;
   }
 
+  [class^="row"] {
+    margin: 0!important;
+  }
+
   .buttons{
     display: flex;
     justify-content: space-between;

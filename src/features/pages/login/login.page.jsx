@@ -17,11 +17,22 @@ const LoginPage = (props) => ({
     return (
       <div className= "form-signin" >
         <form onSubmit={(e) => this.fetchLogin(e)}>
-          <label className="label" htmlFor="username"> username: </label>
-          <input className="form-control"  placeholder="Username" type="text" ref="username" />
-          <label className="label" htmlFor="password"> password: </label>
-          <input className="form-control"  placeholder="Password" type="text" ref="password" />
-          <input className="btn btn-lg btn-primary btn-block" type="submit" value="login" />
+          <div className="form-group">
+            <label className="label form-contro" htmlFor="username"> username: </label>
+            <input className="form-control"  placeholder="Username" type="text" ref="username" />
+          </div>
+          <div className="form-group">
+            <label className="label" htmlFor="password"> password: </label>
+            <input className="form-control"  placeholder="Password" type="text" ref="password" />
+          </div>
+          <div className="checkbox">
+            <label className="label">
+              <input type="checkbox"/> Remember me
+            </label>
+          </div>
+          <div>
+            <input className="form-contro btn btn-lg btn-primary btn-block" type="submit" value="login" />
+          </div>
         </form>
         {
           loggedInUser ?

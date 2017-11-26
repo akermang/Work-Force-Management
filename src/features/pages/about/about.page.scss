@@ -1,0 +1,9 @@
+@import '../../../scss/placeholders.scss';
+@import '../../../scss/variables.scss';
+
+.about {
+    color: $col-primary;
+    .title{
+      font-size: 24px;
+    } 
+}

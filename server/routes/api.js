@@ -28,14 +28,6 @@ router.post('/login', (req, res) => {
   }
 });
 
-function getUser(username, password) {
-  for(let user of mockUsers) {
-    if(user.username === username && user.password === password) {
-      return user;
-    }
-  }
-}
-
 router.post('/auth', (req, res) => {
   let statusCode; 
   let user;
@@ -50,6 +42,34 @@ router.post('/auth', (req, res) => {
   }
 });
 
+router.post('/user/add/', (req, res) => {
+  const user = req.body;
+  addUser(user);  
+  send(res, { statusCode: 200, user: user });
+});
+
+function getUser(username, password) {
+  for(let user of mockUsers) {
+    if(user.username === username && user.password === password) {
+      return user;
+    }
+  }
+}
+
+function addUser(user) {  
+  const filePath = './server/mock/users.json';  
+  // read data from file
+  fileUtils.readFile(filePath, function(users) {
+    const parsedUsers = JSON.parse(users);
+    parsedUsers.push(user);
+    // write data to file
+    fileUtils.writeFile(filePath, parsedUsers, function(data) { })
+  });
+}
+
+/**
+ * Helper method 
+ */
 function getUserByToken(token) {
   return mockUsers.filter(function(user) {
     return user.token === token;
@@ -60,29 +80,6 @@ function send(res, data) {
   setTimeout(() => {
     res.send(data);
   },1000);
-}
-
-router.post('/user/add/', (req, res) => {
-  const user = req.body;
-  addUser(user);  
-  send(res, { statusCode: 200, user: user });
-});
-
-function addUser(user) {
-  
-  const filePath = './server/mock/users.json';  
-
-  // read data from file
-  fileUtils.readFile(filePath, function(users) {
-    const parsedUsers = JSON.parse(users);
-    parsedUsers.push(user);
-
-    // write data to file
-    fileUtils.writeFile(filePath, parsedUsers, function(data) {
-      
-    })
-  });
-  
 }
 
 module.exports = router;
