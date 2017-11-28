@@ -1,6 +1,12 @@
 @import '../../../scss/placeholders.scss';
 
+@keyframes moove {
+  0% {transform: translateX(-300px)}
+ 100% {transform: translateX(0)}
+}
+
 .home{
+  overflow: hidden;
   color: #ffffff;
   .title{
     font-size: 24px;
@@ -13,6 +19,7 @@
     }
   }
   [class^="col-"] {
+    animation: moove .8s;
     height: 150px;
     background: linear-gradient(45deg,  #61dafb, rgba(10, 54, 80, 0.88));    
     color: white;

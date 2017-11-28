@@ -1,7 +1,10 @@
 @import '../../../scss/placeholders.scss';
 @import '../../../scss/variables.scss';
 
-
+@keyframes moove {
+    0% {max-width:  0}
+    90%, 100% {max-width: 300px}
+  }
 .login {
     color: $col-primary;
 
@@ -14,5 +17,6 @@
 
 form {
     max-width: 300px;
-    margin: 0 auto;
+    animation: moove 0.5s;
+
 }
