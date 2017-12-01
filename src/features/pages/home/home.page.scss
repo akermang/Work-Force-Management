@@ -1,4 +1,5 @@
 @import '../../../scss/placeholders.scss';
+@import '../../../scss/variables.scss';
 
 @keyframes moove {
   0% {transform: translateX(-300px)}
@@ -15,19 +16,31 @@
     text-align: center;
     img{
       width: 100%;
-      max-width: 700px;
+      max-width: 300px;
     }
   }
+
+  .row{
+    margin: auto;
+  }
+  
   [class^="col-"] {
+    margin: auto;
     animation: moove .8s;
-    height: 150px;
+    min-height: 200px;
     background: linear-gradient(45deg,  #61dafb, rgba(10, 54, 80, 0.88));    
     color: white;
   }
 
   [class^="row"] {
-    margin: 0!important;
+    margin: auto;
   }
+
+  // button {
+  //   background: $bg-clear;
+  //   position: absolute;
+  //   right: 2px;
+  // }
 
   .buttons{
     display: flex;

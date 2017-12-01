@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 
 const ExampleComponent = (props) => (
-  <div>
+  <div>_Data From Server:
     {
       props.data.map((prop, i) => {
         return <div key={i}>{prop.example}</div>

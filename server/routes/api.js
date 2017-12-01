@@ -2,6 +2,9 @@ const express = require('express');
 const router = express.Router();
 const FileUtils = require('./file-utils');
 const fileUtils = new FileUtils();
+var multer  = require('multer')
+var upload = multer({ dest: 'uploads/' })
+
 
 /**
  * Mock data
@@ -33,20 +36,43 @@ router.post('/auth', (req, res) => {
   let user;
   const token = req.body.token;
   if(mockTokens[token]) {
-    statusCode = 200;
     user = getUserByToken(token);
-    send(res, { statusCode: statusCode, loggedInUser: user });
+    send(res, { statusCode: 200, loggedInUser: user });
   }else{
-    statusCode = 401;
-    send(res, { statusCode: statusCode, error: 'authentication failed' });
+    send(res, { statusCode: 401, error: 'authentication failed' });
   }
 });
 
 router.post('/user/add/', (req, res) => {
   const user = req.body;
-  addUser(user);  
-  send(res, { statusCode: 200, user: user });
+  const newUser = setdefaultCredentials(user);
+  if(!newUser) {
+    res.send({ statusCode: 400, error: 'username already exists' });
+    return;
+  }
+  addUser(newUser);  
+  res.send({ statusCode: 200, user: user })
 });
+
+// MOCK! find real solution
+function setdefaultCredentials(user) {
+  if(userExists(user)) return;
+  user.password = '1234';
+  user.token = getNewToken();
+  user.id = getNewToken();
+  return user;
+}
+
+function userExists(user) {
+  return mockUsers.filter(function(u) {
+    return u.username === user.username;
+  })[0];
+}
+
+function getNewToken() {
+  const lastUser = mockUsers[mockUsers.length-1];
+  return lastUser.token++;
+}
 
 function getUser(username, password) {
   for(let user of mockUsers) {

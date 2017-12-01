@@ -4,7 +4,7 @@ import { Switch, HashRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import AuthRoute from './auth-guard.jsx';
 
-import { HomePage, AboutPage, App, LoginPage, TestPage } from '../features';
+import { HomePage, AboutPage, App, LoginPage, TestPage, AddUserForm } from '../features';
 import DefaultLayout from './default-layout.jsx';
 import FullPageLayout from './full-layout.jsx';
 
@@ -21,8 +21,8 @@ const Root = ({ store }) => ({
           <App>
             <Switch>
               <DefaultLayout path="/login" component={LoginPage} /> 
-              <AuthRoute exact path="/" component={HomePage} />          
-              <AuthRoute path="/test" component={TestPage} />
+              <AuthRoute exact path="/" component={HomePage} />                        
+              <AuthRoute path="/user/add" component={AddUserForm} />              
             </Switch>
             <DefaultLayout path="/about" component={AboutPage} />
           </App>

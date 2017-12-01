@@ -11,6 +11,7 @@ import { ApiService } from "../../../../common/services/api.service";
 import { ExampleComponent } from "../../../";
 import { FetchAction } from "../../../../common/actions";
 import logo from "../assets/react-logo.png";
+import avatar from "../assets/avatar-1.jpg";
 import styles from "../home.page.scss";
 
 class WorkerHomePage extends React.Component {
@@ -18,9 +19,15 @@ class WorkerHomePage extends React.Component {
     const user = this.props.user;
     return (
       <div>
-        <h2>Worker -  home page</h2>
-        <button className="btn btn-primary danger">button</button>
+        <h2>Worker - home page</h2>
         {user ? user.username : null}
+        <div className="col-md-1">
+          <img 
+            className="img-rounded img-responsive" 
+            src={user.avatar}  
+            alt="avatar"
+          />
+        </div>        
 
         {this.getComponent()}
         <div className={styles.buttons}>

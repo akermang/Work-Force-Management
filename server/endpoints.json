@@ -18,5 +18,12 @@
         "params": {
             "method": "POST"
         }
+    },
+    "addUser": {
+        "url": "/api/user/add",
+        "contentType": "application/json",
+        "params": {
+            "method": "POST"
+        }
     }
 }

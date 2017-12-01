@@ -16,6 +16,7 @@ const LoginPage = (props) => ({
     const loggedInUser = this.props.loggedInUser;
     return (
       <div className= "form-signin" >
+       <h2 className={styles.h2} >Login</h2>
         <form onSubmit={(e) => this.fetchLogin(e)}>
           <div className="form-group">
             <label className="label form-contro" htmlFor="username"> username: </label>
@@ -31,7 +32,7 @@ const LoginPage = (props) => ({
             </label>
           </div>
           <div>
-            <input className="form-contro btn btn-lg btn-primary btn-block" type="submit" value="login" />
+            <input  className={styles.loginBtn + " form-contro btn btn-lg btn-primary btn-block"} type="submit" value="login" />
           </div>
         </form>
         {

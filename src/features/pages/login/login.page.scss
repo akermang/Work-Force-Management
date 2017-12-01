@@ -1,22 +1,29 @@
-@import '../../../scss/placeholders.scss';
-@import '../../../scss/variables.scss';
+@import "../../../scss/placeholders.scss";
+@import "../../../scss/variables.scss";
 
 @keyframes moove {
-    0% {max-width:  0}
-    90%, 100% {max-width: 300px}
+  0% {
+    max-width: 0;
   }
-.login {
-    color: $col-primary;
-
-   
-    
+  100% {
+    max-width: 300px;
+  }
 }
-// label {
-//     color: white;
-// }
+.login {
+  color: $col-primary;
+}
+
+h2.h2{
+  color: white;
+}
 
 form {
-    max-width: 300px;
-    animation: moove 0.5s;
+  max-width: 300px;
+  animation: moove 0.5s;
+}
 
+.loginBtn {
+  background-color: #2a2c2e!important;
+  border-color: 1px solid $bg-secondary;
+  
 }
