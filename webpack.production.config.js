@@ -31,7 +31,7 @@ const config = {
     new HtmlWebpackPlugin({
       template: `${__dirname}/src/index.html`,
       filename: 'index.html',
-      favicon: 'favicon.png',
+      favicon: '../favicon.png',
       inject: 'body',
     }),
     new webpack.optimize.OccurrenceOrderPlugin(),
@@ -57,15 +57,24 @@ const config = {
         loader: 'babel-loader',
       },
       {
+        test: /\.css$/,
+        use: [ 'style-loader', 'css-loader' ]
+      },
+      {
         test: /\.scss$/,
         exclude: /node_modules/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: [
-            'css-loader?modules=true&localIdentName=[name]__[local]___[hash:base64:5]',
-            { loader: 'sass-loader', query: { sourceMap: false } },
+            'css-loader?modules=true&localIdentName=[name]__[local]___[hash:base64:5]!sass-loader',
+            {
+              loader: 'sass-loader',
+              query: {
+                sourceMap: false,
+              },
+            },
           ],
-          publicPath: '../',
+          publicPath: '/',
         }),
       },
       { test: /\.(png|jpg|gif)$/, use: 'url-loader?limit=15000&name=images/[name].[ext]' },
