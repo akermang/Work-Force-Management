@@ -11,7 +11,7 @@ const fetchMiddleware = store => next => action => {
       failActionType
     } = action.payload;
     store.dispatch({ type: startActionType });
-    return request(API_HOST + url, params, response => {
+    return request(url, params, response => {
       if (response.statusCode >= 200 && response.statusCode <= 226) {
         store.dispatch({ type: successActionType, payload: response });
       } else {
