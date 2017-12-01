@@ -95,7 +95,7 @@ const config = {
       inject: 'body',
     }),
     new webpack.DefinePlugin({
-      API_HOST: JSON.stringify('http://localhost:3000')
+      API_HOST: JSON.stringify('http://localhost:3000/')
     }),
   ],
 };
