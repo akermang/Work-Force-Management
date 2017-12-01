@@ -1,26 +1,26 @@
 {
     "example": {
-        "url": "/api",
+        "url": "api",
         "params": {
             "method": "GET"
         }
     },
     "auth": {
-        "url": "/api/auth",
+        "url": "api/auth",
         "contentType": "application/json",        
         "params": {
             "method": "POST"
         }
     },
     "login": {
-        "url": "/api/login",
+        "url": "api/login",
         "contentType": "application/json",
         "params": {
             "method": "POST"
         }
     },
     "addUser": {
-        "url": "/api/user/add",
+        "url": "api/user/add",
         "contentType": "application/json",
         "params": {
             "method": "POST"
