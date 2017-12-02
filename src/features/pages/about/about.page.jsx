@@ -20,8 +20,8 @@ class AboutPage extends React.Component {
             Non-exempt, Hourly, Union Workers etc. Log time and approve from
             anywhere in the office or in the field.
           </span>
-          <h3>Software Developer </h3>
-          <h3>Gal Ackerman 2017</h3>
+          <h4>Software Developer </h4>
+          <h3 className="footer">Gal Akerman 2017</h3>
         </article>
       </div>
     );

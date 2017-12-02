@@ -13,7 +13,7 @@ const HeaderComponent = props => (
     <div className={styles.title}>
       <h2>Workforce Management</h2>
     </div>
-    <div className="input-group-btn">
+    <div className="input-group-btn ">
       <button
         type="button"
         className="btn btn-default dropdown-toggle  btn-outline-default"
@@ -38,7 +38,7 @@ const HeaderComponent = props => (
         </li>
         <li role="separator" className="divider" />
 
-        <div className={styles.link}>{signOutOption(props)}</div>
+        <div className={styles.link }>{signOutOption(props)}</div>
       </ul>
     </div>
 
@@ -48,7 +48,7 @@ const HeaderComponent = props => (
 function signOutOption(props) {
   if (props.authReducer.isAuthenticated) {
     return (
-      <Link className="btn btn-outline-default"
+      <Link className="btn btn-outline-default hidden-xs"
         to="/login"
         onClick={() => {
           props.dispatch({ type: LOGOUT_ACTION });

@@ -32,7 +32,7 @@ class ManagerHomePage extends React.Component {
         <h2>Manager - home page</h2>
         {this.getTasksComponent()}
 
-        <div className="container-fluid">
+        <div className="container-fluid bg-success">
           <div className="row">
             <div className="col-md-4 row">
               <h2>Maneger {user ? user.username : null}</h2>
@@ -50,7 +50,7 @@ class ManagerHomePage extends React.Component {
               
             </div>
             <div className="col-md-4">
-              <h3>two of three columns-h3</h3>
+              <h2>two of three columns-h3</h2>
               <button
                 type="button"
                 className="btn btn-default btn-xs col-1 x-btn"
@@ -60,7 +60,7 @@ class ManagerHomePage extends React.Component {
               </button>
             </div>
             <div className="col-md-4">
-            <h4>three of three columns-h4</h4>
+            <h2>three of three columns-h4</h2>
               <button
                 type="button"
                 className="btn btn-default btn-xs col-1 x-btn"
