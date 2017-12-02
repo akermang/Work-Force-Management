@@ -11,7 +11,7 @@ var upload = multer({ dest: 'uploads/' })
  */
 const mockData = require('../mock/data.json');
 const mockTokens = require('../mock/tokens.json');
-const mockUsers = require('../mock/users.json');
+let mockUsers = require('../mock/users.json');
 
 /**
  * Api routes
@@ -89,6 +89,7 @@ function addUser(user) {
     const parsedUsers = JSON.parse(users);
     parsedUsers.push(user);
     // write data to file
+    mockUsers = parsedUsers;
     fileUtils.writeFile(filePath, parsedUsers, function(data) { })
   });
 }

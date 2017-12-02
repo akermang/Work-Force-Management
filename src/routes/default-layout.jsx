@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 
 const DefaultLayout = ({ component: Component, ...rest }) => ({
   render() {
+    // console.log(this.props)
     return (
       <Route
         {...rest}

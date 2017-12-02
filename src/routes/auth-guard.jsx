@@ -7,6 +7,7 @@ import FullPageLayout from './full-layout.jsx';
 
 const AuthRoute = ({component, ...props}) => {    
   const Layout = props.layout || DefaultLayout;
+  console.log(component)
   if (props.isAuthenticated) {
     return <Layout { ...props } component={ component } />;    
   }else {

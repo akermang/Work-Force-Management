@@ -6,7 +6,6 @@ import { withRouter } from "react-router-dom";
 import styles from "./about.page.scss";
 
 class AboutPage extends React.Component {
-  static isPrivate = false;
   render() {
     return (
       <div className={styles.about}>

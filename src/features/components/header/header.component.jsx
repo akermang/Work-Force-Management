@@ -24,12 +24,17 @@ const HeaderComponent = props => (
         Options <span className="caret" />
       </button>
       <ul className="dropdown-menu dropdown-menu-right">
-        <li>{/* {signOutOption(props)} */}</li>
         <li>
-          <a href="#">Another action</a>
+          <Link to="/">Home</Link>
         </li>
         <li>
-          <a href="#">Something else here</a>
+        <Link to="/about">About</Link>
+        </li>
+        <li>
+        <Link to="/tasks">Tasks</Link>
+        </li>
+        <li>
+        <Link to="/user/add">Add user</Link>
         </li>
         <li role="separator" className="divider" />
 

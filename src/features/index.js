@@ -17,3 +17,4 @@ export { default as HeaderComponent } from './components/header/header.component
 export { default as NavComponent } from './components/nav/nav.component.jsx';
 export { default as ExampleComponent } from './components/example/example.component.jsx';
 export { default as AddUserForm } from './components/add-user-form/add-user-form.component.jsx';
+export { default as TasksComponent } from './components/tasks/tasks.component.jsx';
