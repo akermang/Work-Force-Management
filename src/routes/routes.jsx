@@ -26,10 +26,14 @@ const Root = ({ store }) => ({
                <AuthRoute exact path="/tasks" component={TasksComponent} />                                           
             </Switch>
             <Switch>
-               <AuthRoute exact path="/user/add" layout={layouts.full} component={AddUserForm} />                                           
+               <AuthRoute exact path="/user/add" component={AddUserForm} />                                           
+            </Switch>       
+            <Switch>
+              <DefaultLayout path="/login" component={LoginPage} />
+            </Switch>
+            <Switch>
+              <DefaultLayout path="/about" component={AboutPage} /> 
             </Switch>            
-            <DefaultLayout path="/login" component={LoginPage} />
-            <DefaultLayout path="/about" component={AboutPage} /> 
           </App>
         </Router>
       </Provider>

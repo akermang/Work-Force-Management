@@ -37,7 +37,7 @@ const LoginPage = (props) => ({
         </form>
         {
           loggedInUser ?
-            <Redirect to={'/home'} />
+            <Redirect to={'/'} />
           : null
 
         }
