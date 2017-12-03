@@ -1,1 +1,78 @@
-[{"id":"01","avatar":"../../src/features/pages/home/assets/avatar-1.jpg","username":"gal","password":"gal","token":"0001","firstName":"Gal","lastName":"Ackerman","type":"ceo","manager":[]},{"id":"02","avatar":"../../src/features/pages/home/assets/avatar-2.jpg","username":"mani","password":"mani","token":"0002","firstName":"Mani","lastName":"Manage","type":"manager"},{"id":3,"avatar":"assets/img/avatar-1.jpg","username":"yoni","password":"yoni","token":3,"firstName":"yoni","lastName":"tzvika","type":"worker"},{"firstName":"sd","lastName":"sd","type":"sd","username":"sdsdsdasdasd","password":"1234","token":3,"id":4},{"firstName":"sd","lastName":"sd","type":"sd","username":"qqqqq","password":"1234","token":5,"id":6},{"firstName":"sd","lastName":"sd","type":"worker","username":"qqqqqyyyy","password":"1234","token":7,"id":8},{"firstName":"","lastName":"","type":"worker","username":"","password":"1234","token":7,"id":8},{"firstName":"","lastName":"","type":"worker","username":"","password":"1234","token":9,"id":10},{"firstName":"","lastName":"","type":"worker","username":"","password":"1234","token":11,"id":12},{"firstName":"worker","lastName":"worker","type":"worker","username":"worker","password":"1234","token":13,"id":14},{"firstName":"baba","lastName":"baba","type":"worker","username":"baba","password":"1234","token":13,"id":14},{"firstName":"baba","lastName":"baba","type":"worker","username":"baba","password":"1234","token":15,"id":16},{"firstName":"tal","lastName":"tal","type":"worker","username":"tal","password":"1234","token":15,"id":16},{"firstName":"yogev","lastName":"yogev","type":"ceo","username":"yogev","password":"1234","token":15,"id":16}]
+[
+  {
+    "id": "01",
+    "avatar": "../../src/features/pages/home/assets/avatar-1.jpg",
+    "username": "gal",
+    "password": "gal",
+    "token": "0001",
+    "firstName": "Gal",
+    "lastName": "Ackerman",
+    "type": "ceo",
+    "manager": []
+  },
+  {
+    "id": "02",
+    "avatar": "../../src/features/pages/home/assets/avatar-2.jpg",
+    "username": "mani",
+    "password": "mani",
+    "token": "0002",
+    "firstName": "Mani",
+    "lastName": "Manage",
+    "type": "manager"
+  },
+  {
+    "id": "03",
+    "avatar": "assets/img/avatar-1.jpg",
+    "username": "yoni",
+    "password": "yoni",
+    "token": "0003",
+    "firstName": "yoni",
+    "lastName": "tzvika",
+    "type": "worker"
+  },
+  {
+    "firstName": "worker",
+    "lastName": "worker",
+    "type": "worker",
+    "username": "worker",
+    "password": "1234",
+    "token": 13,
+    "id": 14
+  },
+  {
+    "firstName": "baba",
+    "lastName": "baba",
+    "type": "worker",
+    "username": "baba",
+    "password": "1234",
+    "token": 15,
+    "id": 16
+  },
+  {
+    "firstName": "tal",
+    "lastName": "tal",
+    "type": "worker",
+    "username": "tal",
+    "password": "1234",
+    "token": 15,
+    "id": 16
+  },
+  {
+    "firstName": "yogev",
+    "lastName": "yogev",
+    "type": "ceo",
+    "username": "yogev",
+    "password": "1234",
+    "token": 15,
+    "id": 16
+  },
+  {
+    "firstName": "dana",
+    "lastName": "dana",
+    "type": "worker",
+    "username": "dana",
+    "password": "1234",
+    "token": 15,
+    "id": 16
+  }
+]

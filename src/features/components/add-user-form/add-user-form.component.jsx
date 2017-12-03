@@ -8,7 +8,7 @@ import {
   ADD_USER_SUCCSES
 } from "../../../common/state/user/user.actions";
 import { FETCH } from "../../../common/actions";
-import styles from './add-user-form.component.scss';
+import styles from "./add-user-form.component.scss";
 
 export class AddUserForm extends Component {
   render() {
@@ -20,9 +20,8 @@ export class AddUserForm extends Component {
           onSubmit={e => this.fetchAddUser(e)}
         >
           <div className="form-group">
-            <label className="label form-contro" htmlFor="firstName">
-              {" "}
-              First name:{" "}
+            <label className="form-contro text-lowercase" htmlFor="firstName">
+              first name
             </label>
             <input
               className="form-control"
@@ -32,9 +31,8 @@ export class AddUserForm extends Component {
             />
           </div>
           <div className="form-group">
-            <label className="label" htmlFor="lastName">
-              {" "}
-              Last name:{" "}
+            <label className="text-lowercase" htmlFor="lastName">
+              last name
             </label>
             <input
               className="form-control"
@@ -44,9 +42,7 @@ export class AddUserForm extends Component {
             />
           </div>
           <div className="form-group">
-            <label className="label mr-sm-2">
-              Type
-            </label>
+            <label className="text-lowercase mr-sm-2">type</label>
             <select
               className="form-control custom-select mb-2 mr-sm-2 mb-sm-0"
               ref="type"
@@ -57,30 +53,16 @@ export class AddUserForm extends Component {
             </select>
           </div>
           <div className="form-group">
-            <label className="label">
-              {" "}
-              username:{" "}
-            </label>
-            <input
-              className="form-control"
-              type="text"
-              ref="username"
-            />
+            <label className="text-lowercase">username</label>
+            <input className="form-control" type="text" ref="username" />
           </div>
           <div className="form-group">
-            <label className="label">
-              {" "}
-              Avatar:{" "}
-            </label>
-            <input
-              className="form-control"
-              type="file"
-              ref="avatar"
-            />
+            <label className="text-lowercase">image</label>
+            <input className="form-control" type="file" ref="avatar" />
           </div>
           <div>
             <input
-              className={" form-control btn btn-lg btn-primary btn-block"}
+              className={"btn btn-lg btn-primary btn-block"}
               type="submit"
               value="Add user"
             />

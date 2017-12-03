@@ -2,28 +2,13 @@
 @import "../../../scss/variables.scss";
 
 @keyframes moove {
-  0% {
-    max-width: 0;
-  }
-  100% {
-    max-width: 300px;
-  }
-}
-.login {
-  color: $col-primary;
-}
-
-h2.h2{
-  color: white;
+  0% {opacity: 0}
+ 100% {opacity: 1}
 }
 
 form {
   max-width: 300px;
-  animation: moove 0.5s;
+  animation: moove 0.3s;
 }
 
-.loginBtn {
-  background-color: #2a2c2e!important;
-  border-color: 1px solid $bg-secondary;
-  
-}
+

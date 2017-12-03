@@ -12,7 +12,7 @@ class CeoHomePage extends React.Component {
         {user ? user.username : null}
         <div>
           <div className="row">
-            <div className="col-sm-6 col-md-4">
+            <div className="col-sm-6 col-md-6 bg-success" >
               <div className="caption">
                 <h3>Today's NET $1.3,000,246</h3>
                 <p>workforce ceo</p>
@@ -23,7 +23,7 @@ class CeoHomePage extends React.Component {
                 </div>
               </div>
             </div>
-            <div className="col-sm-6 col-md-6 ">
+            <div className="col-sm-6 col-md-6 bg-info">
               <div className="caption">
                 <h3>This week NET $2.4,642,237</h3>
                 <p>workforce ceo</p>
@@ -36,10 +36,10 @@ class CeoHomePage extends React.Component {
             </div>
           </div>
           <div className="row">
-            <div className="col-sm-6 col-md-12">
+            <div className="col-sm-6 col-md-12 bg-warning" >
               <div className="caption">
                 <h3>This year NET $5.3,000,246</h3>
-                <p>workforce ceo</p>
+                <p className="text-success">workforce ceo</p>
                 <div>
                   <button className="btn btn-primary" role="button">
                     Button

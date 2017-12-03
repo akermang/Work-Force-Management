@@ -8,9 +8,9 @@ import styles from "./about.page.scss";
 class AboutPage extends React.Component {
   render() {
     return (
-      <div className={styles.about}>
-        <article className={styles.cont}>
-          <h2 className="h2">About</h2>
+      <div className={styles.about + " row bg-success"}>
+        <article className={styles.cont + " col-md-12"}>
+          <h2 className="h2 text">About</h2>
           <h3>
             Easy to use WFM apliction – Web-based for Desktop computers and
             Mobile

@@ -10,7 +10,7 @@ import { FETCH } from "../../../../common/actions";
 import { ApiService } from "../../../../common/services/api.service";
 import { ExampleComponent } from "../../../";
 import { FetchAction } from "../../../../common/actions";
-import logo from "../assets/react-logo.png";
+import logo from "../assets/logo3.png";
 import avatar from "../assets/avatar-1.jpg";
 import styles from "../home.page.scss";
 
@@ -21,9 +21,9 @@ class WorkerHomePage extends React.Component {
       <div>
         <h2>Worker - home page</h2>
         {user ? user.username : null}
-        <div className="col-md-1">
+        <div className="col-md-1 col-sm-1 col-xs-3 ">
           <img 
-            className="img-rounded img-responsive" 
+            className="img-rounded center-block img-responsive" 
             src={user.avatar}  
             alt="avatar"
           />
@@ -36,8 +36,10 @@ class WorkerHomePage extends React.Component {
           </button>
           <button onClick={() => this.fetchExample()}>fetch example</button>
         </div>
-        <div className={styles.logo}>
-          <img src={logo} />
+        <div className="row" >
+           <div className={styles.logo+ " center-block col-md-12"}>
+          <img className="img-responsive center-block col-lg-12 col-md-12 col-sm-12" src={logo} />
+        </div>
         </div>
         {this.getLoader()}
       </div>

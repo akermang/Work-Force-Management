@@ -38,17 +38,17 @@ const HeaderComponent = props => (
         </li>
         <li role="separator" className="divider" />
 
-        <div className={styles.link }>{signOutOption(props)}</div>
+        <div className="">{signOutOption(props)}</div>
       </ul>
     </div>
 
-    <div className={styles.link}>{signOutOption(props)}</div>
+    <div className="">{signOutOption(props)}</div>
   </header>
 );
 function signOutOption(props) {
   if (props.authReducer.isAuthenticated) {
     return (
-      <Link className="btn btn-outline-default hidden-xs"
+      <Link className="btn btn-outline-default"
         to="/login"
         onClick={() => {
           props.dispatch({ type: LOGOUT_ACTION });
