@@ -1,9 +1,14 @@
-@import '../../../scss/variables.scss';
+@import '../../../../assets/scss/variables.scss';
 
 .header{
+    box-shadow: 0px 2px 9px rgba(144, 144, 144, 0.7);
     display: flex;
     justify-content: space-between;
     background: $bg-secondary;
     padding: 0 20px;
     line-height: 60px;  
+
+    .signout {
+        font-weight: 600;
+    }
 }

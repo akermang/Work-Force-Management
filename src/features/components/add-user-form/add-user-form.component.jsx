@@ -28,6 +28,7 @@ export class AddUserForm extends Component {
               placeholder="First name"
               type="text"
               ref="firstName"
+              name="firstName"
             />
           </div>
           <div className="form-group">
@@ -39,6 +40,7 @@ export class AddUserForm extends Component {
               placeholder="Last name"
               type="text"
               ref="lastName"
+              name="lastName"
             />
           </div>
           <div className="form-group">
@@ -46,6 +48,7 @@ export class AddUserForm extends Component {
             <select
               className="form-control custom-select mb-2 mr-sm-2 mb-sm-0"
               ref="type"
+              name="type"
             >
               <option value="worker">worker</option>
               <option value="maneger">maneger</option>
@@ -54,11 +57,11 @@ export class AddUserForm extends Component {
           </div>
           <div className="form-group">
             <label className="text-lowercase">username</label>
-            <input className="form-control" type="text" ref="username" />
+            <input name="username" className="form-control" type="text" ref="username" />
           </div>
           <div className="form-group">
             <label className="text-lowercase">image</label>
-            <input className="form-control" type="file" ref="avatar" />
+            <input name="avatar" className="form-control" type="file" ref="avatar" />
           </div>
           <div>
             <input
@@ -83,14 +86,14 @@ export class AddUserForm extends Component {
     const lastName = this.refs.lastName.value;
     const username = this.refs.username.value;
     const type = this.refs.type.value;
-    const avatar = this.refs.avatar.files;
-    var formData = new FormData(document.forms[0]);
-
+    const avatar = this.refs.avatar.files;  
     const data = { firstName, lastName, type, username };
-    params.body = JSON.stringify(data);
+    
+    params.body = JSON.stringify(data); // var formData = new FormData(document.forms[0]);
+
     const payload = {
       url,
-      params: params,
+      params,
       startActionType: ADD_USER_START,
       successActionType: ADD_USER_SUCCSES,
       failActionType: ADD_USER_FAIL

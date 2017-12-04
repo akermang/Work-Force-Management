@@ -21,7 +21,7 @@
     },
     "addUser": {
         "url": "api/user/add",
-        "contentType": "application/json",
+        "contentType": "application/json", 
         "params": {
             "method": "POST"
         }

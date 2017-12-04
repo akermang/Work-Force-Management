@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import styles from "./nav.component.scss";
 import { connect } from "react-redux";
 
@@ -11,7 +11,12 @@ const NavComponent = props => ({
       <ul className={styles.nav}>
       {
         links.map((link, i) => {
-          return <li  key={i}><Link  to={link.path}>{link.text}</Link></li>
+          if(link.path == "/") {
+            return <li  key={i}><NavLink exact activeClassName={styles.active} to={link.path}>{link.text}</NavLink></li>
+          }else {
+            return <li  key={i}><NavLink activeClassName={styles.active} to={link.path}>{link.text}</NavLink></li>
+          }
+          
         })
       }
     </ul>

@@ -11,7 +11,7 @@ import {
 const HeaderComponent = props => (
   <header className={styles.header}>
     <div className={styles.title}>
-      <h2>Workforce Management</h2>
+      <h3>WFM</h3>
     </div>
     <div className="input-group-btn">
       <button
@@ -48,7 +48,7 @@ function signOutOption(props) {
   if (props.authReducer.isAuthenticated) {
     return (
       <Link
-        className=""
+        className={styles.signout}
         to="/login"
         onClick={() => {
           props.dispatch({ type: LOGOUT_ACTION });

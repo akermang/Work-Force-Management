@@ -45,6 +45,7 @@ router.post('/auth', (req, res) => {
 });
 
 router.post('/user/add/', (req, res) => {
+  console.log(req.body)
   const user = req.body;
   const newUser = setdefaultCredentials(user);
   if(!newUser) {
