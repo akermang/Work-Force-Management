@@ -28,8 +28,7 @@
     "redux": "^3.7.2",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
-    "url-loader": "^0.6.2",
-    "webpack": "^3.8.1"    
+    "url-loader": "^0.6.2"
   },
   "scripts": {
     "start": "webpack-dev-server --progress --colors",
@@ -64,6 +63,7 @@
     "sass-loader": "^6.0.6",
     "style-loader": "^0.19.0",
     "url-loader": "^0.6.2",
+    "webpack": "^3.8.1",
     "webpack-combine-loaders": "^2.0.3",
     "webpack-dev-server": "^2.9.4"
   }
