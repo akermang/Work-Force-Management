@@ -2,6 +2,9 @@
   "name": "react-starter",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "6.11.4"
+  },
   "dependencies": {
     "babel-loader": "^7.1.2",
     "babel-polyfill": "^6.26.0",
@@ -31,7 +34,8 @@
     "start": "webpack-dev-server --progress --colors",
     "build": "cross-env npm run clean && webpack --config webpack.production.config.js --progress --profile --colors",
     "lint": "eslint **/*.js --fix && eslint **/*.jsx --fix",
-    "clean": "rimraf dist"
+    "clean": "rimraf dist",
+    "postinstall": "npm run build"
   },
   "devDependencies": {
     "autoprefixer-loader": "^3.2.0",
