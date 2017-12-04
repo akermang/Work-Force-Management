@@ -13,32 +13,31 @@ const HeaderComponent = props => (
     <div className={styles.title}>
       <h2>Workforce Management</h2>
     </div>
-    <div className="input-group-btn ">
+    <div className="input-group-btn">
       <button
         type="button"
-        className="btn btn-default dropdown-toggle  btn-outline-default"
+        className="btn dropdown-toggle btn-link"
         data-toggle="dropdown"
         aria-haspopup="true"
         aria-expanded="false"
       >
         Options <span className="caret" />
       </button>
-      <ul className="dropdown-menu dropdown-menu-right">
+      <ul className="dropdown-menu">
         <li>
           <Link to="/">Home</Link>
         </li>
         <li>
-        <Link to="/about">About</Link>
+          <Link to="/about">About</Link>
         </li>
         <li>
-        <Link to="/tasks">Tasks</Link>
+          <Link to="/tasks">Tasks</Link>
         </li>
         <li>
-        <Link to="/user/add">Add user</Link>
+          <Link to="/user/add">Add user</Link>
         </li>
         <li role="separator" className="divider" />
-
-        <div className="">{signOutOption(props)}</div>
+        <li>{signOutOption(props)}</li>
       </ul>
     </div>
 
@@ -48,25 +47,24 @@ const HeaderComponent = props => (
 function signOutOption(props) {
   if (props.authReducer.isAuthenticated) {
     return (
-      <Link className="btn btn-outline-default"
+      <Link
+        className=""
         to="/login"
         onClick={() => {
           props.dispatch({ type: LOGOUT_ACTION });
         }}
       >
-        {" "}
-        Sign Out{" "}
+        Sign Out
       </Link>
     );
   } else if (props.location.pathname !== "/login") {
     return (
-      <Link className="btn btn-outline-default" to="/login">
-        {" "}
-        Login{" "}
+      <Link className="" to="/login">
+        Login
       </Link>
     );
   } else {
-    return <span className="btn btn-outline-default"> Please Login</span>;
+    return <span className="btn">Please Login</span>;
   }
 }
 
