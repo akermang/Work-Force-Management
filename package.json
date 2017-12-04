@@ -31,7 +31,8 @@
     "start": "webpack-dev-server --progress --colors",
     "build": "cross-env npm run clean && webpack --config webpack.production.config.js --progress --profile --colors",
     "lint": "eslint **/*.js --fix && eslint **/*.jsx --fix",
-    "clean": "rimraf dist"
+    "clean": "rimraf dist",
+    "postinstall": "npm run build"
   },
   "devDependencies": {
     "autoprefixer-loader": "^3.2.0",
