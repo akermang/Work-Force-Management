@@ -10,7 +10,7 @@ var upload = multer({ dest: 'uploads/' })
  * Mock data
  */
 const mockData = require('../mock/data.json');
-const mockTokens = require('../mock/tokens.json');
+let mockTokens = require('../mock/tokens.json');
 let mockUsers = require('../mock/users.json');
 
 /**
@@ -25,6 +25,7 @@ router.post('/login', (req, res) => {
   const password = req.body.password;  
   const user = getUser(username, password);
   if(user) {
+    setUserSession(user.token);
     send(res, { statusCode: 200, loggedInUser: user});
   }else {
     send(res, { statusCode: 400, data: null });
@@ -94,12 +95,24 @@ function addUser(user) {
   });
 }
 
+function setUserSession(token) {  
+  const filePath = './server/mock/tokens.json';  
+  // read data from file
+  fileUtils.readFile(filePath, function(tokens) {
+    const parsedTokens = JSON.parse(tokens);
+    parsedTokens[token] = token;
+    // write data to file
+    mockTokens = parsedTokens;
+    fileUtils.writeFile(filePath, parsedTokens, function(data) { })
+  });
+}
+
 /**
  * Helper method 
  */
 function getUserByToken(token) {
   return mockUsers.filter(function(user) {
-    return user.token === token;
+    return user.token == token;
   })[0];
 }
 

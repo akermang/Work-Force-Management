@@ -5,7 +5,6 @@ module.exports = class FileUtils {
   readFile(path, callback) {
     fs.readFile(path, function(err, data) {
       // if (err) throw err;
-      console.log(err)
       callback(data);
     });
   }

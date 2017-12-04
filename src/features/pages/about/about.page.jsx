@@ -25,8 +25,8 @@ class AboutPage extends React.Component {
           <p>Task management, managing a task through its life cycle.
              It involves planning, testing, tracking and reporting. </p>
              <br/>
-          <h4>Software Developer </h4>
-          <h3 className="footer">Gal Akerman 2017</h3>
+          <h5>Software Developer </h5>
+          <h4 className="footer">Gal Akerman 2017</h4>
         </article>
       </div>
     );
