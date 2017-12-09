@@ -7,7 +7,8 @@ const constants = {
   home: '/',
   about: '/about',
   addUser: '/user/add',
-  tasks: '/tasks'
+  tasks: '/tasks',
+  login: '/login'
 }
 
 const allLinks = {
@@ -27,13 +28,17 @@ const allLinks = {
     {path: constants.about, text: 'about'},    
     {path: constants.tasks, text: 'tasks'},
     {path: constants.addUser, text: 'add user'}
+  ],
+  public: [
+    {path: constants.about, text: 'about'},
+    {path: constants.login, text: 'login'}
   ]
 }
 
 const DefaultLayout = ({ component: Component, ...rest }) => ({
   render() {
     const user = this.props.loggedInUser || {};
-    const links = user.type ? allLinks[user.type] : null;    
+    const links = user.type ? allLinks[user.type] : allLinks.public ;    
     return (
       <Route
         {...rest}

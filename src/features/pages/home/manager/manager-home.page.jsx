@@ -37,24 +37,24 @@ class ManagerHomePage extends React.Component {
         <div className="container-fluid">
           <div className="row">
             <div className="col-lg-4 bg-success">
-              <button type="button" class="close" aria-label="Close">
+              <button type="button" className="close" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
               <h2>Maneger {user ? user.username : null}</h2>
-              <h5>Home</h5>
+              <h4>{` HOME ${user.firstName}  ${user.lastName}`}</h4>
               <span>one of three columns-span</span>
               <p>Workforce Management</p>
             </div>
 
             <div className="col-lg-4 bg-danger">
-              <button type="button" class="close" aria-label="Close">
+              <button type="button" className="close" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
               <h2>two of three columns-h3</h2>
             </div>
             
             <div className="col-lg-4 bg-success">
-              <button type="button" class="close" aria-label="Close">
+              <button type="button" className="close" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
               <h2>three of three columns-h4</h2>

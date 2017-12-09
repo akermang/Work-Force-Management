@@ -10,7 +10,7 @@ export default class TasksComponent extends Component {
     return (
       <div className={ styles.tasks}>
         <div className="row">
-          <div className="col-md-12 row bg-info">
+          <div className="col-lg-12 row bg-info">
             <div className="card">
                 <div className="card-block-rounded">
                   <h4 className="card-title">{task.description}</h4>

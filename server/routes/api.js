@@ -1,67 +1,86 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const FileUtils = require('./file-utils');
+const FileUtils = require("./file-utils");
 const fileUtils = new FileUtils();
-var multer  = require('multer')
-var upload = multer({ dest: 'uploads/' })
-
+var multer = require("multer");
+var upload = multer();
+var fs = require('fs')
 
 /**
  * Mock data
  */
-const mockData = require('../mock/data.json');
-let mockTokens = require('../mock/tokens.json');
-let mockUsers = require('../mock/users.json');
+const mockData = require("../mock/data.json");
+let mockTokens = require("../mock/tokens.json");
+let mockUsers = require("../mock/users.json");
 
 /**
  * Api routes
  */
-router.get('/', (req, res) => {
+router.get("/", (req, res) => {
   send(res, { statusCode: 200, data: mockData });
 });
 
-router.post('/login', (req, res) => {
+router.post("/login", (req, res) => {
   const username = req.body.username;
-  const password = req.body.password;  
+  const password = req.body.password;
   const user = getUser(username, password);
-  if(user) {
+  console.log(req.body)
+  
+  if (user) {
     setUserSession(user.token);
-    send(res, { statusCode: 200, loggedInUser: user});
-  }else {
+    send(res, { statusCode: 200, loggedInUser: user });
+  } else {
     send(res, { statusCode: 400, data: null });
   }
 });
 
-router.post('/auth', (req, res) => {
-  let statusCode; 
+router.post("/auth", (req, res) => {
+  let statusCode;
   let user;
   const token = req.body.token;
-  if(mockTokens[token]) {
+  if (mockTokens[token]) {
     user = getUserByToken(token);
     send(res, { statusCode: 200, loggedInUser: user });
-  }else{
-    send(res, { statusCode: 401, error: 'authentication failed' });
+  } else {
+    send(res, { statusCode: 401, error: "authentication failed" });
   }
 });
 
-router.post('/user/add/', (req, res) => {
-  console.log(req.body)
+router.post("/user/add/", (req, res) => {
+
+  const files = req.files || {};
+  const avatar = files.avatar;
   const user = req.body;
   const newUser = setdefaultCredentials(user);
+  console.log(req)
+
   if(!newUser) {
-    res.send({ statusCode: 400, error: 'username already exists' });
-    return;
+    return res.send({ statusCode: 400, error: 'username already exists' });
   }
-  addUser(newUser);  
+  
+  if(avatar) {
+    const filePath = "./server/mock/img/" + req.files.avatar.name;
+    uploadFile(req.files.avatar, filePath, res);
+    newUser.avatar = filePath;
+  }  
+  addUser(newUser);
+  
   res.send({ statusCode: 200, user: user })
 });
 
+function uploadFile(file, path, res) {
+  file.mv(path, function(err) {
+    if (err)
+      return res.send(err); 
+  });
+}
+
 // MOCK! find real solution
 function setdefaultCredentials(user) {
-  if(userExists(user)) return;
-  user.password = '1234';
-  user.token = getNewToken();
-  user.id = getNewToken();
+  if (userExists(user)) return;
+  user.password = "1234";
+  user.token = user.id = getNewToken();
+  // user.id = getNewToken();
   return user;
 }
 
@@ -72,44 +91,48 @@ function userExists(user) {
 }
 
 function getNewToken() {
-  const lastUser = mockUsers[mockUsers.length-1];
-  return lastUser.token++;
+  let lastUser = mockUsers[mockUsers.length - 1];
+  console.log(mockUsers.length)
+  if(!lastUser) return 1;  
+  let newToken = ++lastUser.token ;
+  console.log("newtok: ", newToken)
+  return newToken ;
 }
 
 function getUser(username, password) {
-  for(let user of mockUsers) {
-    if(user.username === username && user.password === password) {
+  for (let user of mockUsers) {
+    if (user.username === username && user.password === password) {
       return user;
     }
   }
 }
 
-function addUser(user) {  
-  const filePath = './server/mock/users.json';  
+function addUser(user) {
+  const filePath = "./server/mock/users.json";
   // read data from file
   fileUtils.readFile(filePath, function(users) {
     const parsedUsers = JSON.parse(users);
     parsedUsers.push(user);
     // write data to file
     mockUsers = parsedUsers;
-    fileUtils.writeFile(filePath, parsedUsers, function(data) { })
+    fileUtils.writeFile(filePath, parsedUsers, function(data) {});
   });
 }
 
-function setUserSession(token) {  
-  const filePath = './server/mock/tokens.json';  
+function setUserSession(token) {
+  const filePath = "./server/mock/tokens.json";
   // read data from file
   fileUtils.readFile(filePath, function(tokens) {
     const parsedTokens = JSON.parse(tokens);
     parsedTokens[token] = token;
     // write data to file
     mockTokens = parsedTokens;
-    fileUtils.writeFile(filePath, parsedTokens, function(data) { })
+    fileUtils.writeFile(filePath, parsedTokens, function(data) {});
   });
 }
 
 /**
- * Helper method 
+ * Helper method
  */
 function getUserByToken(token) {
   return mockUsers.filter(function(user) {
@@ -120,7 +143,8 @@ function getUserByToken(token) {
 function send(res, data) {
   setTimeout(() => {
     res.send(data);
-  },1000);
+  }, 1000);
 }
+
 
 module.exports = router;

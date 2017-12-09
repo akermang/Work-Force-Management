@@ -1,9 +1,18 @@
 const fetch = require('isomorphic-fetch');
 
 function request(url, options, callback) {  
-  fetch(API_HOST + url, options).then(data => data.json()).then((response) => {
-    callback(response);
+  var data = options.body;
+  var oReq = new XMLHttpRequest();
+  oReq.open(options.method, API_HOST + url);
+  if(options.contentType) {
+    oReq.setRequestHeader('Content-Type', 'application/json');
+  }  
+  oReq.send(data);
+
+  oReq.addEventListener("loadend", function(d) {
+    callback(JSON.parse(d.currentTarget.response));   
   });
+
 }
 
 export default request;

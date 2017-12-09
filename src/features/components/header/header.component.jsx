@@ -12,16 +12,18 @@ const HeaderComponent = props => (
   <header className={styles.header}>
     <div className={styles.title}>
       <h3>WFM</h3>
+               
     </div>
     <div className="input-group-btn">
       <button
         type="button"
-        className="btn dropdown-toggle btn-link"
+        className="btn dropdown-toggle btn-link btn-lg"
         data-toggle="dropdown"
         aria-haspopup="true"
         aria-expanded="false"
       >
-        Options <span className="caret" />
+      <div><img className="img-rounded  img-responsive"  src={getSrc(props)} alt="options"/></div>
+       <span className="caret" />
       </button>
       <ul className="dropdown-menu">
         <li>
@@ -65,6 +67,14 @@ function signOutOption(props) {
     );
   } else {
     return <span className="btn">Please Login</span>;
+  }
+}
+
+function getSrc(props){
+  if(props.authReducer.loggedInUser) {
+    return props.authReducer.loggedInUser.avatar;
+  }else {
+    return "./server/mock/img/favicon.png"
   }
 }
 

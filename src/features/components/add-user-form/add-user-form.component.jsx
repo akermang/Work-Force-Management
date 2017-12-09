@@ -17,7 +17,7 @@ export class AddUserForm extends Component {
         <h2 className={styles.title}>Add user</h2>
         <form
           encType="multipart/form-data"
-          onSubmit={e => this.fetchAddUser(e)}
+          onSubmit={e => this.fetchAddUser(e) }
         >
           <div className="form-group">
             <label className="form-contro text-lowercase" htmlFor="firstName">
@@ -82,14 +82,9 @@ export class AddUserForm extends Component {
     e.preventDefault();
     const o = new ApiService().getOptions("addUser");
     const { url, params } = o;
-    const firstName = this.refs.firstName.value;
-    const lastName = this.refs.lastName.value;
-    const username = this.refs.username.value;
-    const type = this.refs.type.value;
-    const avatar = this.refs.avatar.files;  
-    const data = { firstName, lastName, type, username };
     
-    params.body = JSON.stringify(data); // var formData = new FormData(document.forms[0]);
+    var fd = new FormData(document.forms[0]);    
+    params.body = fd //JSON.stringify(data); 
 
     const payload = {
       url,
@@ -100,6 +95,7 @@ export class AddUserForm extends Component {
     };
     this.props.dispatch({ type: FETCH, payload: payload });
   }
+
 }
 
 function mapStateToProps(state) {
