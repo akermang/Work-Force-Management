@@ -74,7 +74,7 @@ function getSrc(props){
   if(props.authReducer.loggedInUser) {
     return props.authReducer.loggedInUser.avatar;
   }else {
-    return "./server/mock/img/favicon.png"
+    return "favicon.png"
   }
 }
 
