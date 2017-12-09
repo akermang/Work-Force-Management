@@ -1,1 +1,22 @@
-[{"username":"gal","password":"1234","firstName":"gal","lastName":"akerman","type":"ceo","id":1,"token":1,"avatar":"./avatars/logo_128.png"},{"firstName":"rrr","lastName":"rrr","type":"worker","username":"rrr","password":"1234","id":2,"token":2,"avatar":"assets/avatars/DSC01166.JPG"}]
+[
+  {
+    "username": "gal",
+    "password": "1234",
+    "firstName": "gal",
+    "lastName": "akerman",
+    "type": "ceo",
+    "id": 1,
+    "token": 1,
+    "avatar": "assets/avatars/DSC01166.JPG"
+  },
+  {
+    "firstName": "rrr",
+    "lastName": "rrr",
+    "type": "worker",
+    "username": "rrr",
+    "password": "1234",
+    "id": 2,
+    "token": 2,
+    "avatar": "assets/avatars/DSC01166.JPG"
+  }
+]
