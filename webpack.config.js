@@ -21,7 +21,7 @@ const config = {
 
   devServer: {
     hot: true,
-    publicPath: '/',
+    publicPath: '',
   },
   
   module: {
