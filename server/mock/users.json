@@ -7,7 +7,7 @@
     "type": "ceo",
     "id": 1,
     "token": 1,
-    "avatar": "assets/avatars/DSC01166.JPG"
+    "avatar": "images/DSC01166.JPG"
   },
   {
     "firstName": "rrr",
@@ -17,6 +17,6 @@
     "password": "1234",
     "id": 2,
     "token": 2,
-    "avatar": "assets/avatars/DSC01166.JPG"
+    "avatar": "images/DSC01166.JPG"
   }
 ]
