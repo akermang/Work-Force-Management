@@ -17,6 +17,16 @@
     "password": "1234",
     "id": 2,
     "token": 2,
-    "avatar": "assets/images/DSC01166.JPG"
+    "avatar": "/images/DSC01166.JPG"
+  },
+  {
+    "firstName": "yyy",
+    "lastName": "yyy",
+    "type": "worker",
+    "username": "yyy",
+    "password": "1234",
+    "id": 3,
+    "token": 3,
+    "avatar": "DSC01168.JPG"
   }
 ]
