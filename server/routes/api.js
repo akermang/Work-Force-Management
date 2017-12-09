@@ -24,7 +24,6 @@ router.post("/login", (req, res) => {
   const username = req.body.username;
   const password = req.body.password;
   const user = getUser(username, password);
-  console.log(req.body)
   
   if (user) {
     setUserSession(user.token);
@@ -59,7 +58,7 @@ router.post("/user/add/", (req, res) => {
   }
   
   if(avatar) {
-    const filePath = "./server/mock/img/" + req.files.avatar.name;
+    const filePath = "assets/avatars/" + req.files.avatar.name;
     uploadFile(req.files.avatar, filePath, res);
     newUser.avatar = filePath;
   }  
@@ -80,7 +79,6 @@ function setdefaultCredentials(user) {
   if (userExists(user)) return;
   user.password = "1234";
   user.token = user.id = getNewToken();
-  // user.id = getNewToken();
   return user;
 }
 
@@ -92,10 +90,8 @@ function userExists(user) {
 
 function getNewToken() {
   let lastUser = mockUsers[mockUsers.length - 1];
-  console.log(mockUsers.length)
   if(!lastUser) return 1;  
   let newToken = ++lastUser.token ;
-  console.log("newtok: ", newToken)
   return newToken ;
 }
 
