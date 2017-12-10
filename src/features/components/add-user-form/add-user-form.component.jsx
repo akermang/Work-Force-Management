@@ -51,7 +51,7 @@ export class AddUserForm extends Component {
               name="type"
             >
               <option value="worker">worker</option>
-              <option value="maneger">maneger</option>
+              <option value="manager">manager</option>
               <option value="ceo">ceo</option>
             </select>
           </div>
