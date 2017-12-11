@@ -20,10 +20,10 @@
     "avatar": "/images/DSC01166.JPG"
   },
   {
-    "firstName": "yyy",
-    "lastName": "yyy",
+    "firstName": "test",
+    "lastName": "test",
     "type": "worker",
-    "username": "yyy",
+    "username": "test",
     "password": "1234",
     "id": 3,
     "token": 3,
@@ -87,7 +87,7 @@
     "password": "1234",
     "id": 9,
     "token": 9,
-    "avatar":"./images/costa 011.jpg"
+    "avatar": "./images/costa 011.jpg"
   },
   {
     "firstName": "xan",
@@ -98,5 +98,15 @@
     "id": 10,
     "token": 10,
     "avatar": "./images/costa 002.jpg"
+  },
+  {
+    "firstName": "bug",
+    "lastName": "bug",
+    "type": "worker",
+    "username": "bug",
+    "password": "1234",
+    "id": 11,
+    "token": 11,
+    "avatar": "./images/DSC02453.JPG"
   }
 ]
