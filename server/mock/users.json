@@ -37,7 +37,7 @@
     "password": "1234",
     "id": 4,
     "token": 4,
-    "avatar": "./images/DSC01168.JPG"
+    "avatar": "/images/DSC01168.JPG"
   },
   {
     "firstName": "lola",
@@ -47,7 +47,7 @@
     "password": "1234",
     "id": 5,
     "token": 5,
-    "avatar": "./images/DSC02454.JPG"
+    "avatar": "/images/DSC02454.JPG"
   },
   {
     "firstName": "mani",
@@ -57,7 +57,7 @@
     "password": "1234",
     "id": 6,
     "token": 6,
-    "avatar": "./images/DSC01292.JPG"
+    "avatar": "/images/DSC01292.JPG"
   },
   {
     "firstName": "qqq",
@@ -67,7 +67,7 @@
     "password": "1234",
     "id": 7,
     "token": 7,
-    "avatar": "./images/DSC01174.JPG"
+    "avatar": "/images/DSC01174.JPG"
   },
   {
     "firstName": "ben",
@@ -77,7 +77,7 @@
     "password": "1234",
     "id": 8,
     "token": 8,
-    "avatar": "./images/costa 011.jpg"
+    "avatar": "/images/costa 011.jpg"
   },
   {
     "firstName": "can",
@@ -87,7 +87,7 @@
     "password": "1234",
     "id": 9,
     "token": 9,
-    "avatar": "./images/costa 011.jpg"
+    "avatar": "/images/costa 011.jpg"
   },
   {
     "firstName": "xan",
@@ -97,7 +97,7 @@
     "password": "1234",
     "id": 10,
     "token": 10,
-    "avatar": "./images/costa 002.jpg"
+    "avatar": "/images/costa 002.jpg"
   },
   {
     "firstName": "bug",
@@ -107,6 +107,16 @@
     "password": "1234",
     "id": 11,
     "token": 11,
-    "avatar": "./images/DSC02453.JPG"
+    "avatar": "/images/DSC02453.JPG"
+  },
+  {
+    "firstName": "test3",
+    "lastName": "",
+    "type": "worker",
+    "username": "test3",
+    "password": "1234",
+    "id": 12,
+    "token": 12,
+    "avatar": "/images/DSC02418.JPG"
   }
 ]
