@@ -5,6 +5,7 @@ import styles from "./login.page.scss";
 import { FETCH } from "../../../common/actions";
 import { FetchAction } from "../../../common/actions";
 import { ApiService } from "../../../common/services/api.service";
+import logo from "../home/assets/logo3.png"
 import {
   START_FETCH_LOGIN,
   FETCH_LOGIN_SUCCESS,

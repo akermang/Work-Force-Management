@@ -9,12 +9,13 @@ import {
 } from "../../../common/state/auth/auth.actions";
 
 const HeaderComponent = props => (
-  <header className={styles.header}>
-    <div className={styles.title}>
+  <header className={styles.header + " row"}>
+    <div className={styles.title + " col-xs-1"}>
       <h3>WFM</h3>
+      <div className="hidden-md hidden-sm hidden-xs">{signOutOption(props)}</div>
                
     </div>
-    <div className="input-group-btn">
+    <div className="input-group-btn col-xs-1 col-md-offset-10 col-xs-offset-8">
       <button
         type="button"
         className="btn dropdown-toggle btn-link btn-lg"
@@ -25,7 +26,7 @@ const HeaderComponent = props => (
       <div><img className="img-rounded  img-responsive"  src={getSrc(props)} alt="options"/></div>
        <span className="caret" />
       </button>
-      <ul className="dropdown-menu">
+      <ul className="dropdown-menu  dropdown-menu-right">
         <li>
           <Link to="/">Home</Link>
         </li>
@@ -42,8 +43,6 @@ const HeaderComponent = props => (
         <li>{signOutOption(props)}</li>
       </ul>
     </div>
-
-    <div className="">{signOutOption(props)}</div>
   </header>
 );
 function signOutOption(props) {
