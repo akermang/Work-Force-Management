@@ -11,11 +11,10 @@ import {
 const HeaderComponent = props => (
   <header className={styles.header + " row"}>
     <div className={styles.title + " col-xs-1"}>
-      <h3>WFM</h3>
-      <div className="hidden-md hidden-sm hidden-xs">{signOutOption(props)}</div>
-               
+      <h3>WFM</h3>       
     </div>
-    <div className="input-group-btn col-xs-1 col-md-offset-10 col-xs-offset-8">
+    <div className="col-lg-1 col-lg-offset-3 hidden-md hidden-sm hidden-xs">{signOutOption(props)}</div>
+    <div className="input-group-btn col-xs-1 col-lg-offset-6 col-md-offset-10 col-xs-offset-8">
       <button
         type="button"
         className="btn dropdown-toggle btn-link btn-lg"
