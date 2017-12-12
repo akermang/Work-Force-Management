@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import logo from "../assets/react-logo.png";
+
 
 class CeoHomePage extends React.Component {
   render() {
