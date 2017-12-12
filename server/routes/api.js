@@ -71,7 +71,7 @@ router.post("/user/add/", (req, res) => {
 function uploadFile(file, path, res) {
   file.mv(path, function(err) {
     if (err)
-      return new Error('failed to upload file');
+      return null;
   });
 }
 
