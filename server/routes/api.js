@@ -59,18 +59,18 @@ router.post("/user/add/", (req, res) => {
   
   if(avatar) {
     const filePath = "/images/" + req.files.avatar.name; 
-    uploadFile(req.files.avatar, filePath, res);
+    const uploaded = uploadFile(req.files.avatar, filePath, res);
     newUser.avatar = filePath;
   }  
   addUser(newUser);
   
-  res.send({ statusCode: 200, user: user })
+  return res.send({ statusCode: 200, user: user })
 });
 
 function uploadFile(file, path, res) {
   file.mv(path, function(err) {
     if (err)
-      return res.send(err); 
+      return new Error('failed to upload file');
   });
 }
 
@@ -104,7 +104,7 @@ function getUser(username, password) {
 }
 
 function addUser(user) {
-  const filePath = "/server/mock/users.json";
+  const filePath = "./server/mock/users.json";
   // read data from file
   fileUtils.readFile(filePath, function(users) {
     const parsedUsers = JSON.parse(users);
