@@ -60,6 +60,7 @@ router.post("/user/add/", (req, res) => {
   if(avatar) {
     const filePath = "/assets/images/" + req.files.avatar.name; 
     const uploaded = uploadFile(req.files.avatar, filePath, res);
+    if(!uploaded) return res.send({ statusCode: 400, error: 'file failed to upload' })
     newUser.avatar = filePath;
   }  
   addUser(newUser);
