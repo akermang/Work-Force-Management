@@ -73,6 +73,7 @@ function uploadFile(file, path, res) {
     if (err)
       return null;
   });
+  return 'success';
 }
 
 // MOCK! find real solution
