@@ -161,30 +161,42 @@ body {
 .container-fluid .row {
   margin: auto;
 }
-.container-fluid [class^="col-"] {
-  margin: auto;
-  min-height: 200px;
-}
 @media (max-width: 700px) {
   .container .wrapper {
     width: calc(100% - 40px);
     padding: 0 20px;
   }
 }
-
+@keyframes about-page__moove___30lbi {
+  0% {
+    transform: translateY(-300px);
+  }
+  90%,
+  to {
+    transform: translateY(0);
+  }
+}
+.about-page__about___1IIn0 {
+  overflow: hidden;
+}
+@keyframes login-page__moove___3Sp-q {
+  0% {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 form {
   max-width: 300px;
+  animation: login-page__moove___3Sp-q 0.3s;
 }
 .header-component__header___3dxiv {
   box-shadow: 0 2px 9px hsla(0, 0%, 56%, 0.7);
-  display: flex;
-  justify-content: space-between;
   background: #61dafb;
-  padding: 0 20px;
-  line-height: 60px;
 }
 .header-component__header___3dxiv img {
-  /* max-width: 40px; */
+  max-width: 30px;
 }
 .header-component__header___3dxiv .header-component__signout___2_mb4 {
   font-weight: 600;
@@ -196,5 +208,15 @@ ul.nav-component__nav___2CqLk li {
 ul.nav-component__nav___2CqLk li a.nav-component__active___3aWDr {
   font-weight: 800;
 }
-
+@keyframes add-user-form-component__move___35x49 {
+  0% {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+form {
+  animation: add-user-form-component__move___35x49 0.4s;
+}
 /*# sourceMappingURL=style.css.map*/

@@ -1,9 +1,12 @@
-
 @keyframes move {
-    0% {opacity: 0}
-   100% {opacity: 1}
+  0% {
+    opacity: 0;
   }
-  
-form{
-    animation: move .4s;
-    }
+  100% {
+    opacity: 1;
+  }
+}
+
+form {
+  animation: move 0.4s;
+}

@@ -1,17 +1,3 @@
-@import '../../../../assets/scss/placeholders.scss';
-@import '../../../../assets/scss/variables.scss';
 
-@keyframes moove {
-  0% {transform: translateY(-300px)}
-  90%, 100% {transform: translateY(0px)}
-}
 
-.about {
-  overflow: hidden;
-   
-}
-// article.cont {
-//   animation: moove .3s;
-// }
-  
- 
+
