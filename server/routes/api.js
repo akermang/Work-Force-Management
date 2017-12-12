@@ -137,9 +137,7 @@ function getUserByToken(token) {
 }
 
 function send(res, data) {
-  setTimeout(() => {
-    res.send(data);
-  }, 1000);
+  res.send(data);
 }
 
 
