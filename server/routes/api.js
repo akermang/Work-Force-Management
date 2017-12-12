@@ -58,7 +58,7 @@ router.post("/user/add/", (req, res) => {
   }
   
   if(avatar) {
-    const filePath = "/images/" + req.files.avatar.name; 
+    const filePath = "images/" + req.files.avatar.name; 
     uploadFile(req.files.avatar, filePath, res);
     newUser.avatar = filePath;
   }  

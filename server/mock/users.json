@@ -27,7 +27,7 @@
     "password": "1234",
     "id": 3,
     "token": 3,
-    "avatar": "DSC01166.JPG"
+    "avatar": "images/DSC01174.JPG"
   },
   {
     "firstName": "plpl",
@@ -37,7 +37,7 @@
     "password": "1234",
     "id": 4,
     "token": 4,
-    "avatar": "/images/DSC01166.JPG"
+    "avatar": "/images/DSC01292.JPG"
   },
   {
     "firstName": "lola",
@@ -57,7 +57,7 @@
     "password": "1234",
     "id": 6,
     "token": 6,
-    "avatar": "/images/DSC01292.JPG"
+    "avatar": "/images/DSC02453.JPG"
   },
   {
     "firstName": "qqq",
@@ -67,7 +67,7 @@
     "password": "1234",
     "id": 7,
     "token": 7,
-    "avatar": "/images/DSC01174.JPG"
+    "avatar": "/images/DSC01168.JPG"
   },
   {
     "firstName": "ben",
