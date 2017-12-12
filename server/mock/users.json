@@ -118,5 +118,25 @@
     "id": 12,
     "token": 12,
     "avatar": "/images/DSC02418.JPG"
+  },
+  {
+    "firstName": "bbbi",
+    "lastName": "",
+    "type": "worker",
+    "username": "bbbi",
+    "password": "1234",
+    "id": 13,
+    "token": 13,
+    "avatar": "images/uvs080713-004.BMP"
+  },
+  {
+    "firstName": "ttt",
+    "lastName": "",
+    "type": "worker",
+    "username": "ttt",
+    "password": "1234",
+    "id": 14,
+    "token": 14,
+    "avatar": "assets/images/uvs080713-008.BMP"
   }
 ]
