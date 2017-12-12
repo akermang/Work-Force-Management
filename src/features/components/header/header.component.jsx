@@ -27,6 +27,13 @@ const HeaderComponent = props => (
       </button>
       <ul className="dropdown-menu  dropdown-menu-right">
         <li>
+          <div className="btn-lg">
+            <img className={styles.img96px + " img-rounded  img-responsive"} src={getSrc(props)} alt="options"/>
+            <div className={styles.user}>{getName(props)}</div>
+          </div>
+        </li>
+        <li role="separator" className="divider" />
+        <li>
           <Link to="/">Home</Link>
         </li>
         <li>
@@ -74,6 +81,15 @@ function getSrc(props){
   }else {
     return "favicon.png"
   }
+}
+
+function getName(props) {
+  if(props.authReducer.loggedInUser) {
+    return `${props.authReducer.loggedInUser.firstName} ${props.authReducer.loggedInUser.lastName}`;
+  }else {
+    return "W.F.M"
+  }
+  
 }
 
 function mapStateToProps(state) {

@@ -1,1 +1,92 @@
-[{"username":"gal","password":"1234","firstName":"gal","lastName":"akerman","type":"ceo","id":1,"token":1,"avatar":"images/DSC01166.JPG"},{"firstName":"lola","lastName":"lola","type":"worker","username":"lola","password":"1234","id":5,"token":5,"avatar":"/images/DSC02454.JPG"},{"firstName":"mani","lastName":"mani","type":"manager","username":"mani","password":"1234","id":6,"token":6,"avatar":"/images/DSC02453.JPG"},{"firstName":"xan","lastName":"xan","type":"manager","username":"xan","password":"1234","id":10,"token":10,"avatar":"/images/costa 002.jpg"},{"firstName":"kkk","lastName":"kkk","type":"worker","username":"kkk","password":"1234","id":23,"token":23,"avatar":"assets/images/SnapShot(50).jpg"},{"firstName":"mimi","lastName":"mimi","type":"worker","username":"mimi","password":"1234","id":24,"token":24,"avatar":"assets/images/IMG_0874.JPG"},{"firstName":"dana","lastName":"dana","type":"worker","username":"dana","password":"1234","id":25,"token":25,"avatar":"assets/images/IMG_0856.JPG"}]
+[
+  {
+    "username": "gal",
+    "password": "1234",
+    "firstName": "gal",
+    "lastName": "akerman",
+    "type": "ceo",
+    "id": 1,
+    "token": 1,
+    "avatar": "images/DSC01166.JPG"
+  },
+  {
+    "firstName": "lola",
+    "lastName": "lola",
+    "type": "worker",
+    "username": "lola",
+    "password": "1234",
+    "id": 5,
+    "token": 5,
+    "avatar": "/images/DSC02454.JPG"
+  },
+  {
+    "firstName": "mani",
+    "lastName": "mani",
+    "type": "manager",
+    "username": "mani",
+    "password": "1234",
+    "id": 6,
+    "token": 6,
+    "avatar": "/images/DSC02453.JPG"
+  },
+  {
+    "firstName": "xan",
+    "lastName": "xan",
+    "type": "manager",
+    "username": "xan",
+    "password": "1234",
+    "id": 10,
+    "token": 10,
+    "avatar": "/images/costa 002.jpg"
+  },
+  {
+    "firstName": "kkk",
+    "lastName": "kkk",
+    "type": "worker",
+    "username": "kkk",
+    "password": "1234",
+    "id": 23,
+    "token": 23,
+    "avatar": "assets/images/SnapShot(50).jpg"
+  },
+  {
+    "firstName": "mimi",
+    "lastName": "mimi",
+    "type": "worker",
+    "username": "mimi",
+    "password": "1234",
+    "id": 24,
+    "token": 24,
+    "avatar": "assets/images/IMG_0874.JPG"
+  },
+  {
+    "firstName": "dana",
+    "lastName": "dana",
+    "type": "worker",
+    "username": "dana",
+    "password": "1234",
+    "id": 25,
+    "token": 25,
+    "avatar": "assets/images/IMG_0856.JPG"
+  },
+  {
+    "firstName": "gigi",
+    "lastName": "gigi",
+    "type": "worker",
+    "username": "gigi",
+    "password": "1234",
+    "id": 26,
+    "token": 26,
+    "avatar": "images/2011-01-22 16.32.08.jpg"
+  },
+  {
+    "firstName": "aza",
+    "lastName": "aza",
+    "type": "worker",
+    "username": "aza",
+    "password": "1234",
+    "id": 27,
+    "token": 27,
+    "avatar": "images/2011-01-22 16.35.41.jpg"
+  }
+]

@@ -1,7 +1,7 @@
 @import '../../../../assets/scss/variables.scss';
 
 .header{
-    box-shadow: 0px 2px 9px rgba(144, 144, 144, 0.7);
+    box-shadow: 0px 2px 9px rgba(144, 144, 144, 0.952);
     background: $bg-secondary; 
     img {
         max-width: 30px;
@@ -10,4 +10,15 @@
     .signout {
         font-weight: 600;
     }
+
+    img.img96px {
+        max-width: 96px;
+    }
+
+    .user {
+        font-weight: 600;
+        padding: 1em 0!important;
+    }
+
+    
 }
