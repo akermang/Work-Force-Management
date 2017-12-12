@@ -104,7 +104,7 @@ function getUser(username, password) {
 }
 
 function addUser(user) {
-  const filePath = "./server/mock/users.json";
+  const filePath = "/server/mock/users.json";
   // read data from file
   fileUtils.readFile(filePath, function(users) {
     const parsedUsers = JSON.parse(users);
