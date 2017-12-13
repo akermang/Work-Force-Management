@@ -8,7 +8,7 @@ import {
 } from "../../../../common/state/example/example.actions";
 import { FETCH } from "../../../../common/actions";
 import { ApiService } from "../../../../common/services/api.service";
-import { ExampleComponent } from "../../../";
+import { ExampleComponent, CanBoardComponent } from "../../../";
 import { FetchAction } from "../../../../common/actions";
 import logo from "../assets/logo3.png";
 import avatar from "../assets/avatar-1.jpg";
@@ -21,7 +21,7 @@ class WorkerHomePage extends React.Component {
       <div>
         <h2>Worker - home page</h2>
         {user ? user.username : null}
-        {this.getComponent()}
+        {this.getCanBoardComponent()}
         <div className={styles.buttons}>
           <button onClick={() => this.props.history.push("/about")}>
             go to about
@@ -32,37 +32,24 @@ class WorkerHomePage extends React.Component {
           <img className="img-responsive center-block col-lg-12 col-md-12 col-sm-12" src={logo} />
         </div>
         </div>
-        {this.getLoader()}
       </div>
     );
   }
 
-  fetchExample() {
-    const options = new ApiService().getOptions("example");
-    const { url, params } = options;
-    const payload = {
-      url,
-      options: params,
-      startActionType: START_FETCH_EXAMPLE,
-      successActionType: FETCH_EXAMPLE_SUCCESS,
-      failActionType: FETCH_EXAMPLE_FAIL
-    };
-    this.props.dispatch({ type: FETCH, payload: payload });
+  getCanBoardComponent() {
+    return this.props.isLoading ? 
+      this.getLoader() : <CanBoardComponent tasks={this.props.tasks}/>;
   }
 
   getLoader() {
-    return this.props.isLoading ? <div>loading...</div> : null;
-  }
-
-  getComponent() {
-    return this.props.data ? <ExampleComponent data={this.props.data} /> : null;
+    return <div>loading...</div>;
   }
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(state) {  
   return {
-    data: state.exampleReducer.example,
-    isLoading: state.exampleReducer.loading
+    tasks: state.tasksReducer.tasks,
+    isLoading: state.tasksReducer.loading
   };
 }
 

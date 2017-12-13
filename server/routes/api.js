@@ -12,12 +12,17 @@ var fs = require('fs')
 const mockData = require("../mock/data.json");
 let mockTokens = require("../mock/tokens.json");
 let mockUsers = require("../mock/users.json");
+let tasks = require("../mock/tasks.json");
 
 /**
  * Api routes
  */
 router.get("/", (req, res) => {
   send(res, { statusCode: 200, data: mockData });
+});
+
+router.get("/task", (req, res) => {
+  send(res, { statusCode: 200, tasks });
 });
 
 router.post("/login", (req, res) => {
@@ -138,7 +143,9 @@ function getUserByToken(token) {
 }
 
 function send(res, data) {
-  res.send(data);
+  setTimeout(() => {
+    res.send(data);
+  }, 1000)  
 }
 
 

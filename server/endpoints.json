@@ -25,5 +25,11 @@
         "params": {
             "method": "POST"            
         }
+    },
+    "getTasks": {
+        "url": "api/task",
+        "params": {
+            "method": "GET"
+        }
     }
 }
