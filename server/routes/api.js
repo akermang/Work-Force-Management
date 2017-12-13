@@ -51,14 +51,13 @@ router.post("/user/add/", (req, res) => {
   const avatar = files.avatar;
   const user = req.body;
   const newUser = setdefaultCredentials(user);
-  console.log(req)
-
+  
   if(!newUser) {
     return res.send({ statusCode: 400, error: 'username already exists' });
   }
   
   if(avatar) {
-    const filePath = "/images/" + req.files.avatar.name; 
+    const filePath = "assets/images/" + req.files.avatar.name; 
     const uploaded = uploadFile(req.files.avatar, filePath, res);
     if(!uploaded) return res.send({ statusCode: 400, error: 'file failed to upload' })
     newUser.avatar = filePath;

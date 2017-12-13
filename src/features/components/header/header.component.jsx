@@ -49,6 +49,7 @@ const HeaderComponent = props => (
         <li>{signOutOption(props)}</li>
       </ul>
     </div>
+    {getLoader(props)}
   </header>
 );
 function signOutOption(props) {
@@ -90,6 +91,10 @@ function getName(props) {
     return "W.F.M"
   }
   
+}
+
+function getLoader(props) {
+  return props.authReducer.loading ? <div>loading...</div> : null;
 }
 
 function mapStateToProps(state) {

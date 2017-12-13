@@ -94,6 +94,7 @@ export class AddUserForm extends Component {
       failActionType: ADD_USER_FAIL
     };
     this.props.dispatch({ type: FETCH, payload: payload });
+    this.props.history.push("/");
   }
 
 }

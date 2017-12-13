@@ -26,7 +26,6 @@ class WorkerHomePage extends React.Component {
           <button onClick={() => this.props.history.push("/about")}>
             go to about
           </button>
-          <button onClick={() => this.fetchExample()}>fetch example</button>
         </div>
         <div className="row" >
            <div className={styles.logo+ " center-block col-md-12"}>
