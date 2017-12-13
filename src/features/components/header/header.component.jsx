@@ -25,7 +25,7 @@ const HeaderComponent = props => (
       <div><img className="img-rounded  img-responsive"  src={getSrc(props)} alt="options"/></div>
        <span className="caret" />
       </button>
-      <ul className="dropdown-menu  dropdown-menu-right">
+      <ul className={styles.userBox + " dropdown-menu  dropdown-menu-right"}>
         <li>
           <div className="btn-lg">
             <div className={styles.user}>{getName(props)}</div>

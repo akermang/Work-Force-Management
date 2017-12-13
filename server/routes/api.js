@@ -22,7 +22,10 @@ router.get("/", (req, res) => {
 });
 
 router.get("/task", (req, res) => {
-  send(res, { statusCode: 200, tasks });
+  if(tasks)
+    send(res.status(200), { statusCode: 200, tasks });
+  else 
+    send(res.status(404), { statusCode: 404, error: new Error('failed to get tasks') });
 });
 
 router.post("/login", (req, res) => {

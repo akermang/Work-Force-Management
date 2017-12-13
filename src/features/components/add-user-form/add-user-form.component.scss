@@ -1,4 +1,4 @@
-@keyframes move {
+@keyframes fade-in {
   0% {
     opacity: 0;
   }
@@ -8,5 +8,5 @@
 }
 
 form {
-  animation: move 0.4s;
+  animation: fade-in 0.4s;
 }
