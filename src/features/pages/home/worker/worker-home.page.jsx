@@ -21,14 +21,6 @@ class WorkerHomePage extends React.Component {
       <div>
         <h2>Worker - home page</h2>
         {user ? user.username : null}
-        <div className="col-md-1 col-sm-1 col-xs-3 ">
-          <img 
-            className="img-rounded center-block img-responsive" 
-            src={user.avatar}  
-            alt="avatar"
-          />
-        </div>        
-
         {this.getComponent()}
         <div className={styles.buttons}>
           <button onClick={() => this.props.history.push("/about")}>

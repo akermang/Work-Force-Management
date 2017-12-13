@@ -28,8 +28,8 @@ const HeaderComponent = props => (
       <ul className="dropdown-menu  dropdown-menu-right">
         <li>
           <div className="btn-lg">
-            <img className={styles.img96px + " img-rounded  img-responsive"} src={getSrc(props)} alt="options"/>
             <div className={styles.user}>{getName(props)}</div>
+            <img className={styles.img96px + " img-rounded  img-responsive"} src={getSrc(props)} alt="options"/>
           </div>
         </li>
         <li role="separator" className="divider" />
