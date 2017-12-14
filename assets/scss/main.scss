@@ -28,10 +28,11 @@ body {
       padding-bottom: 20px;
     }
     .row{
-      margin:  auto;
+      margin: auto;      
     }
 
     [class^="col-"] {
+      // padding-bottom: 5px; 
       // margin: auto;
       // min-height: 200px;
      }

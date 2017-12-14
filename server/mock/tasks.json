@@ -7,14 +7,14 @@
         "id": "001"
     },
     {
-        "description": "Create navigation component",
+        "description": "Create <navigation> component",
         "assigned_to": ["02"],
         "due_date": 1507578161201,
         "status": "in progress",
         "id": "002"
     },
     {
-        "description": "Create login component",
+        "description": "Create <login> component",
         "assigned_to": ["02","01"],
         "due_date": 1507578161201,
         "status": "in progress",
@@ -28,14 +28,14 @@
         "id": "004"
     },
     {
-        "description": "Create login component",
+        "description": "Create <heeder> component",
         "assigned_to": ["02","01"],
         "due_date": 1507578161201,
         "status": "in progress",
         "id": "005"
     },
     {
-        "description": "im done!",
+        "description": "run test on apliction WFM",
         "assigned_to": ["02","01"],
         "due_date": 1507578161201,
         "status": "in progress",

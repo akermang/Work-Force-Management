@@ -12,15 +12,15 @@ const CanBoardComponent = props => ({
     return (
       <div className={styles.canBoard + " row"}>
         <div className={`${styles.toDo + " col-lg-4 bg-danger"} ${styles.col}`}>
-          <label>to do</label>
+          <h2>to do</h2>
           <ColumnComponent tasks={toDo} />
         </div>
         <div className={`${styles.inProgress + " col-lg-4 bg-primary"} ${styles.col}`}>
-          <label>in progress</label>
+          <h3>in progress</h3>
           <ColumnComponent tasks={inProgress} />
         </div>
         <div className={`${styles.done + " col-lg-4 bg-success"} ${styles.col}`}>
-          <label>done</label>
+          <h3>done</h3>
           <ColumnComponent tasks={done} />
         </div>
       </div>

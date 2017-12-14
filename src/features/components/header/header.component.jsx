@@ -14,10 +14,10 @@ const HeaderComponent = props => (
       <h3>WFM</h3>       
     </div>
     <div className="col-lg-1 col-lg-offset-3 hidden-md hidden-sm hidden-xs">{signOutOption(props)}</div>
-    <div className="input-group-btn col-xs-1 col-lg-offset-6 col-md-offset-10 col-xs-offset-8">
+    <div className="input-group-btn col-xs-1 col-lg-offset-6 col-md-offset-10 col-sm-offset-9 col-xs-offset-8">
       <button
         type="button"
-        className="btn dropdown-toggle btn-link btn-lg"
+        className="btn dropdown-toggle btn-link"
         data-toggle="dropdown"
         aria-haspopup="true"
         aria-expanded="false"

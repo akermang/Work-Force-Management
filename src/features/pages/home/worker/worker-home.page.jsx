@@ -22,11 +22,7 @@ class WorkerHomePage extends React.Component {
         <h2>Worker - home page</h2>
         {user ? user.username : null}
         {this.getCanBoardComponent()}
-        <div className={styles.buttons}>
-          <button onClick={() => this.props.history.push("/about")}>
-            go to about
-          </button>
-        </div>
+        
         <div className="row" >
            <div className={styles.logo+ " center-block col-md-12"}>
           <img className="img-responsive center-block col-lg-12 col-md-12 col-sm-12" src={logo} />
