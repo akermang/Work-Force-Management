@@ -28,8 +28,14 @@
     }
 
     .userBox {
+        transition: 0.2s;
         animation: rotate 0.3s;
+        &:hover {
+           min-width: 170px;
+            
+        }
     }
+    
 
     
 }

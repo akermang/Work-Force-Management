@@ -11,10 +11,12 @@ import {
 const HeaderComponent = props => (
   <header className={styles.header + " row"}>
     <div className={styles.title + " col-xs-1"}>
-      <h3>WFM</h3>       
+      <h3>WFM</h3>
     </div>
-    <div className="col-lg-1 col-lg-offset-3 hidden-md hidden-sm hidden-xs">{signOutOption(props)}</div>
-    <div className="input-group-btn col-xs-1 col-lg-offset-6 col-md-offset-10 col-sm-offset-9 col-xs-offset-8">
+    <span className="col-lg-1 col-xs-3 col-lg-offset-3 col-xs-offset-2">
+      {signOutOption(props)}
+    </span>
+    <div className="input-group-btn col-xs-1 col-lg-offset-6 col-md-offset-5 col-sm-offset-4 col-xs-offset-3">
       <button
         type="button"
         className="btn dropdown-toggle btn-link"
@@ -22,14 +24,24 @@ const HeaderComponent = props => (
         aria-haspopup="true"
         aria-expanded="false"
       >
-      <div><img className="img-rounded  img-responsive"  src={getSrc(props)} alt="AVATAR"/></div>
-       <span className="caret" />
+        <div>
+          <img
+            className="img-rounded  img-responsive"
+            src={getSrc(props)}
+            alt="AVATAR"
+          />
+        </div>
+        <span className="caret" />
       </button>
       <ul className={styles.userBox + " dropdown-menu  dropdown-menu-right"}>
         <li>
           <div className="btn-lg">
             <div className={styles.user}>{getName(props)}</div>
-            <img className={styles.img96px + " img-rounded  img-responsive"} src={getSrc(props)} alt="AVATAR"/>
+            <img
+              className={styles.img96px + " img-rounded  img-responsive"}
+              src={getSrc(props)}
+              alt="AVATAR"
+            />
           </div>
         </li>
         <li role="separator" className="divider" />
@@ -49,7 +61,6 @@ const HeaderComponent = props => (
         <li>{signOutOption(props)}</li>
       </ul>
     </div>
-    {getLoader(props)}
   </header>
 );
 function signOutOption(props) {
@@ -65,32 +76,35 @@ function signOutOption(props) {
         Sign Out
       </Link>
     );
-  } else if (props.location.pathname !== "/login") {
-    return (
-      <Link className="" to="/login">
-        Login
-      </Link>
-    );
+  // } else if (props.location.pathname !== "/login") {
+  //   return (
+  //     <Link className="" to="/login">
+  //       Login
+  //     </Link>
+  //   );
+  } else if (props.authReducer.loading) {
+    return <div className="btn" >loading...</div>;
   } else {
-    return <span className="btn">Please Login</span>;
+    return <label className="btn">Please Login</label>;
   }
 }
 
-function getSrc(props){
-  if(props.authReducer.loggedInUser) {
+function getSrc(props) {
+  if (props.authReducer.loggedInUser) {
     return props.authReducer.loggedInUser.avatar;
-  }else {
-    return "favicon.png"
+  } else {
+    return "favicon.png";
   }
 }
 
 function getName(props) {
-  if(props.authReducer.loggedInUser) {
-    return `${props.authReducer.loggedInUser.firstName} ${props.authReducer.loggedInUser.lastName}`;
-  }else {
-    return "W.F.M"
+  if (props.authReducer.loggedInUser) {
+    return `${props.authReducer.loggedInUser.firstName} ${
+      props.authReducer.loggedInUser.lastName
+    }`;
+  } else {
+    return "W.F.M";
   }
-  
 }
 
 function getLoader(props) {

@@ -11,18 +11,21 @@ const CanBoardComponent = props => ({
 
     return (
       <div className={styles.canBoard + " row"}>
-        <div className={`${styles.toDo + " col-lg-4 bg-danger"} ${styles.col}`}>
+        <div className={`${styles.toDo} ${styles.col} col-lg-4 bg-danger`}>
           <h2>to do</h2>
-          <ColumnComponent tasks={toDo} />
+          <ColumnComponent tasks={toDo} onTaskSelection={ task => console.log(task)}/>
         </div>
-        <div className={`${styles.inProgress + " col-lg-4 bg-primary"} ${styles.col}`}>
+        <div className={`${styles.inProgress} ${styles.col} col-lg-4 bg-primary`}>
           <h3>in progress</h3>
-          <ColumnComponent tasks={inProgress} />
+          <ColumnComponent tasks={inProgress} onTaskSelection={ task => console.log(task)}/>
         </div>
-        <div className={`${styles.done + " col-lg-4 bg-success"} ${styles.col}`}>
+        <div className={`${styles.done} ${styles.col} col-lg-4 bg-success`}>
           <h3>done</h3>
-          <ColumnComponent tasks={done} />
+          <ColumnComponent tasks={done} onTaskSelection={ task => console.log(task) }/>
         </div>
+
+        {/* editing component here */}
+
       </div>
     );
   },

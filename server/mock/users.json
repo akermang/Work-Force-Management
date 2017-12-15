@@ -1,1 +1,32 @@
-[{"firstName":"gal","lastName":"Natan","type":"manager","username":"gal","password":"1234","id":37,"token":37,"avatar":"assets/images/avatar-1.jpg"},{"firstName":"sdsdsds","lastName":"sds","type":"worker","username":"ddd","password":"1234","id":38,"token":38,"avatar":"assets/images/dev-4.jpg"}]
+[
+  {
+    "firstName": "gal",
+    "lastName": "Natan",
+    "type": "manager",
+    "username": "gal",
+    "password": "1234",
+    "id": 37,
+    "token": 37,
+    "avatar": "assets/images/avatar-1.jpg"
+  },
+  {
+    "firstName": "aaa",
+    "lastName": "sds",
+    "type": "worker",
+    "username": "ddd",
+    "password": "1234",
+    "id": 38,
+    "token": 38,
+    "avatar": "assets/images/dev-4.jpg"
+  },
+  {
+    "firstName": "wally",
+    "lastName": "worky",
+    "type": "worker",
+    "username": "wally",
+    "password": "1234",
+    "id": 39,
+    "token": 39,
+    "avatar": "assets/images/client-two.png"
+  }
+]

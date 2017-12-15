@@ -1,13 +1,10 @@
 import React, { Component } from "react";
+import styles from "./column.component.scss";
 
 export default class ColumnComponent extends Component {
   constructor(props) {
     super(props);
     this.state = { selectedTask: null };
-  }
-  modifyTask(task) {
-    console.log(task);
-    this.setState({ selectedTask: task });
   }
 
   render() {
@@ -17,7 +14,7 @@ export default class ColumnComponent extends Component {
         {tasks.map(task => {
           return (
             <div key={task.id}>
-              <div className="btn" onClick={() => this.modifyTask(task)}>
+              <div className={`${styles.task} btn`} onClick={() => this.props.onTaskSelection(task)}>
                 {task.description}
               </div>
             </div>
@@ -30,6 +27,11 @@ export default class ColumnComponent extends Component {
         }
       </div>
     );
+  }
+
+  modifyTask(task) {
+    console.log(task);
+    this.setState({ selectedTask: task });
   }
 
   // TODO: *** ---- ***
