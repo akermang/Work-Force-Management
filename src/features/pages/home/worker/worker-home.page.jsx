@@ -22,19 +22,16 @@ class WorkerHomePage extends React.Component {
         <h2>Worker - home page</h2>
         {user ? user.username : null}
         {this.getCanBoardComponent()}
-        
-        <div className="row" >
-           <div className={styles.logo+ " center-block col-md-12"}>
-          <img className="img-responsive center-block col-lg-12 col-md-12 col-sm-12" src={logo} />
-        </div>
-        </div>
       </div>
     );
   }
 
   getCanBoardComponent() {
-    return this.props.isLoading ? 
-      this.getLoader() : <CanBoardComponent tasks={this.props.tasks}/>;
+    return this.props.isLoading ? (
+      this.getLoader()
+    ) : (
+      <CanBoardComponent tasks={this.props.tasks} />
+    );
   }
 
   getLoader() {
@@ -42,7 +39,7 @@ class WorkerHomePage extends React.Component {
   }
 }
 
-function mapStateToProps(state) {  
+function mapStateToProps(state) {
   return {
     tasks: state.tasksReducer.tasks,
     isLoading: state.tasksReducer.loading

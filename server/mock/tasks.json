@@ -1,43 +1,41 @@
 [
     {
         "description": "Fix bug in the header",
-        "assigned_to": ["01","02"],
-        "due_date": 1507578161201,
+        "due_date": "15/1/2018",
         "status": "to do",
         "id": "001"
     },
     {
         "description": "Create <navigation> component",
-        "assigned_to": ["02"],
-        "due_date": 1507578161201,
+        "due_date": "27/12/2017",
         "status": "in progress",
         "id": "002"
     },
     {
         "description": "Create <login> component",
         "assigned_to": ["02","01"],
-        "due_date": 1507578161201,
+        "due_date": "22/12/2017",
         "status": "in progress",
         "id": "003"
     },
     {
-        "description": "im done!",
+        "description": "Im done!",
         "assigned_to": ["02","01"],
-        "due_date": 1507578161201,
+        "due_date": "31/12/2017",
         "status": "done",
         "id": "004"
     },
     {
         "description": "Create <heeder> component",
         "assigned_to": ["02","01"],
-        "due_date": 1507578161201,
+        "due_date": "26/12/2017",
         "status": "in progress",
         "id": "005"
     },
     {
-        "description": "run test on apliction WFM",
+        "description": "Run test on apliction WFM",
         "assigned_to": ["02","01"],
-        "due_date": 1507578161201,
+        "due_date": "31/12/2017",
         "status": "in progress",
         "id": "006"
     }

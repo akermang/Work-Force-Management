@@ -1,28 +1,42 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import styles from './tasks.component.scss';
+import styles from "./tasks.component.scss";
 
 export default class TasksComponent extends Component {
   render() {
     const task = this.props.task || {};
-    
+
     return (
-      <div className={ styles.tasks}>
-        <div className="row">
-          <div className="col-lg-12 row bg-warning">
-            <div className="card">
-                <div className="card-block-rounded">
-                  <h4 className="card-title">{task.description}</h4>
-                  <h4 className="card-subtitle mb-2 ">status: {task.status}</h4>
-                  <h4 className="card-subtitle mb-2">due date: {task.due_date}</h4>
-                  <p className="card-text">asign to: {task.assigned_to}</p>
-                  <a href="#" className="btn-sm btn-danger">update this task</a>
-                </div>
+      <div className={`${styles.tasks}`}>
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            <h3 class="panel-title ">{task.description}</h3>
+          </div>
+          <div class="panel-body">
+            <div className="card-block-rounded">
+              <div className="form-group">
+                <label className="text-lowercase">
+                  current status: {task.status}
+                </label>
+                <select
+                  className="form-control custom-select mb-2 mr-sm-2 mb-sm-0"
+                  ref="type"
+                  name="type"
+                >
+                  <option value="worker">to do</option>
+                  <option value="manager">in progress</option>
+                  <option value="ceo">done</option>
+                </select>
+              </div>
+
+              <h4 className="card-subtitle mb-2">due date: {task.due_date}</h4>
+
+              <button className="btn btn-danger">update this task</button>
             </div>
           </div>
         </div>
       </div>
-    )
+    );
   }
 }

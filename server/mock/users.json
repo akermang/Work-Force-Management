@@ -1,22 +1,32 @@
 [
   {
     "firstName": "gal",
-    "lastName": "Natan",
+    "lastName": "galoona",
     "type": "manager",
     "username": "gal",
     "password": "1234",
-    "id": 37,
-    "token": 37,
+    "id": 1,
+    "token": 1,
     "avatar": "assets/images/avatar-1.jpg"
   },
   {
-    "firstName": "aaa",
+    "firstName": "Bar",
+    "lastName": "Aharony",
+    "type": "ceo",
+    "username": "bar",
+    "password": "1234",
+    "id": 2,
+    "token": 2,
+    "avatar": "assets/images/avatar-3.png"
+  },
+  {
+    "firstName": "ddd",
     "lastName": "sds",
     "type": "worker",
     "username": "ddd",
     "password": "1234",
-    "id": 38,
-    "token": 38,
+    "id": 3,
+    "token": 3,
     "avatar": "assets/images/dev-4.jpg"
   },
   {
@@ -25,8 +35,8 @@
     "type": "worker",
     "username": "wally",
     "password": "1234",
-    "id": 39,
-    "token": 39,
+    "id": 4,
+    "token": 4,
     "avatar": "assets/images/client-two.png"
   }
 ]

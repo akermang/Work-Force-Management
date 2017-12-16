@@ -16,6 +16,9 @@ export default class CanBoardComponent extends Component {
 
     return (
       <div className={styles.canBoard + " row"}>
+       {this.state.selectedTask ? (
+          <TasksComponent task={this.state.selectedTask} />
+        ) : null}
         <div className={`${styles.toDo} ${styles.col} col-lg-4 bg-danger`}>
           <h2>to do</h2>
           <ColumnComponent
@@ -39,9 +42,6 @@ export default class CanBoardComponent extends Component {
             onTaskSelection={task => this.modifyTask(task)}
           />
         </div>
-        {this.state.selectedTask ? (
-          <TasksComponent task={this.state.selectedTask} />
-        ) : null}
       </div>
     );
   }
