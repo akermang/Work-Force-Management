@@ -14,18 +14,15 @@ const constants = {
 const allLinks = {
   worker: [
     {path: constants.home, text: 'home'},
-    {path: constants.about, text: 'about'},
     {path: constants.tasks, text: 'tasks'},
   ],
   manager: [  
     {path: constants.home, text: 'home'},
-    {path: constants.about, text: 'about'},    
     {path: constants.tasks, text: 'tasks'},
     {path: constants.addUser, text: 'add user'}
   ],
   ceo: [
     {path: constants.home, text: 'home'},
-    {path: constants.about, text: 'about'},    
     {path: constants.tasks, text: 'tasks'},
     {path: constants.addUser, text: 'add user'}
   ],

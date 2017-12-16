@@ -2,10 +2,6 @@ import React, { Component } from "react";
 import styles from "./column.component.scss";
 
 export default class ColumnComponent extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { selectedTask: null };
-  }
 
   render() {
     const tasks = this.props.tasks || [];
@@ -20,19 +16,11 @@ export default class ColumnComponent extends Component {
             </div>
           );
         })}
-        {
-            this.state.selectedTask ? 
-            <div>hello</div>
-            : null
-        }
       </div>
     );
   }
 
-  modifyTask(task) {
-    console.log(task);
-    this.setState({ selectedTask: task });
-  }
+  
 
   // TODO: *** ---- ***
   //       - create click event listener for every task

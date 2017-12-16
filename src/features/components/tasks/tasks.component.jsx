@@ -10,14 +10,14 @@ export default class TasksComponent extends Component {
     return (
       <div className={ styles.tasks}>
         <div className="row">
-          <div className="col-lg-12 row bg-info">
+          <div className="col-lg-12 row bg-warning">
             <div className="card">
                 <div className="card-block-rounded">
                   <h4 className="card-title">{task.description}</h4>
                   <h4 className="card-subtitle mb-2 ">status: {task.status}</h4>
                   <h4 className="card-subtitle mb-2">due date: {task.due_date}</h4>
                   <p className="card-text">asign to: {task.assigned_to}</p>
-                  <a href="#" className="btn btn-primary">update this task</a>
+                  <a href="#" className="btn-sm btn-danger">update this task</a>
                 </div>
             </div>
           </div>
