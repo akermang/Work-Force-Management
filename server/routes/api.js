@@ -4,7 +4,7 @@ const FileUtils = require("./file-utils");
 const fileUtils = new FileUtils();
 var multer = require("multer");
 var upload = multer();
-var fs = require('fs')
+var fs = require("fs");
 
 /**
  * Mock data
@@ -29,17 +29,19 @@ router.post("/task/status/update", (req, res) => {
 });
 
 router.get("/task", (req, res) => {
-  if(tasks)
-    send(res.status(200), { statusCode: 200, tasks });
-  else 
-    send(res.status(404), { statusCode: 404, error: new Error('failed to get tasks') });
+  if (tasks) send(res.status(200), { statusCode: 200, tasks });
+  else
+    send(res.status(404), {
+      statusCode: 404,
+      error: new Error("failed to get tasks")
+    });
 });
 
 router.post("/login", (req, res) => {
   const username = req.body.username;
   const password = req.body.password;
   const user = getUser(username, password);
-  
+
   if (user) {
     setUserSession(user.token);
     send(res, { statusCode: 200, loggedInUser: user });
@@ -61,41 +63,39 @@ router.post("/auth", (req, res) => {
 });
 
 router.post("/user/add/", (req, res) => {
-
   const files = req.files || {};
   const avatar = files.avatar;
   const user = req.body;
   const newUser = setdefaultCredentials(user);
-  
-  if(!newUser) {
-    return res.send({ statusCode: 400, error: 'username already exists' });
+
+  if (!newUser) {
+    return res.send({ statusCode: 400, error: "username already exists" });
   }
-  
-  if(avatar) {
-    const filePath = "assets/images/" + req.files.avatar.name; 
+
+  if (avatar) {
+    const filePath = "assets/images/" + req.files.avatar.name;
     const uploaded = uploadFile(req.files.avatar, filePath, res);
-    if(!uploaded) return res.send({ statusCode: 400, error: 'file failed to upload' })
+    if (!uploaded)
+      return res.send({ statusCode: 400, error: "file failed to upload" });
     newUser.avatar = filePath;
-  }  
+  }
   addUser(newUser);
-  
-  return res.send({ statusCode: 200, user: user })
+
+  return res.send({ statusCode: 200, user: user });
 });
 
 function updateTaskStatus(id, status) {
-  for(task of tasks) {
-    if(task.id == id) task.status = status;
+  for (task of tasks) {
+    if (task.id == id) task.status = status;
   }
-  console.log(id, status, tasks )
-  return tasks
+  return tasks;
 }
 
 function uploadFile(file, path, res) {
   file.mv(path, function(err) {
-    if (err)
-      return null;
+    if (err) return null;
   });
-  return 'success';
+  return "success";
 }
 
 // MOCK! find real solution
@@ -114,9 +114,9 @@ function userExists(user) {
 
 function getNewToken() {
   let lastUser = mockUsers[mockUsers.length - 1];
-  if(!lastUser) return 1;  
-  let newToken = ++lastUser.token ;
-  return newToken ;
+  if (!lastUser) return 1;
+  let newToken = ++lastUser.token;
+  return newToken;
 }
 
 function getUser(username, password) {
@@ -163,8 +163,7 @@ function getUserByToken(token) {
 function send(res, data) {
   setTimeout(() => {
     res.send(data);
-  }, 1000)  
+  }, 1000);
 }
-
 
 module.exports = router;

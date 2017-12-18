@@ -56,7 +56,7 @@ const TasksComponent = props => ({
     const { url, params } = o;
     const status = this.refs.status.value;
     const id = task.id;
-    const data = {id: id, status: status};
+    const data = { id: id, status: status };
     params.body = JSON.stringify(data);
 
     const payload = {
@@ -67,7 +67,7 @@ const TasksComponent = props => ({
       failActionType: FETCH_TASK_STATUS_UPDATE_FAIL
     };
     this.props.dispatch({ type: FETCH, payload: payload });
-  },
+  }
 });
 function mapStateToProps(state) {
   return {
@@ -76,5 +76,3 @@ function mapStateToProps(state) {
 }
 
 export default withRouter(connect(mapStateToProps)(TasksComponent));
-
-
