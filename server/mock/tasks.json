@@ -27,14 +27,12 @@
     },
     {
         "description": "Create <heeder> component",
-        "assigned_to": ["02","01"],
         "due_date": "26/12/2017",
         "status": "in progress",
         "id": "005"
     },
     {
         "description": "Run test on apliction WFM",
-        "assigned_to": ["02","01"],
         "due_date": "31/12/2017",
         "status": "in progress",
         "id": "006"
