@@ -88,6 +88,13 @@ function updateTaskStatus(id, status) {
   for (task of tasks) {
     if (task.id == id) task.status = status;
   }
+  const updatedTasks = tasks;
+  console.log(updatedTasks)
+  const filePath = "./server/mock/tasks.json";
+  fileUtils.readFile(filePath, function(updatedTasks) {
+  const parsedTasks = JSON.parse(updatedTasks);
+  fileUtils.writeFile(filePath, parsedTasks, function(data) {});
+  });
   return tasks;
 }
 
@@ -163,7 +170,7 @@ function getUserByToken(token) {
 function send(res, data) {
   setTimeout(() => {
     res.send(data);
-  }, 1000);
+  }, 1);
 }
 
 module.exports = router;
