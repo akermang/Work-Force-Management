@@ -21,6 +21,13 @@ router.get("/", (req, res) => {
   send(res, { statusCode: 200, data: mockData });
 });
 
+router.post("/task/status/update", (req, res) => {
+  const taskId = req.body.id;
+  const status = req.body.status;
+  const tasks = updateTaskStatus(taskId, status);
+  send(res, { statusCode: 200, tasks: tasks });
+});
+
 router.get("/task", (req, res) => {
   if(tasks)
     send(res.status(200), { statusCode: 200, tasks });
@@ -74,6 +81,14 @@ router.post("/user/add/", (req, res) => {
   
   return res.send({ statusCode: 200, user: user })
 });
+
+function updateTaskStatus(id, status) {
+  for(task of tasks) {
+    if(task.id == id) task.status = status;
+  }
+  console.log(id, status, tasks )
+  return tasks
+}
 
 function uploadFile(file, path, res) {
   file.mv(path, function(err) {

@@ -31,5 +31,12 @@
         "params": {
             "method": "GET"
         }
+    },
+    "updateTask": {
+        "url": "api/task/status/update",
+        "params": {
+            "method": "POST",
+            "contentType": "application/json"            
+        }
     }
 }

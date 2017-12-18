@@ -8,7 +8,10 @@ const NavComponent = props => ({
   render() {
     const links = this.props.links || [];
     return(
-      <ul className={styles.nav}>
+      <ul className={`${styles.nav}`}>
+      <div>
+        
+      </div>
       {
         links.map((link, i) => {
           if(link.path == "/") {

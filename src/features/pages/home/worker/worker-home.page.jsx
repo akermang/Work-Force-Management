@@ -10,7 +10,6 @@ import { FETCH } from "../../../../common/actions";
 import { ApiService } from "../../../../common/services/api.service";
 import { ExampleComponent, CanBoardComponent } from "../../../";
 import { FetchAction } from "../../../../common/actions";
-import logo from "../assets/logo3.png";
 import avatar from "../assets/avatar-1.jpg";
 import styles from "../home.page.scss";
 

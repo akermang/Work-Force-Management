@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import TasksComponent from "../../../components/tasks/tasks.component.jsx";
-// import AddUserForm from "../../../components/add-user-form/add-user-form.component.jsx"
+
 
 class ManagerHomePage extends React.Component {
   constructor(props) {
