@@ -32,7 +32,7 @@ const TasksComponent = props => ({
                     ref="status"
                   >
                     <option value="to do">to do</option>
-                    <option value="in progres">in progress</option>
+                    <option value="in progress">in progress</option>
                     <option value="done">done</option>
                   </select>
                   <h4 className="card-subtitle mb-2">
