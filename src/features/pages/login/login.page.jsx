@@ -20,7 +20,7 @@ const LoginPage = props => ({
         <h3 className={styles.h3}>Login</h3>
         <form onSubmit={e => this.fetchLogin(e)}>
           <div className="form-group">
-            <label className="form-contro" htmlFor="username">
+            <label className="" htmlFor="username">
               {" "}
               username:{" "}
             </label>
@@ -32,7 +32,7 @@ const LoginPage = props => ({
             />
           </div>
           <div className="form-group">
-            <label className="form-contro" htmlFor="password">
+            <label className="" htmlFor="password">
               {" "}
               password:{" "}
             </label>
@@ -44,7 +44,7 @@ const LoginPage = props => ({
             />
           </div>
           <div className="checkbox">
-            <label className="form-contro">
+            <label className="">
               <input type="checkbox" /> Remember me
             </label>
           </div>

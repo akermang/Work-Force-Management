@@ -16,6 +16,7 @@ app.use('/assets', express.static(path.join(__dirname, './assets')));
 
 app.use('/api', api);
 app.use(express.static(path.join(__dirname, 'dist')));
+
 app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname + '/dist/index.html'));
 });

@@ -91,9 +91,9 @@ function updateTaskStatus(id, status) {
   const updatedTasks = tasks;
   console.log(updatedTasks)
   const filePath = "./server/mock/tasks.json";
-  fileUtils.readFile(filePath, function(updatedTasks) {
-  const parsedTasks = JSON.parse(updatedTasks);
-  fileUtils.writeFile(filePath, parsedTasks, function(data) {});
+  fileUtils.readFile(filePath, function(atedTasks) {
+  // const parsedTasks = JSON.parse(updatedTasks);
+  fileUtils.writeFile(filePath, updatedTasks, function(data) {});
   });
   return tasks;
 }

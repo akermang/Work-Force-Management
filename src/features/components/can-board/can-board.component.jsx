@@ -20,7 +20,7 @@ export default class CanBoardComponent extends Component {
           <TasksComponent task={this.state.selectedTask} />
         ) : null}
         <div className={`${styles.toDo} ${styles.col} col-lg-4 bg-danger`}>
-          <h2>to do</h2>
+          <h3>to do</h3>
           <ColumnComponent
             tasks={toDo}
             onTaskSelection={task => this.modifyTask(task)}
@@ -41,6 +41,7 @@ export default class CanBoardComponent extends Component {
             tasks={done}
             onTaskSelection={task => this.modifyTask(task)}
           />
+          {console.log(this.state.selectedTask)}
         </div>
       </div>
     );

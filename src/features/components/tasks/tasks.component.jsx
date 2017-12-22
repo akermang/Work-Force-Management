@@ -15,15 +15,15 @@ const TasksComponent = props => ({
     const task = this.props.task || {};
 
     return (
-      <div className={`${styles.tasks}`}>
+      <div className={``}>
         <div className="panel panel-info">
           <div className="panel-heading">
-            <h3 className="panel-title ">{task.description}</h3>
+            <h3 className="panel-title ">{`Task Update: ${task.description}`}</h3>
           </div>
           <div className="panel-body">
             <div className="card-block-rounded">
               <div className="form-group">
-                <label className="text-lowercase">
+                <label className="text-lowercase h4">
                   current status: {task.status}
                 </label>
                 <form onSubmit={e => this.updatStatus(e, task)}>

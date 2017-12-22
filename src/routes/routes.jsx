@@ -4,7 +4,7 @@ import { Switch, HashRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import AuthRoute from './auth-guard.jsx';
 
-import { HomePage, AboutPage, App, LoginPage, TestPage, AddUserForm, TasksComponent } from '../features';
+import { HomePage, AboutPage, App, LoginPage, TestPage, AddUserForm, TasksComponent, AddTaskForm } from '../features';
 import DefaultLayout from './default-layout.jsx';
 import FullPageLayout from './full-layout.jsx';
 
@@ -23,7 +23,7 @@ const Root = ({ store }) => ({
               <AuthRoute exact path="/" component={HomePage} />                                           
             </Switch>
             <Switch>
-               <AuthRoute exact path="/tasks" component={TasksComponent} />                                           
+               <AuthRoute exact path="/tasks" component={AddTaskForm} />                                           
             </Switch>
             <Switch>
                <AuthRoute exact path="/user/add" component={AddUserForm} />                                           
