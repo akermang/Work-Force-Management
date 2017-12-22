@@ -50,17 +50,18 @@ class AddTaskForm extends Component {
                   <h4 className="card-subtitle mb-2">due date:</h4>
                   <div>
                     <input
-                      className="form-control"
+                      className="form-control card-subtitle"
                       type="date"
                       ref="due_date"
                     />
                   </div>
+                  <h4 className=""></h4>
 
                   <button type="submit" className="btn btn-danger">
-                    update this task
+                    Publish Task
                   </button>
-                  <button type="reset" className="btn btn-info">
-                    clear
+                  <button type="reset" className="btn col-xs-offset-3 btn-info">
+                    Clear
                   </button>
                 </form>
               </div>
