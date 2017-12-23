@@ -34,7 +34,7 @@ getCanBoardComponent() {
 
     return (
       <div>
-        <button type="button" onClick={() => this.onShowTasks()} className="btn btn-info btn-md" value="tasks">
+        <button type="button" onClick={() => this.onShowTasks()}  className="btn btn-success btn-md" value="tasks">
           {this.state.content}
         </button>
         <h2>Manager - home page</h2>
