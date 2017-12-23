@@ -50,7 +50,7 @@ const HeaderComponent = props => (
           <Link to="/about">About</Link>
         </li>
         <li>
-          <Link to="/tasks">Tasks</Link>
+          <Link to="/tasks">New Task</Link>
         </li>
         <li>
           <Link to="/user/add">Add user</Link>
