@@ -18,8 +18,11 @@ const TasksComponent = props => ({
       <div className={``}>
         <div className="panel panel-info">
           <div className="panel-heading">
-            <h3 className="panel-title ">{`Task Update: ${task.description}`}</h3>
+            <h3 className="panel-title ">{`Task Update: ${
+              task.description
+            }`}</h3>
           </div>
+         
           <div className="panel-body">
             <div className="card-block-rounded">
               <div className="form-group">
@@ -29,9 +32,12 @@ const TasksComponent = props => ({
                 <form onSubmit={e => this.updatStatus(e, task)}>
                   <select
                     className="form-control custom-select mb-2 mr-sm-2 mb-sm-0"
-                    ref="status" autoFocus
+                    ref="status"
+                    autoFocus
                   >
-                    <option className="text-warning" value="to do">to do</option>
+                    <option className="text-warning" value="to do">
+                      to do
+                    </option>
                     <option value="in progress">in progress</option>
                     <option value="done">done</option>
                   </select>

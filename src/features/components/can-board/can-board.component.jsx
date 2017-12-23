@@ -33,8 +33,8 @@ export default class CanBoardComponent extends Component {
           />
         </div>
         <div
-          className={`${styles.inProgress} ${
-            styles.col
+          className={`${styles.inProgress } ${
+            styles.col 
           } col-lg-4 panel panel-primary col-lg-4 container-fluid`}
         >
           <div className="panel-heading">

@@ -13,13 +13,8 @@ const HeaderComponent = props => (
     <div className={styles.title + " col-xs-1"}>
       <h3>WFM</h3>
     </div>
- 
-    <span className="col-lg-2 col-xs-2 col-lg-offset-3 col-md-offset-2 col-sm-offset-2  hidden-xs">
-      {signOutOption(props)}
-    </span>
-   
-  
-    <div className="input-group-btn col-xs-1 right col-lg-offset-5 col-md-offset-6 col-sm-offset-5 col-xs-offset-8">
+
+    <div className="input-group-btn col-xs-1 right col-lg-offset-10 col-md-offset-10 col-sm-offset-9 col-xs-offset-8">
       <button
         type="button"
         className="btn dropdown-toggle btn-link"
@@ -79,14 +74,14 @@ function signOutOption(props) {
         Sign Out
       </Link>
     );
-  // } else if (props.location.pathname !== "/login") {
-  //   return (
-  //     <Link className="" to="/login">
-  //       Login
-  //     </Link>
-  //   );
+    // } else if (props.location.pathname !== "/login") {
+    //   return (
+    //     <Link className="" to="/login">
+    //       Login
+    //     </Link>
+    //   );
   } else if (props.authReducer.loading) {
-    return <div className="btn" >loading...</div>;
+    return <div className="btn">loading...</div>;
   } else {
     return <div className="">Please Login</div>;
   }

@@ -72,14 +72,14 @@ class AddTaskForm extends Component {
         <ul>
           {/* Render the list of messages */
           this.state.messages.map(message => (
-            <li className="panel panel-warning" key={message.id}>
+            <div className="panel panel-warning" key={message.id}>
             <div className="panel-heading">
             <h3 className="panel-title">{message.text.description}</h3>
           </div>
           <div className="list-group"></div>
           <li className="list-group-item text-primary">status: {message.text.status}</li>
           <li className="list-group-item text-primary">due date: {message.text.due_date}</li>
-            </li>
+            </div>
           ))}
         </ul>
       </div>
