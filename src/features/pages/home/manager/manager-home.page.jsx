@@ -10,26 +10,32 @@ class ManagerHomePage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showTasks: false
+      showTasks: false,
+      content: "+Tasks"
   }
 }
 
 getCanBoardComponent() {
-    return this.state.showTasks ? (
+    return this.state.showTasks && !this.props.isLoading ? (
       <CanBoardComponent tasks={this.props.tasks} />
     ) : null;
   }
 
+  getContent() {
+    this.setState((this.state.showTasks) ? {content: "+Tasks"} : {content: "-- Tasks"});
+  }
+
   onShowTasks() {
     this.setState((this.state.showTasks) ? {showTasks: false} : {showTasks: true});
+    this.getContent();
   }
   render() {
     const user = this.props.user;
 
     return (
       <div>
-        <button type="button" onClick={() => this.onShowTasks()} className="btn btn-info">
-          Tasks
+        <button type="button" onClick={() => this.onShowTasks()} className="btn btn-info btn-md" value="tasks">
+          {this.state.content}
         </button>
         <h2>Manager - home page</h2>
         <div>{this.getCanBoardComponent()}</div>

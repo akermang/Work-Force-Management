@@ -51,9 +51,10 @@ class AddTaskForm extends Component {
                   <h4 className="card-subtitle mb-2">due date:</h4>
                   <div className="" >
                     <input
-                      className="form-control"
+                      className="form-control date"
                       type="date"
                       ref="due_date"
+                      
                     />
                   </div>
                   <h4 className=""></h4>
