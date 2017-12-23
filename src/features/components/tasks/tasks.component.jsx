@@ -22,7 +22,7 @@ const TasksComponent = props => ({
               task.description
             }`}</h3>
           </div>
-         
+
           <div className="panel-body">
             <div className="card-block-rounded">
               <div className="form-group">
@@ -35,9 +35,7 @@ const TasksComponent = props => ({
                     ref="status"
                     autoFocus
                   >
-                    <option className="text-warning" value="to do">
-                      to do
-                    </option>
+                    <option value="to do">to do</option>
                     <option value="in progress">in progress</option>
                     <option value="done">done</option>
                   </select>

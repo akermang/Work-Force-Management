@@ -19,6 +19,7 @@ class AddTaskForm extends Component {
       let message = { text: snapshot.val(), id: snapshot.key };
       this.setState({ messages: [message].concat(this.state.messages) });
     });
+    
   }
 
   render() {
