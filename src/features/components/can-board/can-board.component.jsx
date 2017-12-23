@@ -17,7 +17,10 @@ export default class CanBoardComponent extends Component {
     return (
       <div className={styles.canBoard + " row"}>
         {this.state.selectedTask ? (
-          <TasksComponent task={this.state.selectedTask} />
+          <TasksComponent
+            task={this.state.selectedTask}
+            onCancelTaskSelection={() => this.cancelTaskSelection()}
+          />
         ) : null}
         <div
           className={`${styles.toDo} ${
@@ -33,18 +36,18 @@ export default class CanBoardComponent extends Component {
           />
         </div>
         <div
-          className={`${styles.inProgress } ${
-            styles.col 
+          className={`${styles.inProgress} ${
+            styles.col
           } col-lg-4 panel panel-primary col-lg-4 container-fluid`}
         >
           <div className="panel-heading">
             <h3 className="panel-title">in progress</h3>
           </div>
           <div className="">
-          <ColumnComponent
-            tasks={inProgress}
-            onTaskSelection={task => this.modifyTask(task)}
-          />
+            <ColumnComponent
+              tasks={inProgress}
+              onTaskSelection={task => this.modifyTask(task)}
+            />
           </div>
         </div>
         <div
@@ -59,7 +62,6 @@ export default class CanBoardComponent extends Component {
             tasks={done}
             onTaskSelection={task => this.modifyTask(task)}
           />
-          {console.log(this.state.selectedTask)}
         </div>
       </div>
     );
@@ -74,5 +76,9 @@ export default class CanBoardComponent extends Component {
 
   modifyTask(task) {
     this.setState({ selectedTask: task });
+  }
+
+  cancelTaskSelection() {
+    this.setState({ selectedTask: null });
   }
 }

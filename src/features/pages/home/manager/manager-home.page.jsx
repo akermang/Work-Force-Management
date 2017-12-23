@@ -2,38 +2,37 @@ import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import TasksComponent from "../../../components/tasks/tasks.component.jsx";
+import { ExampleComponent, CanBoardComponent } from "../../../";
+
 
 
 class ManagerHomePage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showTasks: true,
-      task: {
-        description: "Create navigation component",
-        status: "to do",
-        due_date: "12.12.2017",
-        assigned_to: ["yoni"]
-      }
-    };
+      showTasks: false
+  }
+}
+
+getCanBoardComponent() {
+    return this.state.showTasks ? (
+      <CanBoardComponent tasks={this.props.tasks} />
+    ) : null;
   }
 
-  getTasksComponent() {
-    return this.state.showTasks ? (
-      <TasksComponent task={this.state.task} />
-    ) : null;
+  onShowTasks() {
+    this.setState((this.state.showTasks) ? {showTasks: false} : {showTasks: true});
   }
   render() {
     const user = this.props.user;
 
     return (
       <div>
-        <button type="button" className="btn btn-info">
-          Task
+        <button type="button" onClick={() => this.onShowTasks()} className="btn btn-info">
+          Tasks
         </button>
         <h2>Manager - home page</h2>
-        {this.getTasksComponent()}
-
+        <div>{this.getCanBoardComponent()}</div>
         <div className="container-fluid">
           <div className="row">
             <div className="col-lg-4 bg-success">
@@ -66,5 +65,14 @@ class ManagerHomePage extends React.Component {
     );
   }
 }
+function mapStateToProps(state) {
+  return {
+    tasks: state.tasksReducer.tasks,
+    isLoading: state.tasksReducer.loading
+  };
+}
 
-export default ManagerHomePage;
+export default withRouter(connect(mapStateToProps)(ManagerHomePage));
+
+
+

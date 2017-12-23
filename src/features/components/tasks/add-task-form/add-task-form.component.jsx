@@ -4,7 +4,7 @@ import fire from "../../../../fire";
 class AddTaskForm extends Component {
   constructor(props) {
     super(props);
-    this.state = { messages: [] }; // <- set up react state
+    this.state = { tasks: [] }; // <- set up react state
   }
   componentWillMount() {
     /* Create reference to messages in Firebase Database */
@@ -13,11 +13,11 @@ class AddTaskForm extends Component {
       .ref("tasks")
       .orderByKey()
       .limitToLast(100);
-      console.log('%cHELLO','color:red; font-weight:800', messagesRef.toJSON())
+      // console.log('%cHELLO','color:red; font-weight:800', messagesRef.toJSON())
     messagesRef.on("child_added", snapshot => {
       /* Update React state when message is added at Firebase Database */
-      let message = { text: snapshot.val(), id: snapshot.key };
-      this.setState({ messages: [message].concat(this.state.messages) });
+      let tasks = { text: snapshot.val(), id: snapshot.key };
+      this.setState({ tasks: [tasks].concat(this.state.tasks) });
     });
     
   }
@@ -72,14 +72,14 @@ class AddTaskForm extends Component {
 
         <ul>
           {/* Render the list of messages */
-          this.state.messages.map(message => (
-            <div className="panel panel-warning" key={message.id}>
+          this.state.tasks.map(tasks => (
+            <div className="panel panel-warning" key={tasks.id}>
             <div className="panel-heading">
-            <h3 className="panel-title">{message.text.description}</h3>
+            <h3 className="panel-title">{tasks.text.description}</h3>
           </div>
           <div className="list-group"></div>
-          <li className="list-group-item text-primary">status: {message.text.status}</li>
-          <li className="list-group-item text-primary">due date: {message.text.due_date}</li>
+          <li className="list-group-item text-primary">status: {tasks.text.status}</li>
+          <li className="list-group-item text-primary">due date: {tasks.text.due_date}</li>
             </div>
           ))}
         </ul>

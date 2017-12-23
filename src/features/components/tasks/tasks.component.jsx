@@ -13,10 +13,12 @@ import { FETCH } from "../../../common/actions";
 const TasksComponent = props => ({
   render() {
     const task = this.props.task || {};
+    const cancel = this.props.onCancelTaskSelection;
 
     return (
       <div className={``}>
         <div className="panel panel-info">
+        <button type="button" onClick={cancel} className="close"><span >&times;</span></button>
           <div className="panel-heading">
             <h3 className="panel-title ">{`Task Update: ${
               task.description

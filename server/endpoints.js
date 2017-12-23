@@ -14,7 +14,7 @@ function allTasks() {
     .orderByValue()
     .on("value", function(data) {
       data.forEach(function(data) {
-        console.log("The " + data.key + " rating is " + data.val().description);
+        console.log("The data.key: " + data.key + " description: " + data.val().description);
       });
     });
 }
