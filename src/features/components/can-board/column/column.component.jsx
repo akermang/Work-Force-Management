@@ -6,14 +6,15 @@ export default class ColumnComponent extends Component {
   render() {
     const tasks = this.props.tasks || [];
     return (
-      <div>
+      <div className="list-group">
         {tasks.map(task => {
           return (
-            <div key={task.id}>
-              <div className={`${styles.task} btn`} onClick={() => this.props.onTaskSelection(task)}>
-                {task.description}
-              </div>
-            </div>
+            
+              <button key={task.id} className={`${styles.task} list-group-item`} onClick={() => this.props.onTaskSelection(task)}>
+               <span className="text-primary"> {task.description} </span>
+               
+              </button>
+            
           );
         })}
       </div>

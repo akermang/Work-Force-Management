@@ -29,9 +29,9 @@ const TasksComponent = props => ({
                 <form onSubmit={e => this.updatStatus(e, task)}>
                   <select
                     className="form-control custom-select mb-2 mr-sm-2 mb-sm-0"
-                    ref="status"
+                    ref="status" autoFocus
                   >
-                    <option value="to do">to do</option>
+                    <option className="text-warning" value="to do">to do</option>
                     <option value="in progress">in progress</option>
                     <option value="done">done</option>
                   </select>

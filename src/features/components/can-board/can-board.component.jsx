@@ -16,27 +16,45 @@ export default class CanBoardComponent extends Component {
 
     return (
       <div className={styles.canBoard + " row"}>
-       {this.state.selectedTask ? (
+        {this.state.selectedTask ? (
           <TasksComponent task={this.state.selectedTask} />
         ) : null}
-        <div className={`${styles.toDo} ${styles.col} col-lg-4 bg-danger`}>
-          <h3>to do</h3>
+        <div
+          className={`${styles.toDo} ${
+            styles.col
+          } panel panel-danger col-lg-4 container-fluid`}
+        >
+          <div className="panel-heading">
+            <h3 className="panel-title">to do</h3>
+          </div>
           <ColumnComponent
             tasks={toDo}
             onTaskSelection={task => this.modifyTask(task)}
           />
         </div>
         <div
-          className={`${styles.inProgress} ${styles.col} col-lg-4 bg-primary`}
+          className={`${styles.inProgress} ${
+            styles.col
+          } col-lg-4 panel panel-primary col-lg-4 container-fluid`}
         >
-          <h3>in progress</h3>
+          <div className="panel-heading">
+            <h3 className="panel-title">in progress</h3>
+          </div>
+          <div className="">
           <ColumnComponent
             tasks={inProgress}
             onTaskSelection={task => this.modifyTask(task)}
           />
+          </div>
         </div>
-        <div className={`${styles.done} ${styles.col} col-lg-4 bg-success`}>
-          <h3>done</h3>
+        <div
+          className={`${styles.done} ${
+            styles.col
+          } col-lg-4 panel panel-success col-lg-4 container-fluid`}
+        >
+          <div className="panel-heading">
+            <h3 className="panel-title">done</h3>
+          </div>
           <ColumnComponent
             tasks={done}
             onTaskSelection={task => this.modifyTask(task)}

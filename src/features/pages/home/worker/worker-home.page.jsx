@@ -18,8 +18,8 @@ class WorkerHomePage extends React.Component {
     const user = this.props.user;
     return (
       <div>
-        <h2>Worker - home page</h2>
-        {user ? user.username : null}
+        <h2>{user ? user.username : null} - home page</h2>
+        
         {this.getCanBoardComponent()}
       </div>
     );

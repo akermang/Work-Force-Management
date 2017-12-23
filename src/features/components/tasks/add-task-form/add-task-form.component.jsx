@@ -24,11 +24,11 @@ class AddTaskForm extends Component {
   render() {
     return (
       <div>
-        <div className="panel panel-warning">
+        <div className="panel panel-primary">
           <div className="panel-heading">
-            <h3 className="panel-title ">Creat New Task</h3>
+            <h3 className="panel-title">Creat New Task</h3>
           </div>
-          <div className="panel-body">
+          <div className="panel-body bg-info">
             <div className="card-block-rounded">
               <div className="form-group">
                 <label className="text-lowercase h4">description:</label>
@@ -48,9 +48,9 @@ class AddTaskForm extends Component {
                     <option value="in progress">in progress</option>
                   </select>
                   <h4 className="card-subtitle mb-2">due date:</h4>
-                  <div>
+                  <div className="" >
                     <input
-                      className="form-control card-subtitle"
+                      className="form-control"
                       type="date"
                       ref="due_date"
                     />
@@ -72,10 +72,13 @@ class AddTaskForm extends Component {
         <ul>
           {/* Render the list of messages */
           this.state.messages.map(message => (
-            <li key={message.id}>
-              <div>{message.text.description}</div>
-              <div>{message.text.status}</div>
-              <div>{message.text.due_date}</div>
+            <li className="panel panel-warning" key={message.id}>
+            <div className="panel-heading">
+            <h3 className="panel-title">{message.text.description}</h3>
+          </div>
+          <div className="list-group"></div>
+          <li className="list-group-item text-primary">status: {message.text.status}</li>
+          <li className="list-group-item text-primary">due date: {message.text.due_date}</li>
             </li>
           ))}
         </ul>
