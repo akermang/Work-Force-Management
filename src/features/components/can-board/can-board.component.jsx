@@ -28,7 +28,7 @@ export default class CanBoardComponent extends Component {
           } panel panel-danger col-lg-4 container-fluid`}
         >
           <div className="panel-heading">
-            <h3 className="panel-title">to do</h3>
+            <h3 className="panel-title">To do - Tasks </h3>
           </div>
           <ColumnComponent
             tasks={toDo}
@@ -41,7 +41,7 @@ export default class CanBoardComponent extends Component {
           } col-lg-4 panel panel-primary col-lg-4 container-fluid`}
         >
           <div className="panel-heading">
-            <h3 className="panel-title">in progress</h3>
+            <h3 className="panel-title">In progress - Tasks</h3>
           </div>
           <div className="">
             <ColumnComponent
@@ -56,7 +56,7 @@ export default class CanBoardComponent extends Component {
           } col-lg-4 panel panel-success col-lg-4 container-fluid`}
         >
           <div className="panel-heading">
-            <h3 className="panel-title">done</h3>
+            <h3 className="panel-title">Done - Tasks</h3>
           </div>
           <ColumnComponent
             tasks={done}

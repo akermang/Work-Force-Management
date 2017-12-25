@@ -18,7 +18,7 @@ const TasksComponent = props => ({
     return (
       <div className={``}>
         <div className="panel panel-info">
-        <button type="button" onClick={cancel} className="close"><span >&times;</span></button>
+        <button type="button" onClick={cancel} className="close" ><span >&times;</span></button>
           <div className="panel-heading">
             <h3 className="panel-title ">{`Task Update: ${
               task.description
@@ -46,7 +46,10 @@ const TasksComponent = props => ({
                   </h4>
 
                   <button type="submit" className="btn btn-danger">
-                    update this task
+                    update task
+                  </button>
+                  <button type="button" onClick={cancel} className="btn btn-info btn col-xs-offset-1"> 
+                    Cancel
                   </button>
                 </form>
               </div>

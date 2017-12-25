@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import fire from "../../../../fire";
+import { Link } from "react-router-dom";
 
 class AddTaskForm extends Component {
   constructor(props) {
@@ -21,6 +22,7 @@ class AddTaskForm extends Component {
     return (
       <div>
         <div className="panel panel-primary">
+        <Link className="close" to="/"><span >&times;</span></Link>
           <div className="panel-heading">
             <h3 className="panel-title">Creat New Task</h3>
           </div>
@@ -28,7 +30,7 @@ class AddTaskForm extends Component {
             <div className="card-block-rounded">
               <div className="form-group">
                 <label className="text-lowercase h4">description:</label>
-                <form onSubmit={this.addMessage.bind(this)}>
+                <form onSubmit={this.addTask.bind(this)}>
                   <input
                     className="form-control"
                     type="text"
@@ -56,7 +58,7 @@ class AddTaskForm extends Component {
                   <button type="submit" className="btn btn-danger">
                     Publish Task
                   </button>
-                  <button type="reset" className="btn col-xs-offset-3 btn-info">
+                  <button type="reset" className="btn col-xs-offset-2 btn-info">
                     Clear
                   </button>
                 </form>
@@ -89,7 +91,7 @@ class AddTaskForm extends Component {
     }
     return tasks;
   }
-  addMessage(e) {
+  addTask(e) {
     e.preventDefault(); // <- prevent form submit from reloading the page
     /* Send the message to Firebase */
     const data = {
