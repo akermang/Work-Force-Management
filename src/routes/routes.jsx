@@ -23,7 +23,7 @@ const Root = ({ store }) => ({
               <AuthRoute exact path="/" component={HomePage} />                                           
             </Switch>
             <Switch>
-               <AuthRoute exact path="/tasks" component={AddTaskForm} />                                           
+               <AuthRoute exact path="/task/add" component={AddTaskForm} />                                           
             </Switch>
             <Switch>
                <AuthRoute exact path="/user/add" component={AddUserForm} />                                           

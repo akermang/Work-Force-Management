@@ -7,28 +7,28 @@ const constants = {
   home: '/',
   about: '/about',
   addUser: '/user/add',
-  tasks: '/tasks',
+  addTask: '/task/add',
   login: '/login'
 }
 
 const allLinks = {
   worker: [
-    {path: constants.home, text: 'home'},
-    {path: constants.tasks, text: 'New task'},
+    {path: constants.home, text: 'Home'},
+    {path: constants.addTask, text: 'Add task'},
   ],
   manager: [  
     {path: constants.home, text: 'home'},
-    {path: constants.tasks, text: 'New task'},
-    {path: constants.addUser, text: 'add user'}
+    {path: constants.addTask, text: 'Add task'},
+    {path: constants.addUser, text: 'Add user'}
   ],
   ceo: [
-    {path: constants.home, text: 'home'},
-    {path: constants.tasks, text: 'New task'},
-    {path: constants.addUser, text: 'add user'}
+    {path: constants.home, text: 'Home'},
+    {path: constants.addTask, text: 'Add task'},
+    {path: constants.addUser, text: 'Add user'}
   ],
   public: [
-    {path: constants.about, text: 'about'},
-    {path: constants.login, text: 'login'}
+    {path: constants.about, text: 'About'},
+    {path: constants.login, text: 'Login'}
   ]
 }
 

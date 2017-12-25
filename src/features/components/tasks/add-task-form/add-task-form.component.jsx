@@ -6,20 +6,15 @@ class AddTaskForm extends Component {
     super(props);
     this.state = { tasks: [] }; // <- set up react state
   }
-  componentWillMount() {
+  componentDidMount() {
     /* Create reference to messages in Firebase Database */
-    let messagesRef = fire
-      .database()
-      .ref("tasks")
-      .orderByKey()
-      .limitToLast(100);
-      // console.log('%cHELLO','color:red; font-weight:800', messagesRef.toJSON())
-    messagesRef.on("child_added", snapshot => {
+    let messagesRef = fire.database().ref("tasks");
+    // .orderByKey();
+    // .limitToLast(100);
+    messagesRef.on("value", snapshot => {
       /* Update React state when message is added at Firebase Database */
-      let tasks = { text: snapshot.val(), id: snapshot.key };
-      this.setState({ tasks: [tasks].concat(this.state.tasks) });
+      this.setState({ tasks: snapshot.val() });
     });
-    
   }
 
   render() {
@@ -49,15 +44,14 @@ class AddTaskForm extends Component {
                     <option value="in progress">in progress</option>
                   </select>
                   <h4 className="card-subtitle mb-2">due date:</h4>
-                  <div className="" >
+                  <div className="">
                     <input
                       className="form-control date"
                       type="date"
                       ref="due_date"
-                      
                     />
                   </div>
-                  <h4 className=""></h4>
+                  <h4 className="" />
 
                   <button type="submit" className="btn btn-danger">
                     Publish Task
@@ -70,22 +64,30 @@ class AddTaskForm extends Component {
             </div>
           </div>
         </div>
-
         <ul>
-          {/* Render the list of messages */
-          this.state.tasks.map(tasks => (
-            <div className="panel panel-warning" key={tasks.id}>
-            <div className="panel-heading">
-            <h3 className="panel-title">{tasks.text.description}</h3>
-          </div>
-          <div className="list-group"></div>
-          <li className="list-group-item text-primary">status: {tasks.text.status}</li>
-          <li className="list-group-item text-primary">due date: {tasks.text.due_date}</li>
-            </div>
-          ))}
+          {/* Render the list of messages */}
+          {this.getTask()}
         </ul>
       </div>
     );
+  }
+  getTask() {
+    let tasks = [];
+    for (let key in this.state.tasks) {
+      const task = this.state.tasks[key];
+      let taskElement = <div className="panel panel-warning" key={key}>
+        <div className="panel-heading">
+          <h3 className="panel-title">{task.description}</h3>
+        </div>
+        <div className="list-group" />
+        <li className="list-group-item text-primary">status: {task.status}</li>
+        <li className="list-group-item text-primary">
+          due date: {task.due_date}
+        </li>
+      </div>
+      tasks.push(taskElement);
+    }
+    return tasks;
   }
   addMessage(e) {
     e.preventDefault(); // <- prevent form submit from reloading the page
