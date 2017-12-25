@@ -89,7 +89,6 @@ function updateTaskStatus(id, status) {
     if (task.id == id) task.status = status;
   }
   const updatedTasks = tasks;
-  console.log(updatedTasks)
   const filePath = "./server/mock/tasks.json";
   fileUtils.readFile(filePath, function(atedTasks) {
   // const parsedTasks = JSON.parse(updatedTasks);

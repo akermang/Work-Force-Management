@@ -22,46 +22,52 @@ export default class CanBoardComponent extends Component {
             onCancelTaskSelection={() => this.cancelTaskSelection()}
           />
         ) : null}
-        <div
-          className={`${styles.toDo} ${
-            styles.col
-          } panel panel-danger col-lg-4 container-fluid`}
-        >
-          <div className="panel-heading">
-            <h3 className="panel-title">To do - Tasks </h3>
-          </div>
-          <ColumnComponent
-            tasks={toDo}
-            onTaskSelection={task => this.modifyTask(task)}
-          />
-        </div>
-        <div
-          className={`${styles.inProgress} ${
-            styles.col
-          } col-lg-4 panel panel-primary col-lg-4 container-fluid`}
-        >
-          <div className="panel-heading">
-            <h3 className="panel-title">In progress - Tasks</h3>
-          </div>
-          <div className="">
+        <div className="col-lg-4">
+          <div
+            className={`${styles.toDo} ${
+              styles.col
+            } panel panel-danger container-fluid`}
+          >
+            <div className="panel-heading">
+              <h3 className="panel-title">To do - Tasks </h3>
+            </div>
             <ColumnComponent
-              tasks={inProgress}
+              tasks={toDo}
               onTaskSelection={task => this.modifyTask(task)}
             />
           </div>
         </div>
-        <div
-          className={`${styles.done} ${
-            styles.col
-          } col-lg-4 panel panel-success col-lg-4 container-fluid`}
-        >
-          <div className="panel-heading">
-            <h3 className="panel-title">Done - Tasks</h3>
+        <div className="col-lg-4">
+          <div
+            className={`${styles.inProgress} ${
+              styles.col
+            } panel panel-primary container-fluid`}
+          >
+            <div className="panel-heading">
+              <h3 className="panel-title">In progress - Tasks</h3>
+            </div>
+            <div className="">
+              <ColumnComponent
+                tasks={inProgress}
+                onTaskSelection={task => this.modifyTask(task)}
+              />
+            </div>
           </div>
-          <ColumnComponent
-            tasks={done}
-            onTaskSelection={task => this.modifyTask(task)}
-          />
+        </div>
+        <div className="col-lg-4">
+          <div
+            className={`${styles.done} ${
+              styles.col
+            } panel panel-success container-fluid`}
+          >
+            <div className="panel-heading">
+              <h3 className="panel-title">Done - Tasks</h3>
+            </div>
+            <ColumnComponent
+              tasks={done}
+              onTaskSelection={task => this.modifyTask(task)}
+            />
+          </div>
         </div>
       </div>
     );
