@@ -4,29 +4,31 @@ import { withRouter } from "react-router-dom";
 import TasksComponent from "../../../components/tasks/tasks.component.jsx";
 import { ExampleComponent, CanBoardComponent } from "../../../";
 
-
-
 class ManagerHomePage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       showTasks: false,
       content: "+Tasks"
+    };
   }
-}
 
-getCanBoardComponent() {
+  getCanBoardComponent() {
     return this.state.showTasks && !this.props.isLoading ? (
       <CanBoardComponent tasks={this.props.tasks} />
     ) : null;
   }
 
   getContent() {
-    this.setState((this.state.showTasks) ? {content: "+Tasks"} : {content: "-- Tasks"});
+    this.setState(
+      this.state.showTasks ? { content: "+Tasks" } : { content: "-- Tasks" }
+    );
   }
 
   onShowTasks() {
-    this.setState((this.state.showTasks) ? {showTasks: false} : {showTasks: true});
+    this.setState(
+      this.state.showTasks ? { showTasks: false } : { showTasks: true }
+    );
     this.getContent();
   }
   render() {
@@ -34,35 +36,38 @@ getCanBoardComponent() {
 
     return (
       <div>
-        <button type="button" onClick={() => this.onShowTasks()}  className="btn btn-success btn-md" value="tasks">
+        <button
+          type="button"
+          onClick={() => this.onShowTasks()}
+          className="btn btn-success btn-md"
+          value="tasks"
+        >
           {this.state.content}
         </button>
         <h2>Manager - home page</h2>
         <div>{this.getCanBoardComponent()}</div>
         <div className="container-fluid">
           <div className="row">
-            <div className="col-lg-4 bg-success">
-              <button type="button" className="close" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-              <h2>Maneger {user ? user.username : null}</h2>
-              <h4>{` HOME ${user.firstName}  ${user.lastName}`}</h4>
-              <span>one of three columns-span</span>
-              <p>Workforce Management</p>
-            </div>
+            <div className="col">
+              <div className=" panel panel-success container-fluid">
+                <button type="button" className="close" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <div className="panel-heading">
+                  <h3 className="panel-title">
+                    Maneger {user ? user.username : null}
+                  </h3>
+                </div>
+                <div className="panel-body">
+                  <h4 className="panel-title">{` ${user.firstName}  ${
+                    user.lastName
+                  }`}</h4>
+                  <p className="h4">Chief Technology Officer</p>
 
-            <div className="col-lg-4 bg-danger">
-              <button type="button" className="close" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-              <h2>two of three columns-h3</h2>
-            </div>
-            
-            <div className="col-lg-4 bg-success">
-              <button type="button" className="close" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-              <h2>three of three columns-h4</h2>
+                  <span>one of three columns-span</span>
+                </div>
+                <p className="panel-body text-success">Workforce Management</p>
+              </div>
             </div>
           </div>
         </div>
@@ -79,6 +84,3 @@ function mapStateToProps(state) {
 }
 
 export default withRouter(connect(mapStateToProps)(ManagerHomePage));
-
-
-
