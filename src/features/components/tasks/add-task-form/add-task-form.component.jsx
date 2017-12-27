@@ -83,7 +83,12 @@ class AddTaskForm extends Component {
         <div key={key} className="col-md-3">
           <div className="panel panel-success">
             <div className="panel-heading">
-              <button onClick={this.deleteTask.bind(key)} type="button" className="close" aria-label="Close">
+              <button
+                onClick={this.deleteTask.bind(key)}
+                type="button"
+                className="close"
+                aria-label="Close"
+              >
                 <span aria-hidden="true">&times;</span>
               </button>
               <h3 className="panel-title">{task.description}</h3>
@@ -91,6 +96,14 @@ class AddTaskForm extends Component {
             <div className="list-group" />
             <li className="list-group-item">
               status: <span className="text-info">{task.status}</span>{" "}
+              <button
+                onClick={this.updateTaskStatus.bind(key)}
+                type="button"
+                className="close"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">update</span>
+              </button>
             </li>
             <li className="list-group-item">
               due date: <span className="text-info">{task.due_date}</span>
@@ -107,10 +120,10 @@ class AddTaskForm extends Component {
     e.preventDefault(); // <- prevent form submit from reloading the page
     /* Send the message to Firebase */
     let validateContent = this.inputEl.value;
-    validateContent ? validateContent : validateContent = "No description"; 
+    validateContent ? validateContent : (validateContent = "No description");
     let date = this.refs.due_date.value;
-    date ? date : date = "Not mentioned"; 
-    console.log(date)
+    date ? date : (date = "Not mentioned");
+    console.log(date);
     const data = {
       description: validateContent,
       status: this.refs.status.value,
@@ -124,11 +137,19 @@ class AddTaskForm extends Component {
   }
 
   deleteTask() {
-       fire
+    fire
       .database()
       .ref("tasks")
-      .child(this).
-      remove();
+      .child(this)
+      .remove();
+  }
+
+  updateTaskStatus() {
+    fire
+      .database()
+      .ref("tasks")
+      .child(this)
+      .update({ status: "Canceled" });
   }
 }
 
