@@ -78,18 +78,19 @@ class AddTaskForm extends Component {
     for (let key in this.state.tasks) {
       const task = this.state.tasks[key];
       let taskElement = <div key={key} className="col-md-3">
-       <div className="panel  panel-warning" >
+       <div className="panel panel-success" >
         <div className="panel-heading">
           <h3 className="panel-title">{task.description}</h3>
         </div>
         <div className="list-group" />
-        <li className="list-group-item text-primary">status: {task.status}</li>
-        <li className="list-group-item text-primary">
-          due date: {task.due_date}
+        <li className="list-group-item">status: <span className="text-info" >{task.status}</span> </li>
+        <li className="list-group-item">
+          due date: <span className="text-info" >{task.due_date}</span>
         </li>
       </div></div>
       tasks.push(taskElement);
     }
+    tasks.reverse();
     return tasks;
   }
   addTask(e) {
