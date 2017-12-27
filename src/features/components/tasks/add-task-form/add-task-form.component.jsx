@@ -7,7 +7,7 @@ class AddTaskForm extends Component {
     super(props);
     this.state = { tasks: [] }; // <- set up react state
   }
-  componentDidMount() {
+  componentWillMount() {
     /* Create reference to messages in Firebase Database */
     let messagesRef = fire.database().ref("tasks");
     // .orderByKey();
@@ -22,7 +22,9 @@ class AddTaskForm extends Component {
     return (
       <div>
         <div className="panel panel-primary">
-        <Link className="close" to="/"><span >&times;</span></Link>
+          <Link className="close" to="/">
+            <span>&times;</span>
+          </Link>
           <div className="panel-heading">
             <h3 className="panel-title">Creat New Task</h3>
           </div>
@@ -77,17 +79,25 @@ class AddTaskForm extends Component {
     let tasks = [];
     for (let key in this.state.tasks) {
       const task = this.state.tasks[key];
-      let taskElement = <div key={key} className="col-md-3">
-       <div className="panel panel-success" >
-        <div className="panel-heading">
-          <h3 className="panel-title">{task.description}</h3>
+      let taskElement = (
+        <div key={key} className="col-md-3">
+          <div className="panel panel-success">
+            <div className="panel-heading">
+              <button onClick={this.deleteTask.bind(key)} type="button" className="close" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <h3 className="panel-title">{task.description}</h3>
+            </div>
+            <div className="list-group" />
+            <li className="list-group-item">
+              status: <span className="text-info">{task.status}</span>{" "}
+            </li>
+            <li className="list-group-item">
+              due date: <span className="text-info">{task.due_date}</span>
+            </li>
+          </div>
         </div>
-        <div className="list-group" />
-        <li className="list-group-item">status: <span className="text-info" >{task.status}</span> </li>
-        <li className="list-group-item">
-          due date: <span className="text-info" >{task.due_date}</span>
-        </li>
-      </div></div>
+      );
       tasks.push(taskElement);
     }
     tasks.reverse();
@@ -106,6 +116,14 @@ class AddTaskForm extends Component {
       .ref("tasks")
       .push(data);
     this.inputEl.value = ""; // <- clear the input
+  }
+
+  deleteTask() {
+       fire
+      .database()
+      .ref("tasks")
+      .child(this).
+      remove();
   }
 }
 
