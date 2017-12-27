@@ -106,10 +106,15 @@ class AddTaskForm extends Component {
   addTask(e) {
     e.preventDefault(); // <- prevent form submit from reloading the page
     /* Send the message to Firebase */
+    let validateContent = this.inputEl.value;
+    validateContent ? validateContent : validateContent = "No description"; 
+    let date = this.refs.due_date.value;
+    date ? date : date = "Not mentioned"; 
+    console.log(date)
     const data = {
-      description: this.inputEl.value,
+      description: validateContent,
       status: this.refs.status.value,
-      due_date: this.refs.due_date.value
+      due_date: date
     };
     fire
       .database()
