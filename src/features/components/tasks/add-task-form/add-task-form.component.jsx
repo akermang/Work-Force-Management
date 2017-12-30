@@ -5,7 +5,10 @@ import { Link } from "react-router-dom";
 class AddTaskForm extends Component {
   constructor(props) {
     super(props);
-    this.state = { tasks: [] }; // <- set up react state
+    this.state = {
+      tasks: [],
+      avatar: []
+    }; // <- set up react state
   }
   componentWillMount() {
     /* Create reference to messages in Firebase Database */
@@ -16,11 +19,20 @@ class AddTaskForm extends Component {
       /* Update React state when message is added at Firebase Database */
       this.setState({ tasks: snapshot.val() });
     });
+
+    let avatarsRef = fire.database().ref("avatars");
+    // .orderByKey();
+    // .limitToLast(100);
+    avatarsRef.on("child_added", snapshot => {
+      /* Update React state when message is added at Firebase Database */
+      this.setState({ avatar: snapshot.val() });
+    });
   }
 
   render() {
     return (
       <div>
+        
         <div className="panel panel-primary">
           <Link className="close" to="/">
             <span>&times;</span>
@@ -63,8 +75,33 @@ class AddTaskForm extends Component {
                   <button type="reset" className="btn col-xs-offset-2 btn-info">
                     Clear
                   </button>
+                  <input
+                    className="form-control"
+                    name="avatar"
+                    type="file"
+                    ref="avatar"
+                  />
+                  <button
+                    className="btn btn-primary"
+                    type="button"
+                    onClick={this.uploadFile.bind(this)}
+                  >
+                    upload file
+                  </button>
                 </form>
               </div>
+              <div className="media">
+          <div className="media-left col-lg-6 col-md-2 col-sm-4 col-xs-8">
+            <img
+              className="media-object img-responsive"
+              src={this.state.avatar.url}
+              alt="uploaded file"
+            />
+          </div>
+          <div className="media-body">
+            <h4 className="media-heading"> {this.state.avatar.name}</h4>
+          </div>
+        </div>
             </div>
           </div>
         </div>
@@ -81,7 +118,7 @@ class AddTaskForm extends Component {
       const task = this.state.tasks[key];
       let taskElement = (
         <div key={key} className="col-md-3">
-          <div className="panel panel-success">
+          <div className="panel panel-primary">
             <div className="panel-heading">
               <button
                 onClick={this.deleteTask.bind(key)}
@@ -94,7 +131,7 @@ class AddTaskForm extends Component {
               <h3 className="panel-title">{task.description}</h3>
             </div>
             <div className="list-group" />
-            <li className="list-group-item">
+            <li className="list-group-item list-group-item-warning">
               status: <span className="text-info">{task.status}</span>{" "}
               <button
                 onClick={this.updateTaskStatus.bind(key)}
@@ -105,7 +142,7 @@ class AddTaskForm extends Component {
                 <span aria-hidden="true">update</span>
               </button>
             </li>
-            <li className="list-group-item">
+            <li className="list-group-item list-group-item-warning">
               due date: <span className="text-info">{task.due_date}</span>
             </li>
           </div>
@@ -123,7 +160,6 @@ class AddTaskForm extends Component {
     validateContent ? validateContent : (validateContent = "No description");
     let date = this.refs.due_date.value;
     date ? date : (date = "Not mentioned");
-    console.log(date);
     const data = {
       description: validateContent,
       status: this.refs.status.value,
@@ -149,7 +185,36 @@ class AddTaskForm extends Component {
       .database()
       .ref("tasks")
       .child(this)
-      .update({ status: "Canceled" });
+      .update({ status: "Canceled", due_date: "will never br done" });
+  }
+
+  uploadFile() {
+    let avatarFile = this.refs.avatar.files[0];
+    let fileName = avatarFile.name;
+    var storageRef = fire.storage().ref();
+    var mountainImagesRef = storageRef.child("avatars/" + fileName);
+    var uploadFile = mountainImagesRef.put(avatarFile);
+    var downloadURL;
+    uploadFile.on(
+      "state_changed",
+      function(snapshot) {},
+      function(error) {},
+      function() {
+        // let fileKey = fire.database().ref("avatars/usersAvatarPath").push().key;
+        downloadURL = uploadFile.snapshot.downloadURL;
+        let updates = {};
+        let postData = {
+          url: downloadURL,
+          name: fileName,
+          user: "user.id galgal"
+        };
+        fire
+          .database()
+          .ref("avatars")
+          .push(postData);
+      }
+    );
+    // this.setState({ avatar: downloadURL })
   }
 }
 
