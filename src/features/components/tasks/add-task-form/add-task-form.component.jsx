@@ -32,6 +32,12 @@ class AddTaskForm extends Component {
   render() {
     return (
       <div>
+        <div className="row" >
+        <ul>
+          {/* Render the list of messages */}
+          {this.getTask()}
+        </ul>
+        </div>
         
         <div className="panel panel-primary">
           <Link className="close" to="/">
@@ -105,10 +111,6 @@ class AddTaskForm extends Component {
             </div>
           </div>
         </div>
-        <ul>
-          {/* Render the list of messages */}
-          {this.getTask()}
-        </ul>
       </div>
     );
   }
@@ -145,6 +147,11 @@ class AddTaskForm extends Component {
             <li className="list-group-item list-group-item-warning">
               due date: <span className="text-info">{task.due_date}</span>
             </li>
+            <img
+              className="media-object img-responsive"
+              src={this.state.avatar.url}
+              alt="uploaded file"
+            />
           </div>
         </div>
       );
