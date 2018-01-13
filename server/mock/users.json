@@ -10,14 +10,14 @@
     "avatar": "assets/images/avatar-1.jpg"
   },
   {
-    "firstName": "Bar",
+    "firstName": "Manny",
     "lastName": "Aharony",
     "type": "ceo",
-    "username": "bar",
+    "username": "manny",
     "password": "1234",
     "id": 2,
     "token": 2,
-    "avatar": "assets/images/avatar-3.png"
+    "avatar": "assets/images/avatar-2.png"
   },
   {
     "firstName": "ddd",
@@ -40,13 +40,13 @@
     "avatar": "assets/images/client-two.png"
   },
   {
-    "firstName": "mani",
-    "lastName": "manag",
+    "firstName": "Bar",
+    "lastName": "Aharony",
     "type": "manager",
-    "username": "mani",
+    "username": "bar",
     "password": "1234",
     "id": 5,
     "token": 5,
-    "avatar": "assets/images/client-one.jpg"
+    "avatar": "assets/images/avatar-3.png"
   }  
 ]
