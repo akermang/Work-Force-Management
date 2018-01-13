@@ -64,7 +64,7 @@ class ManagerHomePage extends React.Component {
                   }`}</h4>
                   <p className="h4">Chief Technology Officer</p>
 
-                  <span>one of three columns-span</span>
+                  <span>Israel  Herzelia </span>
                 </div>
                 <p className="panel-body text-success">Workforce Management</p>
               </div>
