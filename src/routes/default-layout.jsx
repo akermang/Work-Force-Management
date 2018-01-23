@@ -32,30 +32,27 @@ const allLinks = {
   ]
 }
 
-const DefaultLayout = ({ component: Component, ...rest }) => ({
+class DefaultLayout extends React.Component {
   render() {
+    const Component = this.props.component;
     const user = this.props.loggedInUser || {};
-    const links = user.type ? allLinks[user.type] : allLinks.public ;    
+    const links = user.type ? allLinks[user.type] : allLinks.public;
+
     return (
-      <Route
-        {...rest}
-        render={matchProps => (
-          <div>
-            <HeaderComponent />
-            <div className="wrapper default">
+      <div>
+        <HeaderComponent />
+        <div className="wrapper default">
             {
               links ? 
                 <NavComponent links={links} />
               : null
             }              
-              <Component {...matchProps} />
-            </div>
-          </div>
-        )}
-      />
-    );
-  },
-});
+            <Component {...this.props} />
+        </div>
+      </div>
+    )
+  }
+};
 
 function mapStateToProps(state) {
   return {loggedInUser: state.authReducer.loggedInUser};

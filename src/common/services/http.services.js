@@ -9,8 +9,8 @@ function request(url, options, callback) {
   }
   oReq.send(data);
 
-  oReq.addEventListener("loadend", function(d) {
-    callback(JSON.parse(d.currentTarget.response));
+  oReq.addEventListener("loadend", function(d) {    
+    callback(JSON.parse(d.currentTarget.response), d.currentTarget.status);
   });
 }
 

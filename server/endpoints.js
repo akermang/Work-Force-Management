@@ -1,23 +1,31 @@
-import fire from "../src/fire";
-
-const _endpoints = {
+var fire = require("../src/fire")
+// this file is for testing //
+let _endpoints = {
   tasks: {
-    all: allTasks(),
+    all: [],
     byId: id => getTaskById(id)
   }
 };
 
-function allTasks() {
+(function allTasks() {
   fire
     .database()
     .ref("tasks")
     .orderByValue()
     .on("value", function(data) {
-      data.forEach(function(data) {
-        console.log("The data.key: " + data.key + " description: " + data.val().description);
+      console.log(
+        "_endpoints.data.val(): " +JSON.stringify( data.val())
+      );
+      _endpoints.tasks.all = data;
+      // data.forEach(function(data) {});
+      // console.log("_endpoints.tasks.all: " + _endpoints.tasks.all);
+      _endpoints.tasks.all.forEach(function(data) {
+        
       });
     });
-}
+})();
+
+console.log("_endpoints.tasks.all:**ON UPLOAD***: " + _endpoints.tasks.all);
 
 function getTaskById(id) {
   return fire
@@ -26,4 +34,5 @@ function getTaskById(id) {
     .equalTo(id, "id")
     .toJSON();
 }
+// module.exports = _endpoints;
 export default _endpoints;

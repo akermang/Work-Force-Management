@@ -3,8 +3,9 @@ import styles from "./column.component.scss";
 
 export default class ColumnComponent extends Component {
 
-  render() {
+  render() {    
     const tasks = this.props.tasks || [];
+    console.log('xxxxxxxxxxxxxx', tasks)
     return (
       <div className="list-group">
         {tasks.map(task => {
@@ -30,3 +31,5 @@ export default class ColumnComponent extends Component {
   //       - create action in task.action
   //       - update state by dispatching action to task.reducer
 }
+
+

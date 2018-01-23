@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import styles from "./can-board.component.scss";
 import ColumnComponent from "./column/column.component.jsx";
-import TasksComponent from "../tasks/tasks.component.jsx";
+import MudifyTasksComponent from "../tasks/mudifyTasks.component.jsx";
+import _ from 'lodash';
 
 export default class CanBoardComponent extends Component {
   constructor(props) {
@@ -17,7 +18,7 @@ export default class CanBoardComponent extends Component {
     return (
       <div className={styles.canBoard + " row"}>
         {this.state.selectedTask ? (
-          <TasksComponent
+          <MudifyTasksComponent
             task={this.state.selectedTask}
             onCancelTaskSelection={() => this.cancelTaskSelection()}
           />
@@ -74,10 +75,26 @@ export default class CanBoardComponent extends Component {
   }
 
   getTasksByStatus(status) {
-    const tasks = this.props.tasks || [];
-    return tasks.filter(task => {
+    // const tasks = this.props.tasks || [];
+    // let taskFiltered = [];
+    // console.log(tasks);
+    // tasks.forEach(function(task){ console.log("server snapshot: "+task.status)})
+    // for (let key in tasks) {
+    //   const task = tasks[key];
+    //    if (task.status === status) {
+    //      task.id = key;
+    //     taskFiltered.push(task);
+    //     // console.log(taskFiltered)
+    //   }}      
+    //   return taskFiltered;        
+
+    return _.filter(this.props.tasks, (task, key) => {
+      task.id = key;
       return task.status === status;
-    });
+    })
+    // return tasks.filter(task => {
+    //   return task.status === status;
+    // });
   }
 
   modifyTask(task) {

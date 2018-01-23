@@ -141,7 +141,7 @@ class AddTaskForm extends Component {
                 className="close"
                 aria-label="Close"
               >
-                <span aria-hidden="true">update</span>
+                <span aria-hidden="true">cancel</span>
               </button>
             </li>
             <li className="list-group-item list-group-item-warning">

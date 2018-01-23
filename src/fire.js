@@ -1,4 +1,4 @@
-import firebase from "firebase";
+var firebase = require("firebase");
 var config = {
   apiKey: "AIzaSyC_fZLT2Iofr7e_tvT0cgKsjI3gA2d-O6I",
   authDomain: "w-f-m-4f195.firebaseapp.com",
@@ -8,4 +8,4 @@ var config = {
   messagingSenderId: "525567242875"
 };
 var fire = firebase.initializeApp(config);
-export default fire;
+module.exports = fire;

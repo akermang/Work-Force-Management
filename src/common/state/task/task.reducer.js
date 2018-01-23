@@ -14,9 +14,11 @@ function tasksReducer(state = taskState, action) {
       return { ...state, loading: true };
 
     case FETCH_TASKS_SUCCESS:
+    console.log(action.payload)
       return { ...state, loading: false, tasks: action.payload.tasks };
 
     case FETCH_TASKS_FAIL:
+    console.log(action.payload)
       return { ...state, loading: false, error: action.payload.error };
 
     case START_FETCH_TASK_STATUS_UPDATE:

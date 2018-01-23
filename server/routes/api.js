@@ -5,6 +5,9 @@ const fileUtils = new FileUtils();
 var multer = require("multer");
 var upload = multer();
 var fs = require("fs");
+var fire = require('../../src/fire');
+// var endpoints = require("../endpoints.js");
+
 
 /**
  * Mock data
@@ -14,28 +17,52 @@ let mockTokens = require("../mock/tokens.json");
 let mockUsers = require("../mock/users.json");
 let tasks = require("../mock/tasks.json");
 
+
 /**
  * Api routes
  */
 router.get("/", (req, res) => {
-  send(res, { statusCode: 200, data: mockData });
+  send(res, {  data: mockData });
+});
+
+router.get("/task", (req, res) => {
+  let messagesRef = fire.database().ref("tasks").orderByValue();
+  // let tasksArray = [];
+  
+  messagesRef.once("value", snapshot => {    
+         
+    // snapshot.forEach(function(data){
+    //   let task =  data.val();
+    //   task.id = data.key; 
+    //   tasksArray.push(task);      
+    // });
+
+    send(res.status(200), { tasks: snapshot });
+    tasks = snapshot;
+  
+  });  
+  
 });
 
 router.post("/task/status/update", (req, res) => {
   const taskId = req.body.id;
   const status = req.body.status;
-  const tasks = updateTaskStatus(taskId, status);
-  send(res, { statusCode: 200, tasks: tasks });
+  updateTaskStatus(taskId, status);
+  let messagesRef = fire.database().ref("tasks").orderByValue();
+  messagesRef.once("value", snapshot => {
+  send(res.status(200), { tasks: snapshot });
+  tasks = snapshot;
+  });
 });
 
-router.get("/task", (req, res) => {
-  if (tasks) send(res.status(200), { statusCode: 200, tasks });
-  else
-    send(res.status(404), {
-      statusCode: 404,
-      error: new Error("failed to get tasks")
-    });
-});
+// router.get("/task", (req, res) => {
+//   if (tasks) send(res.status(200), {  tasks });
+//   else
+//     send(res.status(404), {
+//       statusCode: 404,
+//       error: new Error("failed to get tasks")
+//     });
+// });
 
 router.post("/login", (req, res) => {
   const username = req.body.username;
@@ -44,9 +71,9 @@ router.post("/login", (req, res) => {
 
   if (user) {
     setUserSession(user.token);
-    send(res, { statusCode: 200, loggedInUser: user });
+    send(res, {  loggedInUser: user });
   } else {
-    send(res, { statusCode: 400, data: null });
+    send(res.status(400, { data: null }));
   }
 });
 
@@ -56,9 +83,9 @@ router.post("/auth", (req, res) => {
   const token = req.body.token;
   if (mockTokens[token]) {
     user = getUserByToken(token);
-    send(res, { statusCode: 200, loggedInUser: user });
+    send(res, {  loggedInUser: user });
   } else {
-    send(res, { statusCode: 401, error: "authentication failed" });
+    send(res.status(401), { error: "authentication failed" });
   }
 });
 
@@ -69,31 +96,36 @@ router.post("/user/add/", (req, res) => {
   const newUser = setdefaultCredentials(user);
 
   if (!newUser) {
-    return res.send({ statusCode: 400, error: "username already exists" });
+    return res.status(400).send({ error: "username already exists" });
   }
 
   if (avatar) {
     const filePath = "assets/images/" + req.files.avatar.name;
     const uploaded = uploadFile(req.files.avatar, filePath, res);
     if (!uploaded)
-      return res.send({ statusCode: 400, error: "file failed to upload" });
+      return res.send.status(400)({ error: "file failed to upload" });
     newUser.avatar = filePath;
   }
   addUser(newUser);
 
-  return res.send({ statusCode: 200, user: user });
+  return res.send({  user: user });
 });
 
 function updateTaskStatus(id, status) {
-  for (task of tasks) {
-    if (task.id == id) task.status = status;
-  }
-  const updatedTasks = tasks;
-  const filePath = "./server/mock/tasks.json";
-  fileUtils.readFile(filePath, function(atedTasks) {
-  // const parsedTasks = JSON.parse(updatedTasks);
-  fileUtils.writeFile(filePath, updatedTasks, function(data) {});
-  });
+  fire
+      .database()
+      .ref("tasks")
+      .child(id)
+      .update({ status: status});
+  // for (task of tasks) {
+  //   if (task.id == id) task.status = status;
+  // }
+  // const updatedTasks = tasks;
+  // const filePath = "./server/mock/tasks.json";
+  // fileUtils.readFile(filePath, function(atedTasks) {
+  // // const parsedTasks = JSON.parse(updatedTasks);
+  // fileUtils.writeFile(filePath, updatedTasks, function(data) {});
+  // });
   return tasks;
 }
 

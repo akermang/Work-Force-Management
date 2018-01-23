@@ -10,7 +10,7 @@ import {
 } from "../../../common/state/task/task.actions";
 import { FETCH } from "../../../common/actions";
 
-const TasksComponent = props => ({
+const MudifyTasksComponent = props => ({
   render() {
     const task = this.props.task || {};
     const cancel = this.props.onCancelTaskSelection;
@@ -84,4 +84,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default withRouter(connect(mapStateToProps)(TasksComponent));
+export default withRouter(connect(mapStateToProps)(MudifyTasksComponent));

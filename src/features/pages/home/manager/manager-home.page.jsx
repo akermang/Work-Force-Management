@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import TasksComponent from "../../../components/tasks/tasks.component.jsx";
+import MudifyTasksComponent from "../../../components/tasks/mudifyTasks.component.jsx";
 import { ExampleComponent, CanBoardComponent } from "../../../";
 
 class ManagerHomePage extends React.Component {
@@ -14,6 +14,7 @@ class ManagerHomePage extends React.Component {
   }
 
   getCanBoardComponent() {
+    console.log(this.props.tasks)
     return this.state.showTasks && !this.props.isLoading ? (
       <CanBoardComponent tasks={this.props.tasks} />
     ) : null;

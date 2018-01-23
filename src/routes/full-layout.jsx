@@ -1,21 +1,16 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 import { NavComponent } from '../features';
-
-const FullPageLayout = ({ component: Component, ...rest }) => ({
+import { withRouter } from 'react-router-dom';
+ 
+export default class FullPageLayout extends React.Component {
   render() {
+    const Component = this.props.component;
     return (
-      <Route
-        {...rest}
-        render={matchProps => (
-          <div className="wrapper full">
-            <NavComponent />
-            <Component {...matchProps} />
-          </div>
-        )}
-      />
-    );
-  },
-});
-
-export default FullPageLayout;
+      <div className="wrapper full">
+        <NavComponent />
+        <Component {...rest} />
+      </div>
+    )
+  }
+};

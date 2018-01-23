@@ -27,7 +27,7 @@ const LoginPage = props => ({
             <input
               className="form-control"
               placeholder="Username"
-              value="bar"
+              defaultValue="bar"
               type="text"
               ref="username"
             />
@@ -40,7 +40,7 @@ const LoginPage = props => ({
             <input
               className="form-control"
               placeholder="Password"
-              value="1234"
+              defaultValue="1234"
               type="password"
               ref="password"
             />
