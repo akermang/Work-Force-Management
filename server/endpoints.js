@@ -13,9 +13,9 @@ let _endpoints = {
     .ref("tasks")
     .orderByValue()
     .on("value", function(data) {
-      console.log(
-        "_endpoints.data.val(): " +JSON.stringify( data.val())
-      );
+      // console.log(
+      //   "_endpoints.data.val(): " +JSON.stringify( data.val())
+      // );
       _endpoints.tasks.all = data;
       // data.forEach(function(data) {});
       // console.log("_endpoints.tasks.all: " + _endpoints.tasks.all);

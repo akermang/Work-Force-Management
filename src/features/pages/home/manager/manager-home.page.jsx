@@ -14,7 +14,6 @@ class ManagerHomePage extends React.Component {
   }
 
   getCanBoardComponent() {
-    console.log(this.props.tasks)
     return this.state.showTasks && !this.props.isLoading ? (
       <CanBoardComponent tasks={this.props.tasks} />
     ) : null;
