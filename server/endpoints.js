@@ -25,8 +25,6 @@ let _endpoints = {
     });
 })();
 
-console.log("_endpoints.tasks.all:**ON UPLOAD***: " + _endpoints.tasks.all);
-
 function getTaskById(id) {
   return fire
     .database()
