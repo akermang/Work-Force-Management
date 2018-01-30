@@ -16,7 +16,7 @@ const MudifyTasksComponent = props => ({
     const cancel = this.props.onCancelTaskSelection;
 
     return (
-      <div className={``}>
+      <div className={"mudify-task-component"}>
         <div className="panel panel-info">
         <button type="button" onClick={cancel} className="close" ><span >&times;</span></button>
           <div className="panel-heading">

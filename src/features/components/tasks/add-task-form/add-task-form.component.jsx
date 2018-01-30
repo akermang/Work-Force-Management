@@ -11,20 +11,13 @@ class AddTaskForm extends Component {
     }; // <- set up react state
   }
   componentWillMount() {
-    /* Create reference to messages in Firebase Database */
-    let messagesRef = fire.database().ref("tasks");
-    // .orderByKey();
-    // .limitToLast(100);
+    let messagesRef = fire.database().ref("tasks").limitToLast(1);
     messagesRef.on("value", snapshot => {
-      /* Update React state when message is added at Firebase Database */
       this.setState({ tasks: snapshot.val() });
     });
 
     let avatarsRef = fire.database().ref("avatars");
-    // .orderByKey();
-    // .limitToLast(100);
     avatarsRef.on("child_added", snapshot => {
-      /* Update React state when message is added at Firebase Database */
       this.setState({ avatar: snapshot.val() });
     });
   }
@@ -32,12 +25,7 @@ class AddTaskForm extends Component {
   render() {
     return (
       <div>
-        <div className="row" >
-        <ul>
-          {/* Render the list of messages */}
-          {this.getTask()}
-        </ul>
-        </div>
+        
         
         <div className="panel panel-primary">
           <Link className="close" to="/">
@@ -95,7 +83,11 @@ class AddTaskForm extends Component {
                     upload file
                   </button>
                 </form>
-              </div>
+              </div><div className="row" >
+        <ul>
+          {this.getTask()}
+        </ul>
+        </div>
               <div className="media">
           <div className="media-left col-lg-6 col-md-2 col-sm-4 col-xs-8">
             <img
@@ -119,7 +111,7 @@ class AddTaskForm extends Component {
     for (let key in this.state.tasks) {
       const task = this.state.tasks[key];
       let taskElement = (
-        <div key={key} className="col-md-3">
+        <div key={key} className="col-md-3 task-panel">
           <div className="panel panel-primary">
             <div className="panel-heading">
               <button
@@ -147,11 +139,13 @@ class AddTaskForm extends Component {
             <li className="list-group-item list-group-item-warning">
               due date: <span className="text-info">{task.due_date}</span>
             </li>
+              <div className= "row text-center">
             <img
-              className="media-object img-responsive"
+              className="media-object col-md-5 col-xs-3  img-responsive"
               src={this.state.avatar.url}
               alt="uploaded file"
-            />
+            /> 
+            </div>
           </div>
         </div>
       );
@@ -192,7 +186,7 @@ class AddTaskForm extends Component {
       .database()
       .ref("tasks")
       .child(this)
-      .update({ status: "Canceled", due_date: "will never br done" });
+      .update({ status: "Canceled", due_date: "will never be done" });
   }
 
   uploadFile() {

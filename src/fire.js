@@ -7,5 +7,6 @@ var config = {
   storageBucket: "w-f-m-4f195.appspot.com",
   messagingSenderId: "525567242875"
 };
+
 var fire = firebase.initializeApp(config);
 module.exports = fire;

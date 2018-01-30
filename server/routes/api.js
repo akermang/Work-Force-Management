@@ -6,6 +6,7 @@ var multer = require("multer");
 var upload = multer();
 var fs = require("fs");
 var fire = require('../../src/fire');
+
 // var endpoints = require("../endpoints.js");
 
 
@@ -67,23 +68,29 @@ router.post("/task/status/update", (req, res) => {
 router.post("/login", (req, res) => {
   const username = req.body.username;
   const password = req.body.password;
-  const user = getUser(username, password);
+  const user = getUser(username, password, (user)=>{
+    if (user) {
+      setUserSession(user.token);
+      send(res, {  loggedInUser: user });
+    } else {
+      send(res.status(400, { data: null }));
+    }
+  });
+  
 
-  if (user) {
-    setUserSession(user.token);
-    send(res, {  loggedInUser: user });
-  } else {
-    send(res.status(400, { data: null }));
-  }
+  
 });
 
 router.post("/auth", (req, res) => {
   let statusCode;
-  let user;
   const token = req.body.token;
   if (mockTokens[token]) {
-    user = getUserByToken(token);
-    send(res, {  loggedInUser: user });
+    console.log("getUserByToken")
+    getUserByToken(token, (user)=>{
+      console.log("POSTgetUserByToken: "+user)
+      send(res, {  loggedInUser: user });
+    });
+    
   } else {
     send(res.status(401), { error: "authentication failed" });
   }
@@ -111,11 +118,11 @@ router.post("/user/add/", (req, res) => {
   return res.send({  user: user });
 });
 
-function updateTaskStatus(id, status) {
+function updateTaskStatus(key, status) {
   fire
       .database()
       .ref("tasks")
-      .child(id)
+      .child(key)
       .update({ status: status});
   // for (task of tasks) {
   //   if (task.id == id) task.status = status;
@@ -130,6 +137,35 @@ function updateTaskStatus(id, status) {
 }
 
 function uploadFile(file, path, res) {
+ 
+  //   let avatarFile = file;
+  //   let fileName = file.name;
+  //   var storageRef = fire.storage().ref();
+  //   var mountainImagesRef = storageRef.child("avatars/" + fileName);
+  //   var uploadFile = mountainImagesRef.put(file);
+  //   var downloadURL;
+  //   uploadFile.on(
+  //     "state_changed",
+  //     function(snapshot) {},
+  //     function(error) {},
+  //     function() {
+  //       // let fileKey = fire.database().ref("avatars/usersAvatarPath").push().key;
+  //       downloadURL = uploadFile.snapshot.downloadURL;
+  //       let updates = {};
+  //       let postData = {
+  //         url: downloadURL,
+  //         name: fileName,
+  //         user: "user.id galgal"
+  //       };
+  //       fire
+  //         .database()
+  //         .ref("avatars")
+  //         .push(postData);
+  //     }
+  //   );
+  //    return "success";
+  // }
+
   file.mv(path, function(err) {
     if (err) return null;
   });
@@ -145,6 +181,14 @@ function setdefaultCredentials(user) {
 }
 
 function userExists(user) {
+  // let userssRef = fire.database().ref("users").orderByValue();
+  // userssRef.once("value", snapshot => {    
+  //   snapshot.forEach(function(data){
+  //     let obj = data.val();
+  //     // if (obj.username === user.username) return user;
+  //   })
+  // })
+
   return mockUsers.filter(function(u) {
     return u.username === user.username;
   })[0];
@@ -157,24 +201,53 @@ function getNewToken() {
   return newToken;
 }
 
-function getUser(username, password) {
-  for (let user of mockUsers) {
-    if (user.username === username && user.password === password) {
-      return user;
-    }
-  }
-}
+function getUser(username, password, callback) {
+  let query = fire.database().ref("users").orderByKey();
+  query.once("value")
+  .then(function(snapshot) {
+    snapshot.forEach(function(childSnapshot) {
+      let obj = childSnapshot.val();
+      if (obj.username === username && obj.password === password){
+        callback(obj)
+        return true;
+      }
+    });
+  });   
+}        
+  
+
+    //   let user =  data.val();
+    //   user.id = data.key; 
+    //   tasksArray.push(task);      
+    // });
+
+   
+  
+
+  
+
+
+  // for (let user of mockUsers) {
+  //   if (user.username === username && user.password === password) {
+  //     return user;
+  //   }
+  // }
+
 
 function addUser(user) {
-  const filePath = "./server/mock/users.json";
-  // read data from file
-  fileUtils.readFile(filePath, function(users) {
-    const parsedUsers = JSON.parse(users);
-    parsedUsers.push(user);
-    // write data to file
-    mockUsers = parsedUsers;
-    fileUtils.writeFile(filePath, parsedUsers, function(data) {});
-  });
+  fire
+      .database()
+      .ref("users")
+      .push(user);
+  // const filePath = "./server/mock/users.json";
+  // // read data from file
+  // fileUtils.readFile(filePath, function(users) {
+  //   const parsedUsers = JSON.parse(users);
+  //   parsedUsers.push(user);
+  //   // write data to file
+  //   mockUsers = parsedUsers;
+  //   fileUtils.writeFile(filePath, parsedUsers, function(data) {});
+  // });
 }
 
 function setUserSession(token) {
@@ -192,10 +265,26 @@ function setUserSession(token) {
 /**
  * Helper method
  */
-function getUserByToken(token) {
-  return mockUsers.filter(function(user) {
-    return user.token == token;
-  })[0];
+function getUserByToken(token, callback) {
+  // return mockUsers.filter(function(user) {
+  //   return user.token == token;
+  // })[0];
+  let query = fire.database().ref("users").orderByKey();
+  query.once("value")
+  .then(function(snapshot) {
+    snapshot.forEach(function(childSnapshot) {
+      let obj = childSnapshot.val();
+      if (obj.token == token){
+        console.log(token, obj)
+
+        
+
+        callback(obj)
+        return true;
+      }
+    });
+  });   
+// }        
 }
 
 function send(res, data) {
