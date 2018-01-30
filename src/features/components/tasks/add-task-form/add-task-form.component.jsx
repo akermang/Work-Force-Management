@@ -28,6 +28,9 @@ class AddTaskForm extends Component {
   render() {
     return (
       <div>
+        <div className="row">
+                <ul>{this.getTask()}</ul>
+              </div>
         <div className="panel panel-primary">
           <Link className="close" to="/">
             <span>&times;</span>
@@ -39,9 +42,7 @@ class AddTaskForm extends Component {
             <div className="card-block-rounded">
               <div className="form-group">
                 <form onSubmit={this.addTask.bind(this)}>
-                <div className="row">
-                <ul>{this.getTask()}</ul>
-              </div>
+                
               <label className="text-lowercase h4">description:</label>
                   <input
                     className="form-control"
@@ -97,7 +98,7 @@ class AddTaskForm extends Component {
               >
                 <span aria-hidden="true">&times;</span>
               </button>
-              <h3 className="panel-title">last task: {task.description}</h3>
+              <h3 className="panel-title">last task: <span className="lead"> {task.description}</span> </h3>
             </div>
             <div className="list-group" />
             <li className="list-group-item list-group-item-warning">
