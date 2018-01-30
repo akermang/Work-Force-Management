@@ -11,7 +11,10 @@ class AddTaskForm extends Component {
     }; // <- set up react state
   }
   componentWillMount() {
-    let messagesRef = fire.database().ref("tasks").limitToLast(1);
+    let messagesRef = fire
+      .database()
+      .ref("tasks")
+      .limitToLast(1);
     messagesRef.on("value", snapshot => {
       this.setState({ tasks: snapshot.val() });
     });
@@ -25,8 +28,6 @@ class AddTaskForm extends Component {
   render() {
     return (
       <div>
-        
-        
         <div className="panel panel-primary">
           <Link className="close" to="/">
             <span>&times;</span>
@@ -37,8 +38,11 @@ class AddTaskForm extends Component {
           <div className="panel-body bg-info">
             <div className="card-block-rounded">
               <div className="form-group">
-                <label className="text-lowercase h4">description:</label>
                 <form onSubmit={this.addTask.bind(this)}>
+                <div className="row">
+                <ul>{this.getTask()}</ul>
+              </div>
+              <label className="text-lowercase h4">description:</label>
                   <input
                     className="form-control"
                     type="text"
@@ -69,37 +73,8 @@ class AddTaskForm extends Component {
                   <button type="reset" className="btn col-xs-offset-2 btn-info">
                     Clear
                   </button>
-                  <input
-                    className="form-control"
-                    name="avatar"
-                    type="file"
-                    ref="avatar"
-                  />
-                  <button
-                    className="btn btn-primary"
-                    type="button"
-                    onClick={this.uploadFile.bind(this)}
-                  >
-                    upload file
-                  </button>
                 </form>
-              </div><div className="row" >
-        <ul>
-          {this.getTask()}
-        </ul>
-        </div>
-              <div className="media">
-          <div className="media-left col-lg-6 col-md-2 col-sm-4 col-xs-8">
-            <img
-              className="media-object img-responsive"
-              src={this.state.avatar.url}
-              alt="uploaded file"
-            />
-          </div>
-          <div className="media-body">
-            <h4 className="media-heading"> {this.state.avatar.name}</h4>
-          </div>
-        </div>
+              </div>
             </div>
           </div>
         </div>
@@ -111,7 +86,7 @@ class AddTaskForm extends Component {
     for (let key in this.state.tasks) {
       const task = this.state.tasks[key];
       let taskElement = (
-        <div key={key} className="col-md-3 task-panel">
+        <div key={key} className="task-panel">
           <div className="panel panel-primary">
             <div className="panel-heading">
               <button
@@ -122,7 +97,7 @@ class AddTaskForm extends Component {
               >
                 <span aria-hidden="true">&times;</span>
               </button>
-              <h3 className="panel-title">{task.description}</h3>
+              <h3 className="panel-title">last task: {task.description}</h3>
             </div>
             <div className="list-group" />
             <li className="list-group-item list-group-item-warning">
@@ -139,13 +114,6 @@ class AddTaskForm extends Component {
             <li className="list-group-item list-group-item-warning">
               due date: <span className="text-info">{task.due_date}</span>
             </li>
-              <div className= "row text-center">
-            <img
-              className="media-object col-md-5 col-xs-3  img-responsive"
-              src={this.state.avatar.url}
-              alt="uploaded file"
-            /> 
-            </div>
           </div>
         </div>
       );

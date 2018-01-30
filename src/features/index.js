@@ -20,4 +20,4 @@ export { default as AddUserForm } from './components/add-user-form/add-user-form
 export { default as MudifyTasksComponent } from './components/tasks/mudifyTasks.component.jsx';
 export { default as AddTaskForm } from './components/tasks/add-task-form/add-task-form.component.jsx';
 
-export { default as CanBoardComponent } from './components/can-board/can-board.component.jsx';
+export { default as KanBoardComponent } from './components/kan-board/kan-board.component.jsx';

@@ -8,7 +8,7 @@ import {
 } from "../../../../common/state/example/example.actions";
 import { FETCH } from "../../../../common/actions";
 import { ApiService } from "../../../../common/services/api.service";
-import { ExampleComponent, CanBoardComponent } from "../../../";
+import { ExampleComponent, KanBoardComponent } from "../../../";
 import { FetchAction } from "../../../../common/actions";
 import avatar from "../assets/avatar-1.jpg";
 import styles from "../home.page.scss";
@@ -30,7 +30,7 @@ class WorkerHomePage extends React.Component {
     return this.props.isLoading ? (
       this.getLoader()
     ) : (
-      <CanBoardComponent tasks={this.props.tasks} />
+      <KanBoardComponent tasks={this.props.tasks} />
     );
   }
 

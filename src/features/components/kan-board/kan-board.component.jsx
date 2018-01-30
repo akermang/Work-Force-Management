@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import styles from "./can-board.component.scss";
+import styles from "./kan-board.component.scss";
 import ColumnComponent from "./column/column.component.jsx";
 import MudifyTasksComponent from "../tasks/mudifyTasks.component.jsx";
 import _ from 'lodash';
 
-export default class CanBoardComponent extends Component {
+export default class KanBoardComponent extends Component {
   constructor(props) {
     super(props);
     this.state = { selectedTask: null };
@@ -16,7 +16,7 @@ export default class CanBoardComponent extends Component {
     const done = this.getTasksByStatus("done");
 
     return (
-      <div className={styles.canBoard + " row"}>
+      <div className={styles.kanBoard + " row"}>
         {this.state.selectedTask ? (
           <MudifyTasksComponent
             task={this.state.selectedTask}
