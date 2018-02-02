@@ -1,16 +1,27 @@
 import React, { Component } from "react";
+import styles from "../tasks.component.scss";
 import fire from "../../../../fire";
 import { Link } from "react-router-dom";
+import { ApiService } from "../../../../common/services/api.service";
+import {
+  START_FETCH_TASK_ADD,
+  FETCH_TASK_ADD_SUCCESS,
+  FETCH_TASK_ADD_FAIL,
+  fetchTasks
+} from "../../../../common/state/task/task.actions";
+import { connect } from "react-redux";
+import { FETCH } from "../../../../common/actions";
 
 class AddTaskForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
       tasks: [],
-      avatar: []
-    }; // <- set up react state
+      avatar: [],
+      classState: styles.lead 
+    };
   }
-  componentWillMount() {
+  componentDidMount() {
     let messagesRef = fire
       .database()
       .ref("tasks")
@@ -29,8 +40,8 @@ class AddTaskForm extends Component {
     return (
       <div>
         <div className="row">
-                <ul>{this.getTask()}</ul>
-              </div>
+          <ul>{this.getTask()}</ul>
+        </div>
         <div className="panel panel-primary">
           <Link className="close" to="/">
             <span>&times;</span>
@@ -42,8 +53,7 @@ class AddTaskForm extends Component {
             <div className="card-block-rounded">
               <div className="form-group">
                 <form onSubmit={this.addTask.bind(this)}>
-                
-              <label className="text-lowercase h4">description:</label>
+                  <label className="text-lowercase h4">description:</label>
                   <input
                     className="form-control"
                     type="text"
@@ -84,36 +94,33 @@ class AddTaskForm extends Component {
   }
   getTask() {
     let tasks = [];
+    let that = this;
+    let classState = this.state.classState;
     for (let key in this.state.tasks) {
       const task = this.state.tasks[key];
       let taskElement = (
         <div key={key} className="task-panel">
           <div className="panel panel-primary">
             <div className="panel-heading">
-              <button
-                onClick={this.deleteTask.bind(key)}
-                type="button"
-                className="close"
-                aria-label="Close"
-              >
-                <span aria-hidden="true">&times;</span>
-              </button>
-              <h3 className="panel-title">last task: <span className="lead"> {task.description}</span> </h3>
+              <h3 className="panel-title">
+                last task: <span className=  {classState + " lead"  }> {task.description}</span>{" "}
+              </h3>
             </div>
+
             <div className="list-group" />
             <li className="list-group-item list-group-item-warning">
-              status: <span className="text-info">{task.status}</span>{" "}
-              <button
-                onClick={this.updateTaskStatus.bind(key)}
-                type="button"
-                className="close"
-                aria-label="Close"
-              >
-                <span aria-hidden="true">cancel</span>
-              </button>
+              status: <span className={classState + " text-info"}>{task.status}</span>{" "}
             </li>
             <li className="list-group-item list-group-item-warning">
-              due date: <span className="text-info">{task.due_date}</span>
+              due date: <span className={classState + " text-info"}>{task.due_date}</span>
+              <button
+                onClick={this.deleteTask.bind(key, that)}
+                type="button"
+                className={styles.btnDelete + " btn btn-sm btn-warning"}
+                aria-label="close"
+              >
+                <span aria-hidden="true">delete</span>
+              </button>
             </li>
           </div>
         </div>
@@ -125,7 +132,6 @@ class AddTaskForm extends Component {
   }
   addTask(e) {
     e.preventDefault(); // <- prevent form submit from reloading the page
-    /* Send the message to Firebase */
     let validateContent = this.inputEl.value;
     validateContent ? validateContent : (validateContent = "No description");
     let date = this.refs.due_date.value;
@@ -135,19 +141,29 @@ class AddTaskForm extends Component {
       status: this.refs.status.value,
       due_date: date
     };
-    fire
-      .database()
-      .ref("tasks")
-      .push(data);
+    this.setState({classState: styles.changed})
+    setTimeout(() => {
+      this.setState({classState: styles.lead});
+    }, 2000)
+    this.fetchAadTask(data);
     this.inputEl.value = ""; // <- clear the input
   }
 
-  deleteTask() {
+  deleteTask(that , key) {;
     fire
       .database()
       .ref("tasks")
       .child(this)
-      .remove();
+      .remove()
+      .then(fetchTasks(that.props.dispatch))
+      .then(that.setState({classState: styles.changed}))
+      setTimeout(() => {
+        that.setState({classState: styles.lead});
+      }, 2200)
+      // .then(props.history.push("/"))
+  
+  
+
   }
 
   updateTaskStatus() {
@@ -162,8 +178,8 @@ class AddTaskForm extends Component {
     let avatarFile = this.refs.avatar.files[0];
     let fileName = avatarFile.name;
     var storageRef = fire.storage().ref();
-    var mountainImagesRef = storageRef.child("avatars/" + fileName);
-    var uploadFile = mountainImagesRef.put(avatarFile);
+    var imagesRef = storageRef.child("avatars/" + fileName);
+    var uploadFile = imagesRef.put(avatarFile);
     var downloadURL;
     uploadFile.on(
       "state_changed",
@@ -184,8 +200,26 @@ class AddTaskForm extends Component {
           .push(postData);
       }
     );
-    // this.setState({ avatar: downloadURL })
+  }
+
+  fetchAadTask(taskToAdd) {
+    const o = new ApiService().getOptions("addTask");
+    const { url, params } = o;
+
+    params.body = JSON.stringify(taskToAdd); //JSON.stringify(data);
+    const payload = {
+      url,
+      params,
+      startActionType: START_FETCH_TASK_ADD,
+      successActionType: FETCH_TASK_ADD_SUCCESS,
+      failActionType: FETCH_TASK_ADD_FAIL
+    };
+    this.props.dispatch({ type: FETCH, payload: payload });
   }
 }
 
-export default AddTaskForm;
+function mapStateToProps(state) {
+  return state;
+}
+
+export default connect(mapStateToProps)(AddTaskForm);

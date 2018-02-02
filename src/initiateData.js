@@ -1,7 +1,7 @@
 import { ApiService } from "./common/services/api.service.js";
 import { START_FETCH_LOGIN, FETCH_LOGIN_SUCCESS, FETCH_LOGIN_FAIL } from "./common/state/auth/auth.actions";
 import { FETCH } from './common/actions';
-import { START_FETCH_TASKS, FETCH_TASKS_SUCCESS, FETCH_TASKS_FAIL } from "./common/state/task/task.actions";
+import { START_FETCH_TASKS, FETCH_TASKS_SUCCESS, FETCH_TASKS_FAIL, fetchTaskAddFail } from "./common/state/task/task.actions";
 
 export default function initiateData(store) {
   authenticate(store);

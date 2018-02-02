@@ -1,3 +1,8 @@
+import { ApiService } from "../../services/api.service";
+import { FETCH } from "../../actions";
+import { connect } from "react-redux";
+
+
 export const START_FETCH_TASKS = 'START_FETCH_TASKS';
 export const FETCH_TASKS_SUCCESS = 'FETCH_TASKS_SUCCESS';
 export const FETCH_TASKS_FAIL = 'FETCH_TASKS_FAIL';
@@ -67,3 +72,23 @@ export function fetchTaskAddFail(payload) {
     payload,
   };
 }
+
+export const fetchTasks = function fetchTasks(dispatch) {
+  const endpoint = new ApiService().getOptions("getTasks");  
+  const { url, params } = endpoint;  
+  
+  const payload = {
+    url: endpoint.url,
+    params: endpoint.params,
+    startActionType: START_FETCH_TASKS,
+    successActionType: FETCH_TASKS_SUCCESS,
+    failActionType: FETCH_TASKS_FAIL
+  };
+  dispatch({type: FETCH, payload: payload});  
+}
+
+function mapStateToProps(state) {
+  return state;
+}
+
+export default connect(mapStateToProps)(fetchTasks);

@@ -6,6 +6,13 @@ var multer = require("multer");
 var upload = multer();
 var fs = require("fs");
 var fire = require('../../src/fire');
+// var admin = require("firebase-admin");
+// var serviceAccount  = require('../../src/serviceAccountKey.json');
+// admin.initializeApp({
+//   credential: admin.credential.cert(serviceAccount),
+//   storageBucket: "w-f-m-4f195.appspot.com"
+// });
+
 
 // var endpoints = require("../endpoints.js");
 
@@ -27,30 +34,31 @@ router.get("/", (req, res) => {
 });
 
 router.get("/task", (req, res) => {
-  let messagesRef = fire.database().ref("tasks").orderByValue();
-  // let tasksArray = [];
-  
-  messagesRef.once("value", snapshot => {    
-         
-    // snapshot.forEach(function(data){
-    //   let task =  data.val();
-    //   task.id = data.key; 
-    //   tasksArray.push(task);      
-    // });
-
+  let tasksRef = fire.database().ref("tasks").orderByValue();
+  tasksRef.once("value", snapshot => {    
     send(res.status(200), { tasks: snapshot });
     tasks = snapshot;
-  
   });  
-  
+});
+
+router.post("/task/add", (req, res) => {
+  const taskToAdd = req.body;
+  console.log("taskToAdd: " +taskToAdd)
+ 
+  let tasksRef = fire.database().ref("tasks");
+  tasksRef.push(taskToAdd)
+  .then(tasksRef.once("value", snapshot => {
+    send(res.status(200), { tasks: snapshot });
+    tasks = snapshot;
+    }));
 });
 
 router.post("/task/status/update", (req, res) => {
   const taskId = req.body.id;
   const status = req.body.status;
   updateTaskStatus(taskId, status);
-  let messagesRef = fire.database().ref("tasks").orderByValue();
-  messagesRef.once("value", snapshot => {
+  let tasksRef = fire.database().ref("tasks").orderByValue();
+  tasksRef.once("value", snapshot => {
   send(res.status(200), { tasks: snapshot });
   tasks = snapshot;
   });
@@ -85,9 +93,7 @@ router.post("/auth", (req, res) => {
   let statusCode;
   const token = req.body.token;
   if (mockTokens[token]) {
-    console.log("getUserByToken")
     getUserByToken(token, (user)=>{
-      console.log("POSTgetUserByToken: "+user)
       send(res, {  loggedInUser: user });
     });
     
@@ -266,25 +272,17 @@ function setUserSession(token) {
  * Helper method
  */
 function getUserByToken(token, callback) {
-  // return mockUsers.filter(function(user) {
-  //   return user.token == token;
-  // })[0];
   let query = fire.database().ref("users").orderByKey();
   query.once("value")
   .then(function(snapshot) {
     snapshot.forEach(function(childSnapshot) {
       let obj = childSnapshot.val();
       if (obj.token == token){
-        console.log(token, obj)
-
-        
-
         callback(obj)
         return true;
       }
     });
   });   
-// }        
 }
 
 function send(res, data) {

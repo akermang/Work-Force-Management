@@ -40,6 +40,7 @@ const MudifyTasksComponent = props => ({
                     <option value="to do">to do</option>
                     <option value="in progress">in progress</option>
                     <option value="done">done</option>
+                    <option value="cancel">cancel</option>
                   </select>
                   <h4 className="card-subtitle mb-2">
                     due date: {task.due_date}

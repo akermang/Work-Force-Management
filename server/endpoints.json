@@ -38,5 +38,19 @@
             "method": "POST",
             "contentType": "application/json"            
         }
+    },
+    "addTask": {
+        "url": "api/task/add",
+        "params": {
+            "method": "POST",
+            "contentType": "application/json"          
+        }
+    },
+    "cancelTask": {
+        "url": "api/task/cancel",
+        "params": {
+            "method": "POST",
+            "contentType": "application/json"          
+        }
     }
 }

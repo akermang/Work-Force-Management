@@ -1,4 +1,5 @@
 import taskState from "./task.state";
+import { connect } from "react-redux";
 import {
   START_FETCH_TASKS,
   FETCH_TASKS_SUCCESS,
@@ -43,6 +44,14 @@ function tasksReducer(state = taskState, action) {
     default:
       return state;
   }
+
+ 
+  
 }
+function mapStateToProps(state) {
+  return state;
+}
+
+// connect(mapStateToProps)(AddTaskForm);
 
 export default tasksReducer;

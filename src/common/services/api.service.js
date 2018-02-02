@@ -7,4 +7,3 @@ export class ApiService {
   }
 }
 
-console.log(_endpoints.tasks.all)
