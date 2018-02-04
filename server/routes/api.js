@@ -81,8 +81,11 @@ router.post("/login", (req, res) => {
   const password = req.body.password;
   const user = getUser(username, password, user => {
     if (user) {
+      let userToken = user.token;
       let query = fire.database().ref("tokens/");
-      query.push({token: user.token})    
+      query.child(userToken).update({
+         userToken
+      });
       setUserSession(user.token);
       send(res, { loggedInUser: user });
     } else {
@@ -97,7 +100,7 @@ router.post("/auth", (req, res) => {
   if (token) {
     let query = fire.database().ref("tokens/");
     query.once("value").then(snapshot => {
-      if (snapshot.val()[token] == token) {
+      if (snapshot.val()[token].userToken == token) {
         getUserByToken(token, user => {
           send(res, { loggedInUser: user });
         });
