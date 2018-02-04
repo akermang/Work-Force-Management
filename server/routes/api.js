@@ -2,22 +2,9 @@ const express = require("express");
 const router = express.Router();
 const FileUtils = require("./file-utils");
 const fileUtils = new FileUtils();
-var multer = require("multer");
-var upload = multer();
 var fs = require("fs");
 var fire = require("../../src/fire");
-// var admin = require("firebase-admin");
-// var serviceAccount  = require('../../src/serviceAccountKey.json');
-// admin.initializeApp({
-//   credential: admin.credential.cert(serviceAccount),
-//   storageBucket: "w-f-m-4f195.appspot.com"
-// });
 
-// var endpoints = require("../endpoints.js");
-
-/**
- * Mock data
- */
 const mockData = require("../mock/data.json");
 
 /**
@@ -64,15 +51,6 @@ router.post("/task/status/update", (req, res) => {
   });
 });
 
-// router.get("/task", (req, res) => {
-//   if (tasks) send(res.status(200), {  tasks });
-//   else
-//     send(res.status(404), {
-//       statusCode: 404,
-//       error: new Error("failed to get tasks")
-//     });
-// });
-
 router.post("/login", (req, res) => {
   const username = req.body.username;
   const password = req.body.password;
@@ -81,7 +59,7 @@ router.post("/login", (req, res) => {
       let userToken = user.token;
       let query = fire.database().ref("tokens/");
       query.child(userToken).update({
-         userToken
+        userToken
       });
       send(res, { loggedInUser: user });
     } else {
@@ -109,10 +87,6 @@ router.post("/auth", (req, res) => {
   } else {
     send(res.status(401), { error: "authentication failed resson: No token" });
   }
-
-  // .cach(
-  //   (snapshot)=> {
-  //     console.log("eror snapshot: "+snapshot)
 });
 
 router.post("/user/add/", (req, res) => {
@@ -138,37 +112,45 @@ router.post("/user/add/", (req, res) => {
     })
     .then(() => {
       if (!userObj) {
-        user.password = "1234";       
-       }
+        user.password = "1234";
+      }
     })
-    .then(()=>{
-      let tokensRef = fire.database().ref("tokens").orderByValue();
-      tokensRef.once("value", (tokens)=>{
-        let newtoken = tokens.val().length+1
-         user.token = newtoken;
-         user.id  = newtoken
-         newUser = user;
-       })
-       .then(()=>{
-        if (!newUser) {
-          return res.status(400).send({ error: "username already exists" });
-        }else{ if (avatar) {
+    .then(() => {
+      let tokensRef = fire
+        .database()
+        .ref("tokens")
+        .orderByValue();
+      tokensRef
+        .once("value", tokens => {
+          let newtoken = tokens.val().length + 1;
+          user.token = newtoken;
+          user.id = newtoken;
+          newUser = user;
+        })
+        .then(() => {
+          if (!newUser) {
+            return res.status(400).send({ error: "username already exists" });
+          } else {
+            if (avatar) {
               const filePath = "assets/images/" + req.files.avatar.name;
               const uploaded = uploadFile(req.files.avatar, filePath, res);
               if (!uploaded)
                 return res.send.status(400)({ error: "file failed to upload" });
               newUser.avatar = filePath;
-            }}
-      }).then(()=>{
-        if(newUser){
-          addUser(newUser);
-          return res.send({ user: newUser })
-        } 
-      })
-    })
-    
-    
+            }
+          }
+        })
+        .then(() => {
+          if (newUser) {
+            addUser(newUser);
+            return res.send({ user: newUser });
+          }
+        });
+    });
 });
+/**
+ * Helper method
+ */
 
 function updateTaskStatus(key, status) {
   fire
@@ -176,15 +158,6 @@ function updateTaskStatus(key, status) {
     .ref("tasks")
     .child(key)
     .update({ status: status });
-  // for (task of tasks) {
-  //   if (task.id == id) task.status = status;
-  // }
-  // const updatedTasks = tasks;
-  // const filePath = "./server/mock/tasks.json";
-  // fileUtils.readFile(filePath, function(atedTasks) {
-  // // const parsedTasks = JSON.parse(updatedTasks);
-  // fileUtils.writeFile(filePath, updatedTasks, function(data) {});
-  // });
   return tasks;
 }
 
@@ -252,36 +225,13 @@ function getUser(username, password, callback) {
   });
 }
 
-//   let user =  data.val();
-//   user.id = data.key;
-//   tasksArray.push(task);
-// });
-
-// for (let user of mockUsers) {
-//   if (user.username === username && user.password === password) {
-//     return user;
-//   }
-// }
-
 function addUser(user) {
   fire
     .database()
     .ref("users")
     .push(user);
-  // const filePath = "./server/mock/users.json";
-  // // read data from file
-  // fileUtils.readFile(filePath, function(users) {
-  //   const parsedUsers = JSON.parse(users);
-  //   parsedUsers.push(user);
-  //   // write data to file
-  //   mockUsers = parsedUsers;
-  //   fileUtils.writeFile(filePath, parsedUsers, function(data) {});
-  // });
 }
 
-/**
- * Helper method
- */
 function getUserByToken(token, callback) {
   let query = fire
     .database()
