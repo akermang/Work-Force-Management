@@ -18,7 +18,8 @@ class AddTaskForm extends Component {
     this.state = {
       tasks: [],
       avatar: [],
-      classState: styles.lead 
+      classState: styles.lead,
+      renderNewTask: false
     };
   }
   componentDidMount() {
@@ -40,7 +41,8 @@ class AddTaskForm extends Component {
     return (
       <div>
         <div className="row">
-          <ul>{this.getTask()}</ul>
+        {  this.state.renderNewTask ? <ul>{this.getTask()}</ul> : null}
+         
         </div>
         <div className="panel panel-primary">
           <Link className="close" to="/">
@@ -99,7 +101,7 @@ class AddTaskForm extends Component {
     for (let key in this.state.tasks) {
       const task = this.state.tasks[key];
       let taskElement = (
-        <div key={key} className="task-panel">
+        <div key={key} className= "task-panel">
           <div className="panel panel-primary">
             <div className="panel-heading">
               <h3 className="panel-title">
@@ -143,7 +145,7 @@ class AddTaskForm extends Component {
     };
     this.fetchAadTask(data);
     setTimeout(() => {
-      this.setState({classState: styles.changed})
+      this.setState({classState: styles.changed, renderNewTask: true})
     }, 30)
     setTimeout(() => {
       this.setState({classState: styles.lead});
@@ -159,9 +161,9 @@ class AddTaskForm extends Component {
       .child(this)
       .remove()
       .then(fetchTasks(that.props.dispatch))
-      .then(that.setState({classState: styles.changed}))
+      .then(that.setState({classState: styles.changed, renderNewTask: true}))
       .then(setTimeout(() => {
-        that.setState({classState: styles.lead});
+        that.setState({classState: styles.lead, renderNewTask: false});
       }, 2200))
       // .then(props.history.push("/"))
   

@@ -19,9 +19,6 @@ var fire = require("../../src/fire");
  * Mock data
  */
 const mockData = require("../mock/data.json");
-let mockTokens = require("../mock/tokens.json");
-let mockUsers = require("../mock/users.json");
-let tasks = require("../mock/tasks.json");
 
 /**
  * Api routes

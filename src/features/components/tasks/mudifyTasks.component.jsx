@@ -50,7 +50,7 @@ const MudifyTasksComponent = props => ({
                     update task
                   </button>
                   <button type="button" onClick={cancel} className="btn btn-info btn col-xs-offset-1"> 
-                    Cancel
+                    Back
                   </button>
                 </form>
               </div>
