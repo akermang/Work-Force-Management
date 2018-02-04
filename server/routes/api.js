@@ -86,7 +86,6 @@ router.post("/login", (req, res) => {
       query.child(userToken).update({
          userToken
       });
-      setUserSession(user.token);
       send(res, { loggedInUser: user });
     } else {
       send(res.status(400, { data: null }));
@@ -136,7 +135,6 @@ router.post("/user/add/", (req, res) => {
         let obj = data.val();
         if (obj.username === user.username) {
           userObj = obj;
-          console.log("username Exists: *** "+obj.username)
           return true;
         }
       });
@@ -153,7 +151,6 @@ router.post("/user/add/", (req, res) => {
          user.token = newtoken;
          user.id  = newtoken
          newUser = user;
-       console.log("token came: ", newUser)
        })
        .then(()=>{
         if (!newUser) {
@@ -166,8 +163,6 @@ router.post("/user/add/", (req, res) => {
               newUser.avatar = filePath;
             }}
       }).then(()=>{
-        console.log(newUser)
-  
         if(newUser){
           addUser(newUser);
           return res.send({ user: newUser })
@@ -285,18 +280,6 @@ function addUser(user) {
   //   mockUsers = parsedUsers;
   //   fileUtils.writeFile(filePath, parsedUsers, function(data) {});
   // });
-}
-
-function setUserSession(token) {
-  const filePath = "./server/mock/tokens.json";
-  // read data from file
-  fileUtils.readFile(filePath, function(tokens) {
-    const parsedTokens = JSON.parse(tokens);
-    parsedTokens[token] = token;
-    // write data to file
-    mockTokens = parsedTokens;
-    fileUtils.writeFile(filePath, parsedTokens, function(data) {});
-  });
 }
 
 /**
