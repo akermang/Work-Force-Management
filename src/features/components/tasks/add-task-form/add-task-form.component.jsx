@@ -141,11 +141,14 @@ class AddTaskForm extends Component {
       status: this.refs.status.value,
       due_date: date
     };
-    this.setState({classState: styles.changed})
+    this.fetchAadTask(data);
+    setTimeout(() => {
+      this.setState({classState: styles.changed})
+    }, 30)
     setTimeout(() => {
       this.setState({classState: styles.lead});
     }, 2000)
-    this.fetchAadTask(data);
+    
     this.inputEl.value = ""; // <- clear the input
   }
 
@@ -157,9 +160,9 @@ class AddTaskForm extends Component {
       .remove()
       .then(fetchTasks(that.props.dispatch))
       .then(that.setState({classState: styles.changed}))
-      setTimeout(() => {
+      .then(setTimeout(() => {
         that.setState({classState: styles.lead});
-      }, 2200)
+      }, 2200))
       // .then(props.history.push("/"))
   
   

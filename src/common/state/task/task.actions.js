@@ -73,7 +73,7 @@ export function fetchTaskAddFail(payload) {
   };
 }
 
-export const fetchTasks = function fetchTasks(dispatch) {
+export const fetchTasks = (dispatch) => {
   const endpoint = new ApiService().getOptions("getTasks");  
   const { url, params } = endpoint;  
   

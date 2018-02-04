@@ -1,5 +1,27 @@
 @import '../../../../assets/scss/variables.scss';
 
+@keyframes fade-in {
+    0% {
+      opacity: 1;
+    }
+    30%{
+        opacity: 0.3;
+    }
+    40% {
+        opacity: 1;
+      }
+      60%{
+          opacity: 0.5;
+      }
+      80%{
+          opacity: 1;
+      }
+    90% {
+      opacity: 1;
+    }
+  }
+  
+
 .task-panel{
     padding: 0;
 }
@@ -8,6 +30,9 @@ button.btnDelete{
     margin: -4px!important;
 }
 
+
 .changed{
     background: #e9b741;
+    box-shadow: 0 6px 12px rgba(0,0,0,.175);
+    animation: fade-in 3.2s;
 }

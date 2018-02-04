@@ -25,7 +25,7 @@ export default class KanBoardComponent extends Component {
         ) : null}
         <div className="col-lg-4">
           <div
-            className={`${styles.toDo} ${
+            className={` ${
               styles.col
             } panel panel-danger container-fluid`}
           >

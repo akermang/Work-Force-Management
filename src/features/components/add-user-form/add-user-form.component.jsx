@@ -14,7 +14,7 @@ export class AddUserForm extends Component {
   render() {
     return (
       <div>
-        <h2 className={styles.title}>Add user</h2>
+        <h3 className={styles.title}>Add user</h3>
         <form
           encType="multipart/form-data"
           onSubmit={e => this.fetchAddUser(e) }
