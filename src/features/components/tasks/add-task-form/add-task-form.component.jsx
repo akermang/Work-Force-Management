@@ -115,14 +115,14 @@ class AddTaskForm extends Component {
             </li>
             <li className="list-group-item list-group-item-warning">
               due date: <span className={classState + " text-info"}>{task.due_date}</span>
-              <button
+              {/* <button
                 onClick={this.deleteTask.bind(key, that)}
                 type="button"
                 className={styles.btnDelete + " btn btn-sm btn-warning"}
                 aria-label="close"
               >
                 <span aria-hidden="true">delete</span>
-              </button>
+              </button> */}
             </li>
           </div>
         </div>
@@ -154,22 +154,25 @@ class AddTaskForm extends Component {
     this.inputEl.value = ""; // <- clear the input
   }
 
-  deleteTask(that , key) {;
-    fire
-      .database()
-      .ref("tasks")
-      .child(this)
-      .remove()
-      .then(fetchTasks(that.props.dispatch))
-      .then(that.setState({classState: styles.changed, renderNewTask: true}))
-      .then(setTimeout(() => {
-        that.setState({classState: styles.lead, renderNewTask: false});
-      }, 2200))
-      // .then(props.history.push("/"))
+  // deleteTask(that , key) {
+  //   let tasksRef = fire.database().ref("tasks");
+    
+  //   tasksRef.child(this)
+  //     .remove()
+
+  //     tasksRef.once("value", snapshot => {
+  //       return fetchTasks(that.props.dispatch)
+  //     })
+  //     // .then(fetchTasks(that.props.dispatch))
+  //     .then(that.setState({classState: styles.changed, renderNewTask: true}))
+  //     .then(setTimeout(() => {
+  //       that.setState({classState: styles.lead, renderNewTask: false});
+  //     }, 2200))
+  //     // .then(props.history.push("/"))
   
   
 
-  }
+  // }
 
   updateTaskStatus() {
     fire
