@@ -27,12 +27,12 @@ class AddTaskForm extends Component {
       .database()
       .ref("tasks")
       .limitToLast(1);
-    messagesRef.on("value", snapshot => {
+    messagesRef.once("value", snapshot => {
       this.setState({ tasks: snapshot.val() });
     });
 
     let avatarsRef = fire.database().ref("avatars");
-    avatarsRef.on("child_added", snapshot => {
+    avatarsRef.once("child_added", snapshot => {
       this.setState({ avatar: snapshot.val() });
     });
   }

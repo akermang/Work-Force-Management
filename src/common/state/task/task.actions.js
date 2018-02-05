@@ -87,8 +87,4 @@ export const fetchTasks = (dispatch) => {
   dispatch({type: FETCH, payload: payload});  
 }
 
-function mapStateToProps(state) {
-  return state;
-}
 
-export default connect(mapStateToProps)(fetchTasks);
