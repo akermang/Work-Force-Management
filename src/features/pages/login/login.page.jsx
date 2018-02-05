@@ -30,6 +30,7 @@ const LoginPage = props => ({
               defaultValue="bar"
               type="text"
               ref="username"
+              focus = "true"
             />
           </div>
           <div className="form-group">

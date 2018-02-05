@@ -16,7 +16,7 @@ const MudifyTasksComponent = props => ({
     const cancel = this.props.onCancelTaskSelection;
 
     return (
-      <div className={``}>
+      <div className={"mudify-task-component"}>
         <div className="panel panel-info">
         <button type="button" onClick={cancel} className="close" ><span >&times;</span></button>
           <div className="panel-heading">
@@ -40,6 +40,7 @@ const MudifyTasksComponent = props => ({
                     <option value="to do">to do</option>
                     <option value="in progress">in progress</option>
                     <option value="done">done</option>
+                    <option value="cancel">cancel</option>
                   </select>
                   <h4 className="card-subtitle mb-2">
                     due date: {task.due_date}
@@ -49,7 +50,7 @@ const MudifyTasksComponent = props => ({
                     update task
                   </button>
                   <button type="button" onClick={cancel} className="btn btn-info btn col-xs-offset-1"> 
-                    Cancel
+                    Back
                   </button>
                 </form>
               </div>

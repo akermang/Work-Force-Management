@@ -17,6 +17,7 @@
     "express-fileupload": "^0.3.0",
     "file-loader": "^1.1.5",
     "firebase": "^4.8.1",
+    "firebase-admin": "^5.8.1",
     "isomorphic-fetch": "^2.2.1",
     "jquery": "2.2.4",
     "lodash": "^4.17.4",

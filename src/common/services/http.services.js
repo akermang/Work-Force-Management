@@ -1,6 +1,10 @@
 const fetch = require("isomorphic-fetch");
 
 function request(url, options, callback) {
+  // return fetch(url, options).then(res => {
+  //   callback(res.json(), res.status)
+  //   return res.json();
+  // })
   var data = options.body;
   var oReq = new XMLHttpRequest();
   oReq.open(options.method, API_HOST + url);

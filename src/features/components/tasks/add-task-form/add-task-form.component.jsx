@@ -1,30 +1,38 @@
 import React, { Component } from "react";
+import styles from "../tasks.component.scss";
 import fire from "../../../../fire";
 import { Link } from "react-router-dom";
+import { ApiService } from "../../../../common/services/api.service";
+import {
+  START_FETCH_TASK_ADD,
+  FETCH_TASK_ADD_SUCCESS,
+  FETCH_TASK_ADD_FAIL,
+  fetchTasks
+} from "../../../../common/state/task/task.actions";
+import { connect } from "react-redux";
+import { FETCH } from "../../../../common/actions";
 
 class AddTaskForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
       tasks: [],
-      avatar: []
-    }; // <- set up react state
+      avatar: [],
+      classState: styles.lead,
+      renderNewTask: false
+    };
   }
-  componentWillMount() {
-    /* Create reference to messages in Firebase Database */
-    let messagesRef = fire.database().ref("tasks");
-    // .orderByKey();
-    // .limitToLast(100);
-    messagesRef.on("value", snapshot => {
-      /* Update React state when message is added at Firebase Database */
+  componentDidMount() {
+    let messagesRef = fire
+      .database()
+      .ref("tasks")
+      .limitToLast(1);
+    messagesRef.once("value", snapshot => {
       this.setState({ tasks: snapshot.val() });
     });
 
     let avatarsRef = fire.database().ref("avatars");
-    // .orderByKey();
-    // .limitToLast(100);
-    avatarsRef.on("child_added", snapshot => {
-      /* Update React state when message is added at Firebase Database */
+    avatarsRef.once("child_added", snapshot => {
       this.setState({ avatar: snapshot.val() });
     });
   }
@@ -32,13 +40,10 @@ class AddTaskForm extends Component {
   render() {
     return (
       <div>
-        <div className="row" >
-        <ul>
-          {/* Render the list of messages */}
-          {this.getTask()}
-        </ul>
+        <div className="row">
+        {  this.state.renderNewTask ? <ul>{this.getTask()}</ul> : null}
+         
         </div>
-        
         <div className="panel panel-primary">
           <Link className="close" to="/">
             <span>&times;</span>
@@ -49,8 +54,8 @@ class AddTaskForm extends Component {
           <div className="panel-body bg-info">
             <div className="card-block-rounded">
               <div className="form-group">
-                <label className="text-lowercase h4">description:</label>
                 <form onSubmit={this.addTask.bind(this)}>
+                  <label className="text-lowercase h4">description:</label>
                   <input
                     className="form-control"
                     type="text"
@@ -81,33 +86,8 @@ class AddTaskForm extends Component {
                   <button type="reset" className="btn col-xs-offset-2 btn-info">
                     Clear
                   </button>
-                  <input
-                    className="form-control"
-                    name="avatar"
-                    type="file"
-                    ref="avatar"
-                  />
-                  <button
-                    className="btn btn-primary"
-                    type="button"
-                    onClick={this.uploadFile.bind(this)}
-                  >
-                    upload file
-                  </button>
                 </form>
               </div>
-              <div className="media">
-          <div className="media-left col-lg-6 col-md-2 col-sm-4 col-xs-8">
-            <img
-              className="media-object img-responsive"
-              src={this.state.avatar.url}
-              alt="uploaded file"
-            />
-          </div>
-          <div className="media-body">
-            <h4 className="media-heading"> {this.state.avatar.name}</h4>
-          </div>
-        </div>
             </div>
           </div>
         </div>
@@ -116,42 +96,34 @@ class AddTaskForm extends Component {
   }
   getTask() {
     let tasks = [];
+    let that = this;
+    let classState = this.state.classState;
     for (let key in this.state.tasks) {
       const task = this.state.tasks[key];
       let taskElement = (
-        <div key={key} className="col-md-3">
+        <div key={key} className= "task-panel">
           <div className="panel panel-primary">
             <div className="panel-heading">
-              <button
-                onClick={this.deleteTask.bind(key)}
-                type="button"
-                className="close"
-                aria-label="Close"
-              >
-                <span aria-hidden="true">&times;</span>
-              </button>
-              <h3 className="panel-title">{task.description}</h3>
+              <h3 className="panel-title">
+                last task: <span className=  {classState + " lead"  }> {task.description}</span>{" "}
+              </h3>
             </div>
+
             <div className="list-group" />
             <li className="list-group-item list-group-item-warning">
-              status: <span className="text-info">{task.status}</span>{" "}
-              <button
-                onClick={this.updateTaskStatus.bind(key)}
-                type="button"
-                className="close"
-                aria-label="Close"
-              >
-                <span aria-hidden="true">cancel</span>
-              </button>
+              status: <span className={classState + " text-info"}>{task.status}</span>{" "}
             </li>
             <li className="list-group-item list-group-item-warning">
-              due date: <span className="text-info">{task.due_date}</span>
+              due date: <span className={classState + " text-info"}>{task.due_date}</span>
+              <button
+                onClick={this.deleteTask.bind(key, that)}
+                type="button"
+                className={styles.btnDelete + " btn btn-sm btn-warning"}
+                aria-label="close"
+              >
+                <span aria-hidden="true">delete</span>
+              </button>
             </li>
-            <img
-              className="media-object img-responsive"
-              src={this.state.avatar.url}
-              alt="uploaded file"
-            />
           </div>
         </div>
       );
@@ -162,7 +134,6 @@ class AddTaskForm extends Component {
   }
   addTask(e) {
     e.preventDefault(); // <- prevent form submit from reloading the page
-    /* Send the message to Firebase */
     let validateContent = this.inputEl.value;
     validateContent ? validateContent : (validateContent = "No description");
     let date = this.refs.due_date.value;
@@ -172,19 +143,32 @@ class AddTaskForm extends Component {
       status: this.refs.status.value,
       due_date: date
     };
-    fire
-      .database()
-      .ref("tasks")
-      .push(data);
+    this.fetchAadTask(data);
+    setTimeout(() => {
+      this.setState({classState: styles.changed, renderNewTask: true})
+    }, 30)
+    setTimeout(() => {
+      this.setState({classState: styles.lead});
+    }, 2000)
+    
     this.inputEl.value = ""; // <- clear the input
   }
 
-  deleteTask() {
+  deleteTask(that , key) {;
     fire
       .database()
       .ref("tasks")
       .child(this)
-      .remove();
+      .remove()
+      .then(fetchTasks(that.props.dispatch))
+      .then(that.setState({classState: styles.changed, renderNewTask: true}))
+      .then(setTimeout(() => {
+        that.setState({classState: styles.lead, renderNewTask: false});
+      }, 2200))
+      // .then(props.history.push("/"))
+  
+  
+
   }
 
   updateTaskStatus() {
@@ -192,15 +176,15 @@ class AddTaskForm extends Component {
       .database()
       .ref("tasks")
       .child(this)
-      .update({ status: "Canceled", due_date: "will never br done" });
+      .update({ status: "Canceled", due_date: "will never be done" });
   }
 
   uploadFile() {
     let avatarFile = this.refs.avatar.files[0];
     let fileName = avatarFile.name;
     var storageRef = fire.storage().ref();
-    var mountainImagesRef = storageRef.child("avatars/" + fileName);
-    var uploadFile = mountainImagesRef.put(avatarFile);
+    var imagesRef = storageRef.child("avatars/" + fileName);
+    var uploadFile = imagesRef.put(avatarFile);
     var downloadURL;
     uploadFile.on(
       "state_changed",
@@ -221,8 +205,26 @@ class AddTaskForm extends Component {
           .push(postData);
       }
     );
-    // this.setState({ avatar: downloadURL })
+  }
+
+  fetchAadTask(taskToAdd) {
+    const o = new ApiService().getOptions("addTask");
+    const { url, params } = o;
+
+    params.body = JSON.stringify(taskToAdd); //JSON.stringify(data);
+    const payload = {
+      url,
+      params,
+      startActionType: START_FETCH_TASK_ADD,
+      successActionType: FETCH_TASK_ADD_SUCCESS,
+      failActionType: FETCH_TASK_ADD_FAIL
+    };
+    this.props.dispatch({ type: FETCH, payload: payload });
   }
 }
 
-export default AddTaskForm;
+function mapStateToProps(state) {
+  return state;
+}
+
+export default connect(mapStateToProps)(AddTaskForm);

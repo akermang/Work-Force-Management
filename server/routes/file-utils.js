@@ -16,10 +16,3 @@ module.exports = class FileUtils {
   }
 }
 
-
-// var x = './server/mock/users.json';
-// fs.watch(x, {
-//   persistent: true
-// }, function(event, x) {
-//   console.log(event + " event occurred on " + x);
-// });

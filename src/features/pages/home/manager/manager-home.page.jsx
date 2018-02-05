@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import MudifyTasksComponent from "../../../components/tasks/mudifyTasks.component.jsx";
-import { ExampleComponent, CanBoardComponent } from "../../../";
+import { ExampleComponent, KanBoardComponent } from "../../../";
 
 class ManagerHomePage extends React.Component {
   constructor(props) {
@@ -15,7 +15,7 @@ class ManagerHomePage extends React.Component {
 
   getCanBoardComponent() {
     return this.state.showTasks && !this.props.isLoading ? (
-      <CanBoardComponent tasks={this.props.tasks} />
+      <KanBoardComponent tasks={this.props.tasks} />
     ) : null;
   }
 
@@ -45,7 +45,7 @@ class ManagerHomePage extends React.Component {
           {this.state.content}
         </button>
         <h2>Manager - home page</h2>
-        <div>{this.getCanBoardComponent()}</div>
+        <div className="container-fluid" >{this.getCanBoardComponent()}</div>
         <div className="container-fluid">
           <div className="row">
             <div className="col">
