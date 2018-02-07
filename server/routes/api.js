@@ -37,6 +37,10 @@ router.post("/task/add", (req, res) => {
   );
 });
 
+router.post("/task/delete", (req, res) => {
+  return send(res.status(400), {responseText: 'success'});
+})
+
 router.post("/task/status/update", (req, res) => {
   const taskId = req.body.id;
   const status = req.body.status;

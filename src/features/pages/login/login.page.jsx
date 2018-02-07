@@ -11,6 +11,7 @@ import {
   FETCH_LOGIN_SUCCESS,
   FETCH_LOGIN_FAIL
 } from "../../../common/state/auth/auth.actions";
+import { exampleFetch } from '../../../common/state/example/example.actions';
 
 const LoginPage = props => ({
   render() {
@@ -72,6 +73,12 @@ const LoginPage = props => ({
   },
 
   fetchLogin(e) {
+    this.props.dispatch(exampleFetch()).then(tasks => {
+      // success      
+    }).catch(error => {
+      // fail      
+    })
+
     e.preventDefault();
     const o = new ApiService().getOptions("login");
     const { url, params } = o;

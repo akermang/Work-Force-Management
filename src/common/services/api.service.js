@@ -5,4 +5,4 @@ export class ApiService {
     return endpoints[key];
   }
 }
-
+// export default new ApiService();

@@ -5,7 +5,7 @@ import { START_FETCH_TASKS, FETCH_TASKS_SUCCESS, FETCH_TASKS_FAIL, fetchTaskAddF
 
 export default function initiateData(store) {
   authenticate(store);
-  fetchTasks(store.dispatch);
+  fetchTasks(store.dispatch);  
 }
 
 function authenticate(store) {

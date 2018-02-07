@@ -9,8 +9,10 @@ import {
   FETCH_TASK_STATUS_UPDATE_FAIL,
   START_FETCH_TASK_ADD,
   FETCH_TASK_ADD_SUCCESS,
-  FETCH_TASK_ADD_FAIL
+  FETCH_TASK_ADD_FAIL,
+  DELETE_TASK
 } from "./task.actions";
+import { FAILED_SUFFIX } from "../../actions";
 
 function tasksReducer(state = taskState, action) {
   switch (action.type) {
@@ -41,6 +43,10 @@ function tasksReducer(state = taskState, action) {
     case FETCH_TASK_ADD_FAIL:
       return { ...state, loading: false, error: action.payload.error };
 
+    case DELETE_TASK + FAILED_SUFFIX:
+      console.log('hello from reducer: DELETE_TASK_FAIL')
+      return { ...state };
+      
     default:
       return state;
   }

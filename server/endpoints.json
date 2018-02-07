@@ -52,5 +52,12 @@
             "method": "POST",
             "contentType": "application/json"          
         }
+    },
+    "deleteTask": {
+        "url": "api/task/delete",
+        "params": {
+            "method": "POST",
+            "contentType": "application/json"          
+        }
     }
 }

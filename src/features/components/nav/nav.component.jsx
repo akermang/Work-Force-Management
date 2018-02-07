@@ -3,15 +3,13 @@ import PropTypes from 'prop-types';
 import { NavLink } from "react-router-dom";
 import styles from "./nav.component.scss";
 import { connect } from "react-redux";
+import { withRouter } from 'react-router-dom';
 
 const NavComponent = props => ({
   render() {
     const links = this.props.links || [];
     return(
-      <ul className={`${styles.nav}`}>
-      <div>
-        
-      </div>
+      <ul className={styles.nav + " lead"}>
       {
         links.map((link, i) => {
           if(link.path == "/") {
@@ -38,4 +36,4 @@ function mapStateToProps(state) {
   return state;
 }
 
-export default connect(mapStateToProps)(NavComponent);
+export default withRouter(connect(mapStateToProps)(NavComponent));

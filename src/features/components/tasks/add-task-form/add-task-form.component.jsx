@@ -7,7 +7,8 @@ import {
   START_FETCH_TASK_ADD,
   FETCH_TASK_ADD_SUCCESS,
   FETCH_TASK_ADD_FAIL,
-  fetchTasks
+  fetchTasks,
+  deleteTaskAction
 } from "../../../../common/state/task/task.actions";
 import { connect } from "react-redux";
 import { FETCH } from "../../../../common/actions";
@@ -115,14 +116,14 @@ class AddTaskForm extends Component {
             </li>
             <li className="list-group-item list-group-item-warning">
               due date: <span className={classState + " text-info"}>{task.due_date}</span>
-              {/* <button
-                onClick={this.deleteTask.bind(key, that)}
+              <button
+                onClick={()=> this.deleteTask(key)}
                 type="button"
                 className={styles.btnDelete + " btn btn-sm btn-warning"}
                 aria-label="close"
               >
                 <span aria-hidden="true">delete</span>
-              </button> */}
+              </button>
             </li>
           </div>
         </div>
@@ -153,6 +154,11 @@ class AddTaskForm extends Component {
     
     this.inputEl.value = ""; // <- clear the input
   }
+  deleteTask = (id)=> {
+    this.props.dispatch(deleteTaskAction(id))
+    .then(res => console.log("delete task success`:", res))
+    .catch(err => console.log("delete task fail:", err))
+  }
 
   // deleteTask(that , key) {
   //   let tasksRef = fire.database().ref("tasks");
@@ -163,8 +169,8 @@ class AddTaskForm extends Component {
   //     tasksRef.once("value", snapshot => {
   //       return fetchTasks(that.props.dispatch)
   //     })
-  //     // .then(fetchTasks(that.props.dispatch))
-  //     .then(that.setState({classState: styles.changed, renderNewTask: true}))
+  //     .then(()=>fetchTasks(that.props.dispatch))
+  //     .then(()=>that.setState({classState: styles.changed, renderNewTask: true}))
   //     .then(setTimeout(() => {
   //       that.setState({classState: styles.lead, renderNewTask: false});
   //     }, 2200))

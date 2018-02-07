@@ -8,6 +8,8 @@
     ["transform-runtime"],
     ["transform-object-rest-spread"],
     ["transform-object-assign"],
+    ["transform-async-to-generator"],
+    ["syntax-async-functions"],
     "react-hot-loader/babel"
   ]
 }

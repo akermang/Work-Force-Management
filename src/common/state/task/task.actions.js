@@ -1,7 +1,10 @@
 import { ApiService } from "../../services/api.service";
 import { FETCH } from "../../actions";
 import { connect } from "react-redux";
+import createAsyncAction from "../../../createAsyncAction";
+import  request  from "../../services/http.services";
 
+export const DELETE_TASK = 'DELETE_TASK';
 
 export const START_FETCH_TASKS = 'START_FETCH_TASKS';
 export const FETCH_TASKS_SUCCESS = 'FETCH_TASKS_SUCCESS';
@@ -86,5 +89,15 @@ export const fetchTasks = (dispatch) => {
   };
   dispatch({type: FETCH, payload: payload});  
 }
+
+export let deleteTaskAction = createAsyncAction(
+  'DELETE_TASK',
+  (taskId) => { 
+    const endpoint = new ApiService().getOptions("deleteTask");  
+    const { url, params } = endpoint;
+    params.body = JSON.stringify({taskId})
+    return request(url, params)
+  }
+);
 
 

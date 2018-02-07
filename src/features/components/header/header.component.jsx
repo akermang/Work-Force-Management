@@ -24,7 +24,7 @@ const HeaderComponent = props => (
       >
         <div>
           <img
-            className="img-rounded  img-responsive"
+            className="img-circle  img-responsive"
             src={getSrc(props)}
             alt="AVATAR"
           />
@@ -36,7 +36,7 @@ const HeaderComponent = props => (
           <div className="btn-lg">
             <div className={styles.user}>{getName(props)}</div>
             <img
-              className={styles.img96px + " img-rounded  img-responsive"}
+              className={styles.img96px + " img-circle  img-responsive"}
               src={getSrc(props)}
               alt="AVATAR"
             />
