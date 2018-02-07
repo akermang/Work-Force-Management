@@ -116,14 +116,14 @@ class AddTaskForm extends Component {
             </li>
             <li className="list-group-item list-group-item-warning">
               due date: <span className={classState + " text-info"}>{task.due_date}</span>
-              <button
+              {/* <button
                 onClick={()=> this.deleteTask(key)}
                 type="button"
                 className={styles.btnDelete + " btn btn-sm btn-warning"}
                 aria-label="close"
               >
                 <span aria-hidden="true">delete</span>
-              </button>
+              </button> */}
             </li>
           </div>
         </div>
