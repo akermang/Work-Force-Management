@@ -9,11 +9,11 @@ const NavComponent = props => ({
   render() {
     const links = this.props.links || [];
     return(
-      <ul className={styles.nav + " lead"}>
+      <ul className={styles.nav}>
       {
         links.map((link, i) => {
           if(link.path == "/") {
-            return <li  key={i}><NavLink exact activeClassName={styles.active} to={link.path}>{link.text}</NavLink></li>
+            return <li  key={i}><NavLink  activeClassName={styles.active} to={link.path}>{link.text}</NavLink></li>
           }else {
             return <li  key={i}><NavLink activeClassName={styles.active} to={link.path}>{link.text}</NavLink></li>
           }
