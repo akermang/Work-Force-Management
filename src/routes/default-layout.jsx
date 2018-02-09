@@ -17,7 +17,7 @@ const allLinks = {
     {path: constants.addTask, text: 'Add task'},
   ],
   manager: [  
-    {path: constants.home, text: 'home'},
+    {path: constants.home, text: 'Home'},
     {path: constants.addTask, text: 'Add task'},
     {path: constants.addUser, text: 'Add user'}
   ],
