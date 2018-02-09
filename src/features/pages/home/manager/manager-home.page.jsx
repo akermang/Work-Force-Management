@@ -50,9 +50,9 @@ class ManagerHomePage extends React.Component {
           <div className="row">
             <div className="col">
               <div className=" panel panel-success container-fluid">
-                <button type="button" className="close" aria-label="Close">
+                {/* <button type="button" className="close" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
-                </button>
+                </button> */}
                 <div className="panel-heading">
                   <h3 className="panel-title">
                     Maneger {user ? user.username : null}
@@ -71,7 +71,6 @@ class ManagerHomePage extends React.Component {
             </div>
           </div>
         </div>
-        <div>{/* <AddUserForm/> */}</div>
       </div>
     );
   }
