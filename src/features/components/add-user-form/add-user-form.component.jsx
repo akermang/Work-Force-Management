@@ -99,8 +99,4 @@ export class AddUserForm extends Component {
 
 }
 
-function mapStateToProps(state) {
-  return state;
-}
-
-export default connect(mapStateToProps)(AddUserForm);
+export default AddUserForm;

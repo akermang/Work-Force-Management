@@ -43,7 +43,6 @@ class AddTaskForm extends Component {
       <div>
         <div className="row">
         {  this.state.renderNewTask ? <ul>{this.getTask()}</ul> : null}
-         
         </div>
         <div className="panel panel-primary">
           <Link className="close" to="/">
@@ -55,7 +54,7 @@ class AddTaskForm extends Component {
           <div className="panel-body bg-info">
             <div className="card-block-rounded">
               <div className="form-group">
-                <form onSubmit={this.addTask.bind(this)}>
+                <form onSubmit={()=> this.addTask(event)}>
                   <label className="text-lowercase h4">description:</label>
                   <input
                     className="form-control"
@@ -95,6 +94,7 @@ class AddTaskForm extends Component {
       </div>
     );
   }
+  
   getTask() {
     let tasks = [];
     let that = this;
@@ -134,6 +134,7 @@ class AddTaskForm extends Component {
     return tasks;
   }
   addTask(e) {
+    console.log(this)
     e.preventDefault(); // <- prevent form submit from reloading the page
     let validateContent = this.inputEl.value;
     validateContent ? validateContent : (validateContent = "No description");
@@ -217,6 +218,7 @@ class AddTaskForm extends Component {
   }
 
   fetchAadTask(taskToAdd) {
+    this.setState({tasks: [taskToAdd]})
     const o = new ApiService().getOptions("addTask");
     const { url, params } = o;
 
@@ -233,7 +235,7 @@ class AddTaskForm extends Component {
 }
 
 function mapStateToProps(state) {
-  return state;
+  return {taska:state.tasksReducer.tasks};
 }
 
 export default connect(mapStateToProps)(AddTaskForm);
