@@ -17,7 +17,7 @@ const LoginPage = props => ({
   render() {
     const loggedInUser = this.props.loggedInUser;
     return (
-      <div className="form-signin">
+      <div className={styles.form_signin}>
         <h3 className={styles.h3}>Login</h3>
         <form onSubmit={e => this.fetchLogin(e)}>
           <div className="form-group">
