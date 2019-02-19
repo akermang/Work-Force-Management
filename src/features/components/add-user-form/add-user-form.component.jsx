@@ -13,7 +13,7 @@ import styles from "./add-user-form.component.scss";
 export class AddUserForm extends Component {
   render() {
     return (
-      <div>
+      <div className={styles.add_user_form}>
         <h3 className={styles.title}>Add user</h3>
         <form
           encType="multipart/form-data"
